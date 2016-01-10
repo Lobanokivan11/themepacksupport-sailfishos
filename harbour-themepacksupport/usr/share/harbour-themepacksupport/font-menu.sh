@@ -26,6 +26,42 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
+function font-changer {
+
+	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
+	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w1.ttf ]; do
+		echo " "
+		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
+		read -p "Please enter the default font weight for Sailfish OS and press enter: " w1
+	done
+	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w2.ttf ]; do
+		echo " "
+		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
+		read -p "Please enter the light font weight for Sailfish OS and press enter: " w2
+	done
+	$main/font-run.sh -f $choice -s $w1 -l $w2
+	echo "done!"; sleep 1
+fi
+	# If Android support is installed
+	if [ -d /opt/alien/system/fonts ]; then
+	if [ -d /usr/share/harbour-themepack-$choice/font-droid ]; then
+	while [ ! -s /usr/share/harbour-themepack-$choice/font-droid/$w3.ttf ]; do
+		echo " "
+		ls /usr/share/harbour-themepack-$choice/font-droid | sed 's/\(.*\)\..*/\1/'
+		read -p "Please enter the default font weight for Alien Dalvik and press enter: " w3
+	done
+	while [ ! -s /usr/share/harbour-themepack-$choice/font-droid/$w4.ttf ]; do
+		echo " "
+		ls /usr/share/harbour-themepack-$choice/font-droid | sed 's/\(.*\)\..*/\1/'
+		read -p "Please enter the light font weight for Alien Dalvik and press enter: " w4
+	done
+	$main/font-run.sh -f $choice -a $w3 -d $w4
+	echo "done!"; sleep 1
+fi
+fi
+
+}
+
 while :
 do
     clear
@@ -43,21 +79,20 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "A"|"a")  cat $main/font.menu
+    "A"|"a")  	cat $main/font.menu
 		echo " "
 		read -p "Please enter the font pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
 		* ) # Check if a backup has been performed
 		if [ "$(ls $main/backup/font)" -o "$(ls $main/backup/font-droid)" ]; then
-		$main/font-restore.sh
-		$main/font-backup.sh
-		$main/font-run.sh $choice
+			$main/font-restore.sh
+			$main/font-backup.sh
+			font-changer
 		else
-		$main/font-backup.sh
-		$main/font-run.sh $choice
+			$main/font-backup.sh
+			font-changer
 		fi
-		echo "done!"; sleep 1 ;;
 		esac ;;
     "S"|"s")  read -p "Please enter font size multiplier or 'q' to exit and press enter. Default value is 1.0. Suggested size is 1.1 or 1.2: " f1
 		case "$f1" in 

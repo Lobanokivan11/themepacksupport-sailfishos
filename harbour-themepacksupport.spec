@@ -1,10 +1,9 @@
 Name:          harbour-themepacksupport
-Version:       0.0.6
-Release:       3
+Version:       0.0.7
+Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
-Requires:      patchmanager
 Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
@@ -26,11 +25,6 @@ mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/i
 mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
 
 %preun
-# Disable patches
-if [ -x /usr/sbin/patchmanager ]; then
-/usr/sbin/patchmanager -u themepack-custom_icondirs || true
-fi
-# Restore the rest
 /usr/share/harbour-themepacksupport/icon-restore.sh
 /usr/share/harbour-themepacksupport/font-restore.sh
 /usr/share/harbour-themepacksupport/sound-restore.sh
@@ -50,6 +44,10 @@ fi
 fi
 
 %changelog
+* Sun Jan 10 2016 0.0.7
+- Non-latin fonts theming support.
+- Added option to choose font weight.
+
 * Fri Jan 8 2016 0.0.6
 - Non-latin fonts kept.
 
