@@ -1,0 +1,8 @@
+{
+	"name" : "Icon theme support",
+	"description" : "Enables icon theme support for 3rd-party applications",
+	"category" : "homescreen",
+	"infos" : {
+		"maintainer" : "Eugenio Paolantonio"
+	}
+}

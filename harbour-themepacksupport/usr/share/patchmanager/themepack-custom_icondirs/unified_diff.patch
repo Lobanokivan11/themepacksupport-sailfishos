@@ -1,0 +1,74 @@
+Patches lipstick to make it lookup application icons in custom, XDG-compilant
+icon theme folders.
+
+Author: Eugenio "g7" Paolantonio <me@medesimo.eu>
+
+--- a/usr/share/lipstick-jolla-home-qt5/launcher/Launcher.qml
++++ b/usr/share/lipstick-jolla-home-qt5/launcher/Launcher.qml
+@@ -11,6 +11,7 @@ import Sailfish.Silica 1.0
+ import Sailfish.Silica.private 1.0 as SilicaPrivate
+ import Sailfish.Lipstick 1.0
+ import org.nemomobile.dbus 1.0
++import org.nemomobile.configuration 1.0
+ 
+ SilicaListView {
+     id: launcherPager
+@@ -70,6 +71,18 @@ SilicaListView {
+         property: "contentY"
+     }
+ 
++    ConfigurationGroup {
++        id: iconThemeSettings
++
++        path: "/desktop/lipstick-jolla-home/themepack_iconTheme"
++
++        // jolla-ambient is the default to maintain consistency with
++        // meegotouch's theme. The standard-compilant jolla-ambient
++        // icon theme doesn't actually exist, and lipstick will pick
++        // up icons from apkd/hicolor.
++        property string name: "jolla-ambient"
++    }
++
+     SequentialAnimation {
+         id: restoreSnapMode
+         NumberAnimation {
+@@ -129,7 +142,6 @@ SilicaListView {
+ 
+             model: LauncherFolderModel {
+                 iconDirectories: {
+-                    var dirs = [ "/var/lib/apkd/" ] // android app icon location
+                     var sizes = [ 86, 128, 172, 256, 512 ]
+                     var best = 0
+                     var bestDiff = 1000
+@@ -142,14 +154,26 @@ SilicaListView {
+                             best = i
+                         }
+                     }
++                    var size = sizes[best] + "x" + sizes[best]
+ 
+-                    if (best > 0) {
+-                        var size = sizes[best] + "x" + sizes[best]
+-                        dirs.push("/usr/share/icons/hicolor/" + size + "/apps/")
+-                    }
++                    // The icon theme search logic is the following:
++                    // 1) Selected icon theme path (best size)
++                    // 2) (if apk) Android app icon location
++                    // 3) Hicolor icon theme path (best size)
++                    // 4) Selected icon theme path (86x86)
++                    // 5) Hicolor icon theme path (86x86)
++
++                    var dirs = [
++                       "/usr/share/icons/%1/%2/apps/".arg(iconThemeSettings.name).arg(size),
++                       "/var/lib/apkd", // android app icon location
++                       "/usr/share/icons/hicolor/%1/apps".arg(size),
++                    ]
+ 
+                     // 86x86 is always available as a fallback
+-                    dirs.push("/usr/share/icons/hicolor/86x86/apps/")
++                    if (best > 0) {
++                        dirs.push("/usr/share/icons/%1/86x86/apps".arg(iconThemeSettings.name))
++                        dirs.push("/usr/share/icons/hicolor/86x86/apps/")
++                    }
+ 
+                     return dirs
+                 }
