@@ -19,39 +19,46 @@
 
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
-dir_jolla=/usr/share/themes/jolla-ambient/meegotouch/z1.0/icons
-dir_native=/usr/share/icons/hicolor/86x86/apps
+dir_jolla=/usr/share/themes/jolla-ambient/meegotouch
+dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
 
-# List Jolla icons
-ls $dir_jolla > $main/tmp/jolla
-# Copy selected Jolla icons
-for file in $(<$main/tmp/jolla); do cp "$dir_jolla/$file" $main/backup/jolla/; done
+# List Jolla icons z1.0
+cp $dir_jolla/z1.0/icons/* $main/backup/jolla/z1.0/icons/
 
-# List native icons
-ls $dir_native > $main/tmp/native
-# Copy selected native icons
-for file in $(<$main/tmp/native); do cp "$dir_native/$file" $main/backup/native/; done
+if [ -d "$dir_jolla/z1.5" ]; then
+cp $dir_jolla/z1.5/icons/* $main/backup/jolla/z1.5/icons/
+fi
+
+if [ -d "$dir_jolla/z2.0" ]; then
+cp $dir_jolla/z2.0/icons/* $main/backup/jolla/z2.0/icons/
+fi
+
+# List native icons 86x86
+cp $dir_native/86x86/apps/* $main/backup/native/86x86/apps/
+
+# List native icons 108x108
+cp $dir_native/108x108/apps/* $main/backup/native/108x108/apps/
+
+# List native icons 128x128
+cp $dir_native/128x128/apps/* $main/backup/native/128x128/apps/
+
+# List native icons 256x256
+cp $dir_native/256x256/apps/* $main/backup/native/256x256/apps/
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
-	# List Android icons
-	ls $dir_apk > $main/tmp/apk
-	# Copy selected Android icons
-	for file in $(<$main/tmp/apk); do cp "$dir_apk/$file" $main/backup/apk/; done
+	cp $dir_apk/* $main/backup/apk/86x86/
 fi
 
 # If DynCal is installed 
 if [ -d "/usr/share/harbour-dyncal" ]; then
-	cp /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/
+	cp /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/86x86/
 fi
 
 # If DynClock is installed 
 if [ -d "/usr/share/harbour-dynclock" ]; then
-	cp /usr/share/harbour-dynclock/*.png $main/backup/dynclock/
+	cp /usr/share/harbour-dynclock/*.png $main/backup/dynclock/86x86/
 fi
-
-# Clean tmp directory
-rm $main/tmp/*
 
 exit 0
