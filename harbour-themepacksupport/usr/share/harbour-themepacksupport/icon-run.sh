@@ -178,7 +178,7 @@ fi
 # If DynCal is installed
 if [ -d "/usr/share/harbour-dyncal" ]; then
 	# Check if there are DynCal icons
-	if [ -d "$pack/dyncal/86x86" ]; then
+	if [ -d "$pack/dyncal" ]; then
 		if [ "$(ls $pack/dyncal/86x86)" ]; then
 			cp $pack/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
 		fi
@@ -186,7 +186,7 @@ if [ -d "/usr/share/harbour-dyncal" ]; then
 fi
 
 # If DynClock is installed
-if [ -d "/usr/share/harbour-dynclock/86x86" ]; then
+if [ -d "/usr/share/harbour-dynclock" ]; then
 	# Check if there are DynClock icons
 	if [ -d "$pack/dynclock" ]; then
 		if [ "$(ls $pack/dynclock/86x86)" ]; then
