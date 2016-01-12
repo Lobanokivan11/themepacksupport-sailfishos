@@ -82,6 +82,7 @@ ls $dir_native/108x108/apps > $main/tmp/sys_native108
 comm -1 -2 $main/tmp/bk_native108 $main/tmp/sys_native108 > $main/tmp/cp_native108
 if [ -s "$main/tmp/cp_native108" ]; then
 	# Restore native icons
+	for file in $(<$main/backup/cp_native108); do rm "$dir_native/108x108/apps/$file"; done
 	for file in $(<$main/tmp/cp_native108); do cp "$main/backup/native/108x108/apps/$file" $dir_native/108x108/apps; done
 fi
 
@@ -93,6 +94,7 @@ ls $dir_native/128x128/apps > $main/tmp/sys_native128
 comm -1 -2 $main/tmp/bk_native128 $main/tmp/sys_native128 > $main/tmp/cp_native128
 if [ -s "$main/tmp/cp_native128" ]; then
 	# Restore native icons
+	for file in $(<$main/backup/cp_native128); do rm "$dir_native/128x128/apps/$file"; done
 	for file in $(<$main/tmp/cp_native128); do cp "$main/backup/native/128x128/apps/$file" $dir_native/128x128/apps; done
 fi
 
@@ -104,44 +106,63 @@ ls $dir_native/256x256/apps > $main/tmp/sys_native256
 comm -1 -2 $main/tmp/bk_native256 $main/tmp/sys_native256 > $main/tmp/cp_native256
 if [ -s "$main/tmp/cp_native256" ]; then
 	# Restore native icons
+	for file in $(<$main/backup/cp_native256); do rm "$dir_native/256x256/apps/$file"; done
 	for file in $(<$main/tmp/cp_native256); do cp "$main/backup/native/256x256/apps/$file" $dir_native/256x256/apps; done
 fi
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
 	# List backuped Android icons
-	ls $main/backup/apk/86x86 > $main/tmp/bk_apk
+	ls $main/backup/apk/ > $main/tmp/bk_apk
 	# List Android icons
 	ls $dir_apk > $main/tmp/sys_apk
 	#Check if there are common icons
 	comm -1 -2 $main/tmp/bk_apk $main/tmp/sys_apk > $main/tmp/cp_apk
 	if [ -s "$main/tmp/cp_apk" ]; then
 		# Restore Android icons
-		for file in $(<$main/tmp/cp_apk); do cp "$main/backup/apk/86x86/$file" $dir_apk; done
+		for file in $(<$main/tmp/cp_apk); do cp "$main/backup/apk/$file" $dir_apk; done
 	fi
 fi
 
 # If DynCal is installed
 if [ -d "/usr/share/harbour-dyncal" ]; then
-	if [ "$(ls $main/backup/dyncal/86x86)" ]; then
-		cp $main/backup/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
+	if [ "$(ls $main/backup/dyncal)" ]; then
+		cp $main/backup/dyncal/*.* /usr/share/harbour-dyncal/icons/
 	fi
 fi
 
 # If DynClock is installed
 if [ -d "/usr/share/harbour-dynclock" ]; then
-	if [ "$(ls $main/backup/dynclock/86x86)" ]; then
-		cp $main/backup/dynclock/86x86/*.* /usr/share/harbour-dynclock/
+	if [ "$(ls $main/backup/dynclock)" ]; then
+		cp $main/backup/dynclock/*.* /usr/share/harbour-dynclock/
 	fi
 fi
 
 # Remove backuped Jolla icons
-if [ "$(ls $main/backup/jolla)" ]; then
-	rm -rf $main/backup/jolla/*
+if [ "$(ls $main/backup/jolla/z1.0/icons)" ]; then
+	rm -rf $main/backup/jolla/z1.0/icons/*
+fi
+if [ "$(ls $main/backup/jolla/z1.5/icons)" ]; then
+	rm -rf $main/backup/jolla/z1.5/icons/*
+fi
+if [ "$(ls $main/backup/jolla/z2.0/icons)" ]; then
+	rm -rf $main/backup/jolla/z2.0/icons/*
 fi
 # Remove backuped native icons
-	if [ "$(ls $main/backup/native)" ]; then
-rm -rf $main/backup/native/*
+if [ "$(ls $main/backup/native/86x86/apps)" ]; then
+	rm -rf $main/backup/native/86x86/apps/*
+fi
+# Remove backuped native icons
+if [ "$(ls $main/backup/native/108x108/apps)" ]; then
+	rm -rf $main/backup/native/108x108/apps/*
+fi
+# Remove backuped native icons
+if [ "$(ls $main/backup/native/128x128/apps)" ]; then
+	rm -rf $main/backup/native/128x128/apps/*
+fi
+# Remove backuped native icons
+if [ "$(ls $main/backup/native/256x256/apps)" ]; then
+	rm -rf $main/backup/native/256x256/apps/*
 fi
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
@@ -167,6 +188,9 @@ fi
 
 # Clean tmp directory
 rm $main/tmp/*
+if [ -s "$main/backup/cp_native*" ]; then
+	rm $main/backup/cp_native*
+fi
 
 # Set no icon pack
 rm $main/icon-current

@@ -26,6 +26,10 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
+# Generate menu
+		cd /usr/share/; 
+find harbour-themepack-* -maxdepth 1 -type d -iname "sound" -printf "%h\n" | sort -u | cut -c19- > $main/sound.menu
+
 while :
 do
     clear
@@ -39,6 +43,8 @@ do
    (R)estore
    (B)ack
  ---------------------------------
+ Current sound pack: $(<$main/sound-current)
+
 EOF
     read -n1 -s
     case "$REPLY" in

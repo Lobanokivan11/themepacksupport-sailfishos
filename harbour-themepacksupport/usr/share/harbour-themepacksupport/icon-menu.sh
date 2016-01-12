@@ -26,6 +26,15 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
+# Generate menu
+		cd /usr/share/; 
+find harbour-themepack-* -maxdepth 1 -type d -iname "jolla" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp1
+find harbour-themepack-* -maxdepth 1 -type d -iname "native" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp2
+find harbour-themepack-* -maxdepth 1 -type d -iname "apk" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp3
+find harbour-themepack-* -maxdepth 1 -type d -iname "dyncal" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp4
+find harbour-themepack-* -maxdepth 1 -type d -iname "dynclock" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp5
+cat $main/tmp/icon-tmp* | sort | uniq > $main/icon.menu
+
 while :
 do
     clear
@@ -39,6 +48,8 @@ do
    (R)estore
    (B)ack
  ---------------------------------
+ Current icon pack: $(<$main/icon-current)
+
 EOF
     read -n1 -s
     case "$REPLY" in

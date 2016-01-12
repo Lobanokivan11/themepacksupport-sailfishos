@@ -61,49 +61,49 @@ if [ ! -z "$sd" -o ! -z "$sl" ]; then
 	if [ -s "$pack/font/BoldItalic.ttf" ]; then
 		cp $pack/font/BoldItalic.ttf $dir_jolla/droid/DroidSansBoldItalic.ttf
 	fi
-		if [ -s "$pack/font/Italic.ttf" ]; then
+	if [ -s "$pack/font/Italic.ttf" ]; then
 		cp $pack/font/Italic.ttf $dir_jolla/droid/DroidSansItalic.ttf
 	fi
-		if [ -s "$pack/font/Mono.ttf" ]; then
-		cp $pack/font/Mono.ttf $dir_jolla/droid/DroidSansMono.ttf
-	fi
+#	if [ -s "$pack/font/Mono.ttf" ]; then
+#		cp $pack/font/Mono.ttf $dir_jolla/droid/DroidSansMono.ttf
+#	fi
 fi
 fi
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
 	# Check if there are Android fonts
-	if [ -d "$pack/font-droid" ]; then
+	if [ -d "$pack/font" ]; then
 	# If variables are not empty
 	if [ ! -z "$ad" -o ! -z "$al" ]; then
 		# List fonts
 		ls $dir_apk > $main/tmp/font-droid
-		cd $pack/font-droid; ls *.ttf > $main/font-droid
+		cd $pack/font; ls *.ttf > $main/font-droid
 		# Keep Android emojis
 		sed -i "/AndroidEmoji.ttf/d" $main/tmp/font-droid
 		sed -i "/Droid*/d" $main/tmp/font-droid
 		# Delete the other fonts
 		for file in $(<$main/tmp/font-droid); do rm -rf "$dir_apk/$file"; done
 		# Copy selected Jolla font pack
-		cp $pack/font-droid/$ad.ttf $dir_apk/DroidSans.ttf
-		cp $pack/font-droid/$ad.ttf $dir_apk/Roboto-Regular.ttf
-		cp $pack/font-droid/$al.ttf $dir_apk/Roboto-Light.ttf
-		if [ -s "$pack/font-droid/Bold.ttf" ]; then
-			cp $pack/font-droid/Bold.ttf $dir_apk/DroidSansBold.ttf
-			cp $pack/font-droid/Bold.ttf $dir_apk/Roboto-Bold.ttf
+		cp $pack/font/$ad.ttf $dir_apk/DroidSans.ttf
+		cp $pack/font/$ad.ttf $dir_apk/Roboto-Regular.ttf
+		cp $pack/font/$al.ttf $dir_apk/Roboto-Light.ttf
+		if [ -s "$pack/font/Bold.ttf" ]; then
+			cp $pack/font/Bold.ttf $dir_apk/DroidSansBold.ttf
+			cp $pack/font/Bold.ttf $dir_apk/Roboto-Bold.ttf
 		fi
-		if [ -s "$pack/font-droid/BoldItalic.ttf" ]; then
-			cp $pack/font-droid/BoldItalic.ttf $dir_apk/Roboto-BoldItalic.ttf
+		if [ -s "$pack/font/BoldItalic.ttf" ]; then
+			cp $pack/font/BoldItalic.ttf $dir_apk/Roboto-BoldItalic.ttf
 		fi
-		if [ -s "$pack/font-droid/Italic.ttf" ]; then
-			cp $pack/font-droid/Italic.ttf $dir_apk/Roboto-Italic.ttf
+		if [ -s "$pack/font/Italic.ttf" ]; then
+			cp $pack/font/Italic.ttf $dir_apk/Roboto-Italic.ttf
 		fi
-		if [ -s "$pack/font-droid/LightItalic.ttf" ]; then
-			cp $pack/font-droid/LightItalic.ttf $dir_apk/Roboto-LightItalic.ttf
+		if [ -s "$pack/font/LightItalic.ttf" ]; then
+			cp $pack/font/LightItalic.ttf $dir_apk/Roboto-LightItalic.ttf
 		fi
-		if [ -s "$pack/font-droid/Mono.ttf" ]; then
-			cp $pack/font-droid/Mono.ttf $dir_apk/DroidSansMono.ttf
-		fi
+#		if [ -s "$pack/font/Mono.ttf" ]; then
+#			cp $pack/font/Mono.ttf $dir_apk/DroidSansMono.ttf
+#		fi
 	fi
 	fi
 fi

@@ -26,18 +26,15 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
-# Generate menu
-		cd /usr/share/; 
-find harbour-themepack-* -maxdepth 1 -type d -iname "jolla" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp1
-find harbour-themepack-* -maxdepth 1 -type d -iname "native" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp2
-find harbour-themepack-* -maxdepth 1 -type d -iname "apk" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp3
-find harbour-themepack-* -maxdepth 1 -type d -iname "dyncal" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp4
-find harbour-themepack-* -maxdepth 1 -type d -iname "dynclock" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/icon-tmp5
-cat $main/tmp/icon-tmp* | sort | uniq > $main/icon.menu
-find harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/font-tmp1
-find harbour-themepack-* -maxdepth 1 -type d -iname "font-droid" -printf "%h\n" | sort -u | cut -c19- > $main/tmp/font-tmp2
-cat $main/tmp/font-tmp* | sort | uniq > $main/font.menu
-find harbour-themepack-* -maxdepth 1 -type d -iname "sound" -printf "%h\n" | sort -u | cut -c19- > $main/sound.menu
+# Load config file
+source $main/themepacksupport.cfg
+
+# Is logging set?
+# if [ "$tps_log" == "1" ]; then
+#	set -x
+# elseif [ "$tps_log" == "0" ]; then
+#	set +x
+# fi
 
 while :
 do
@@ -52,6 +49,7 @@ do
    (F)ont theme BETA
    (S)ound theme
    (H)omescreen refresh
+   (U)ninstall theme packs
    (G)uide
    (A)bout
    (Q)uit
@@ -109,6 +107,20 @@ Twitter: @fravaccaro
 EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
+#    "L"|"l")  echo "Enable logs? y/N? "
+#		read -n1 -s choice
+#		case "$choice" in 
+#		y|Y ) 	echo "Your homescreen will be restarted..."
+#		systemctl-user restart lipstick.service; echo "done!"; sleep 1 ;;
+#		* ) echo "aborted"; sleep 1 ;;
+#		esac ;;
+    "U"|"u")  ls -d /usr/share/harbour-themepack-* | sort -u | cut -c30-
+		echo " "
+		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
+		case "$choice" in
+		q|Q ) echo "ok"; sleep 1 ;;
+		* ) pkcon remove harbour-themepack-$choice ;;
+		esac ;;
     "Q"|"q")  clear; exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
     esac

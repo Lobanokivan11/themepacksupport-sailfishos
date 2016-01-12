@@ -48,17 +48,17 @@ cp $dir_native/256x256/apps/* $main/backup/native/256x256/apps/
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
-	cp $dir_apk/* $main/backup/apk/86x86/
+	cp $dir_apk/* $main/backup/apk/
 fi
 
 # If DynCal is installed 
 if [ -d "/usr/share/harbour-dyncal" ]; then
-	cp /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/86x86/
+	cp /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/
 fi
 
 # If DynClock is installed 
 if [ -d "/usr/share/harbour-dynclock" ]; then
-	cp /usr/share/harbour-dynclock/*.png $main/backup/dynclock/86x86/
+	cp /usr/share/harbour-dynclock/*.png $main/backup/dynclock/
 fi
 
 exit 0

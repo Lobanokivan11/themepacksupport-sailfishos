@@ -26,6 +26,10 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
+# Generate menu
+		cd /usr/share/; 
+find harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c19- > $main/font.menu
+
 function font-changer {
 
 	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
@@ -44,15 +48,15 @@ function font-changer {
 fi
 	# If Android support is installed
 	if [ -d /opt/alien/system/fonts ]; then
-	if [ -d /usr/share/harbour-themepack-$choice/font-droid ]; then
-	while [ ! -s /usr/share/harbour-themepack-$choice/font-droid/$w3.ttf ]; do
+	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
+	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w3.ttf ]; do
 		echo " "
-		ls /usr/share/harbour-themepack-$choice/font-droid | sed 's/\(.*\)\..*/\1/'
+		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
 		read -p "Please enter the default font weight for Alien Dalvik and press enter: " w3
 	done
-	while [ ! -s /usr/share/harbour-themepack-$choice/font-droid/$w4.ttf ]; do
+	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w4.ttf ]; do
 		echo " "
-		ls /usr/share/harbour-themepack-$choice/font-droid | sed 's/\(.*\)\..*/\1/'
+		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
 		read -p "Please enter the light font weight for Alien Dalvik and press enter: " w4
 	done
 	$main/font-run.sh -f $choice -a $w3 -d $w4
@@ -72,10 +76,13 @@ do
  Please enter your choice:
  ---------------------------------
    (A)pply font theme
-   (S)ize
+   (S)ailfish OS font size
+   Alien (D)alvik font size
    (R)estore
    (B)ack
  ---------------------------------
+ Current font pack: $(<$main/font-current)
+
 EOF
     read -n1 -s
     case "$REPLY" in
@@ -103,6 +110,13 @@ EOF
 		read -p "Please enter font size threshold (max font size) or 'q' to exit and press enter. Default value is 0. Suggested size is 60: " f2
 		case "$f2" in 
 		[0-3]* ) su - nemo -c "dconf write /desktop/jolla/theme/font/sizeThreshold $f2"
+		echo "done!"; sleep 1 ;;
+		q|Q ) echo "quit"; sleep 1 ;;
+		esac ;;
+    "D"|"d")  read -p "Please enter lcd density for Alien Dalvik or 'q' to exit and press enter. Default value is 240. Suggested value is between 200 and 280: " aliensize
+		case "$aliensize" in 
+		[0-3]* ) # Look for the string in build.prop and apply new value
+		sed -i "s/.*ro.sf.lcd_density.*/ro.sf.lcd_density=$aliensize/" /opt/alien/system/build.prop
 		echo "done!"; sleep 1 ;;
 		q|Q ) echo "quit"; sleep 1 ;;
 		esac ;;

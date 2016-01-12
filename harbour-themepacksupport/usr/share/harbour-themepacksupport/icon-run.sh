@@ -101,10 +101,10 @@ if [ -d "$pack/native/86x86/apps" ]; then
 		# List native icons
 		ls $dir_native/86x86/apps > $main/tmp/sys_native86
 		#Check if there are common icons
-		comm -1 -2 $main/tmp/pack_native86 $main/tmp/sys_native86 > $main/tmp/cp_native86
-		if [ -s "$main/tmp/cp_native86" ]; then
+		comm -1 -2 $main/tmp/pack_native86 $main/tmp/sys_native86 > $main/backup/cp_native86
+		if [ -s "$main/backup/cp_native86" ]; then
 			# Copy selected native icon pack
-			for file in $(<$main/tmp/cp_native86); do cp "$pack/native/86x86/apps/$file" $dir_native/86x86/apps; done
+			for file in $(<$main/backup/cp_native86); do cp "$pack/native/86x86/apps/$file" $dir_native/86x86/apps; done
 		fi
 	fi
 fi
@@ -116,10 +116,10 @@ if [ -d "$pack/native/108x108/apps" ]; then
 		# List native icons
 		ls $dir_native/108x108/apps > $main/tmp/sys_native108
 		#Check if there are common icons
-		comm -1 -2 $main/tmp/pack_native108 $main/tmp/sys_native108 > $main/tmp/cp_native108
-		if [ -s "$main/tmp/cp_native108" ]; then
+		comm -1 -2 $main/tmp/pack_native108 $main/tmp/sys_native108 > $main/backup/cp_native108
+		if [ -s "$main/backup/cp_native108" ]; then
 			# Copy selected native icon pack
-			for file in $(<$main/tmp/cp_native108); do cp "$pack/native/108x108/apps/$file" $dir_native/108x108/apps; done
+			for file in $(<$main/backup/cp_native108); do cp "$pack/native/108x108/apps/$file" $dir_native/108x108/apps; done
 		fi
 	fi
 fi
@@ -131,10 +131,10 @@ if [ -d "$pack/native/128x128/apps" ]; then
 		# List native icons
 		ls $dir_native/128x128/apps > $main/tmp/sys_native128
 		#Check if there are common icons
-		comm -1 -2 $main/tmp/pack_native128 $main/tmp/sys_native128 > $main/tmp/cp_native128
-		if [ -s "$main/tmp/cp_native128" ]; then
+		comm -1 -2 $main/tmp/pack_native128 $main/tmp/sys_native128 > $main/backup/cp_native128
+		if [ -s "$main/backup/cp_native128" ]; then
 			# Copy selected native icon pack
-			for file in $(<$main/tmp/cp_native128); do cp "$pack/native/128x128/apps/$file" $dir_native/128x128/apps; done
+			for file in $(<$main/backup/cp_native128); do cp "$pack/native/128x128/apps/$file" $dir_native/128x128/apps; done
 		fi
 	fi
 fi
@@ -146,10 +146,10 @@ if [ -d "$pack/native/256x256/apps" ]; then
 		# List native icons
 		ls $dir_native/256x256/apps > $main/tmp/sys_native256
 		#Check if there are common icons
-		comm -1 -2 $main/tmp/pack_native256 $main/tmp/sys_native256 > $main/tmp/cp_native256
-		if [ -s "$main/tmp/cp_native256" ]; then
+		comm -1 -2 $main/tmp/pack_native256 $main/tmp/sys_native256 > $main/backup/cp_native256
+		if [ -s "$main/backup/cp_native256" ]; then
 			# Copy selected native icon pack
-			for file in $(<$main/tmp/cp_native256); do cp "$pack/native/256x256/apps/$file" $dir_native/256x256/apps; done
+			for file in $(<$main/backup/cp_native256); do cp "$pack/native/256x256/apps/$file" $dir_native/256x256/apps; done
 		fi
 	fi
 fi
@@ -159,17 +159,32 @@ fi
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
 	# Check if there are Android icons
-	if [ -d "$pack/apk/86x86" ]; then
-		if [ "$(ls $pack/apk/86x86)" ]; then
+	if [ -d "$pack/apk/128x128" ]; then
+		if [ "$(ls $pack/apk/128x128)" ]; then
 			# List icon pack icons
-			ls $pack/apk/86x86 > $main/tmp/pack_apk
+			ls $pack/apk/128x128 > $main/tmp/pack_apk
 			# List Android icons
 			ls $dir_apk > $main/tmp/sys_apk
 			#Check if there are common icons
 			comm -1 -2 $main/tmp/pack_apk $main/tmp/sys_apk > $main/tmp/cp_apk
 			if [ -s "$main/tmp/cp_apk" ]; then
 				# Copy selected Android icon pack
-				for file in $(<$main/tmp/cp_apk); do cp "$pack/apk/86x86/$file" $dir_apk; done
+				for file in $(<$main/tmp/cp_apk); do cp "$pack/apk/128x128/$file" $dir_apk; done
+			fi
+		fi
+	else
+		if [ -d "$pack/apk/86x86" ]; then
+			if [ "$(ls $pack/apk/86x86)" ]; then
+				# List icon pack icons
+				ls $pack/apk/86x86 > $main/tmp/pack_apk
+				# List Android icons
+				ls $dir_apk > $main/tmp/sys_apk
+				#Check if there are common icons
+				comm -1 -2 $main/tmp/pack_apk $main/tmp/sys_apk > $main/tmp/cp_apk
+				if [ -s "$main/tmp/cp_apk" ]; then
+					# Copy selected Android icon pack
+					for file in $(<$main/tmp/cp_apk); do cp "$pack/apk/86x86/$file" $dir_apk; done
+				fi
 			fi
 		fi
 	fi
@@ -179,8 +194,12 @@ fi
 if [ -d "/usr/share/harbour-dyncal" ]; then
 	# Check if there are DynCal icons
 	if [ -d "$pack/dyncal" ]; then
-		if [ "$(ls $pack/dyncal/86x86)" ]; then
-			cp $pack/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
+		if [ "$(ls $pack/dyncal/256x256)" ]; then
+			cp $pack/dyncal/256x256/*.* /usr/share/harbour-dyncal/icons/
+		else
+			if [ "$(ls $pack/dyncal/86x86)" ]; then
+				cp $pack/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
+			fi
 		fi
 	fi
 fi
@@ -189,9 +208,13 @@ fi
 if [ -d "/usr/share/harbour-dynclock" ]; then
 	# Check if there are DynClock icons
 	if [ -d "$pack/dynclock" ]; then
-		if [ "$(ls $pack/dynclock/86x86)" ]; then
-			cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
-		fi
+#		if [ "$(ls $pack/dynclock/256x256)" ]; then
+#			cp $pack/dynclock/256x256/*.* /usr/share/harbour-dynclock/
+#		else
+			if [ "$(ls $pack/dynclock/86x86)" ]; then
+				cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
+			fi
+#		fi
 	fi
 fi
 
