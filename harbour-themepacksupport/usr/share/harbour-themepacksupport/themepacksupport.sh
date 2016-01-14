@@ -119,7 +119,8 @@ EOF
 		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
 		case "$choice" in
 		q|Q ) echo "ok"; sleep 1 ;;
-		* ) pkcon remove harbour-themepack-$choice ;;
+		* ) # Get package name and remove it
+		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
 		esac ;;
     "Q"|"q")  clear; exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
