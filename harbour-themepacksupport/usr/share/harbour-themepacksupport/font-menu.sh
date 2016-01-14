@@ -49,18 +49,12 @@ fi
 	# If Android support is installed
 	if [ -d /opt/alien/system/fonts ]; then
 	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
-	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w3.ttf ]; do
-		echo " "
-		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
-		read -p "Please enter the default font weight for Alien Dalvik and press enter: " w3
-	done
-	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w4.ttf ]; do
-		echo " "
-		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
-		read -p "Please enter the light font weight for Alien Dalvik and press enter: " w4
-	done
-	$main/font-run.sh -f $choice -a $w3 -d $w4
-	echo "done!"; sleep 1
+		if [ -s /usr/share/harbour-themepack-$choice/font/Regular.ttf ]; then
+		if [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
+			$main/font-run.sh -f $choice -a Regular -d Light
+			echo "done!"; sleep 1
+		fi
+		fi
 fi
 fi
 
