@@ -53,6 +53,9 @@ fi
 		if [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
 			$main/font-run.sh -f $choice -a Regular -d Light
 			echo "done!"; sleep 1
+		else
+			$main/font-run.sh -f $choice -a Regular -d Regular
+			echo "done!"; sleep 1
 		fi
 		fi
 fi
@@ -71,7 +74,7 @@ do
  ---------------------------------
    (A)pply font theme
    (S)ailfish OS font size
-   Alien (D)alvik font size
+    Alien (D)alvik font size
    (R)estore
    (B)ack
  ---------------------------------
