@@ -133,6 +133,10 @@ fi
 
 # If DynClock is installed
 if [ -d "/usr/share/harbour-dynclock" ]; then
+	# Restore hd config
+	if [ -s "/usr/share/harbour-dynclock/dynclock.cfg" ]; then
+		echo res="128" > /usr/share/harbour-dynclock/dynclock.cfg
+	fi
 	if [ "$(ls $main/backup/dynclock)" ]; then
 		cp $main/backup/dynclock/*.* /usr/share/harbour-dynclock/
 	fi

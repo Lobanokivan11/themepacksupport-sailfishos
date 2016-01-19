@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.0.8
-Release:       7
+Version:       0.0.9
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -44,6 +44,9 @@ fi
 fi
 
 %changelog
+* Thu Jan 19 2016 0.0.9
+- DynClock high resolution support added.
+
 * Tue Jan 12 2016 0.0.8
 - Different resolutions support.
 - Uninstall theme packs via UI.
