@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.0.9
+Version:       0.1.0
 Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -44,7 +44,10 @@ fi
 fi
 
 %changelog
-* Thu Jan 19 2016 0.0.9
+* Tue Jan 19 2016 0.1.0
+- Sailfish OS 2.0.7 support.
+
+* Tue Jan 19 2016 0.0.9
 - DynClock high resolution support added.
 
 * Tue Jan 12 2016 0.0.8

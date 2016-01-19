@@ -29,7 +29,7 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 pack=/usr/share/harbour-themepack-$iconpack
-dir_jolla=/usr/share/themes/jolla-ambient/meegotouch
+dir_jolla=/usr/share/themes/sailfish-default/meegotouch
 dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
 
