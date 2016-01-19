@@ -17,15 +17,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# Usage ./run.sh -f [fontpackname] -s [sfosfontweight] -l [sfosfontlightweight] -a [androidfontweight] -d [androidfontlightweight]
+# Usage ./run.sh -f [fontpackname] -s [sfosfontweight] -a [androidfontweight] -d [androidfontlightweight]
 
 # Set font pack name variable
 
-while getopts ":f:s:l:a:d:" opt; do
+while getopts ":f:s:a:d:" opt; do
   case "$opt" in
     f) fontpack=$OPTARG ;;
     s) sd=$OPTARG ;;
-    l) sl=$OPTARG ;;
     a) ad=$OPTARG ;;
     d) al=$OPTARG ;;
   esac
@@ -48,10 +47,9 @@ if [ "$(ls $main/backup/font)" -o "$(ls $main/backup/font-droid)" -o "$(ls $main
 # Check if there are Jolla fonts
 if [ -d "$pack/font" ]; then
 # If variables are not empty
-if [ ! -z "$sd" -o ! -z "$sl" ]; then
+if [ ! -z "$sd" ]; then
 	# Copy selected Jolla font pack
 	cp $pack/font/$sd.ttf $dir_jolla/sail-sans-pro/SailSansPro-Light.ttf
-	cp $pack/font/$sl.ttf $dir_jolla/sail-sans-pro/SailSansPro-ExtraLight.ttf
 	if [ -s "$pack/font/Regular.ttf" ]; then
 		cp $pack/font/Regular.ttf $dir_jolla/droid/DroidSans.ttf
 	fi
@@ -85,11 +83,9 @@ if [ -d "$dir_apk" ]; then
 		# Delete the other fonts
 		for file in $(<$main/tmp/font-droid); do rm -rf "$dir_apk/$file"; done
 		# Copy selected Jolla font pack
-		cp $pack/font/$ad.ttf $dir_apk/DroidSans.ttf
 		cp $pack/font/$ad.ttf $dir_apk/Roboto-Regular.ttf
 		cp $pack/font/$al.ttf $dir_apk/Roboto-Light.ttf
 		if [ -s "$pack/font/Bold.ttf" ]; then
-			cp $pack/font/Bold.ttf $dir_apk/DroidSansBold.ttf
 			cp $pack/font/Bold.ttf $dir_apk/Roboto-Bold.ttf
 		fi
 		if [ -s "$pack/font/BoldItalic.ttf" ]; then

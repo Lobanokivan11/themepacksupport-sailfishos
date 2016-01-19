@@ -32,32 +32,29 @@ find harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort
 
 function font-changer {
 
-	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
+if [ -d /usr/share/harbour-themepack-$choice/font ]; then
 	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w1.ttf ]; do
 		echo " "
 		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
 		read -p "Please enter the default font weight for Sailfish OS and press enter: " w1
 	done
-	while [ ! -s /usr/share/harbour-themepack-$choice/font/$w2.ttf ]; do
-		echo " "
-		ls /usr/share/harbour-themepack-$choice/font | sed 's/\(.*\)\..*/\1/'
-		read -p "Please enter the light font weight for Sailfish OS and press enter: " w2
-	done
-	$main/font-run.sh -f $choice -s $w1 -l $w2
+	$main/font-run.sh -f $choice -s $w1
 	echo "done!"; sleep 1
 fi
-	# If Android support is installed
-	if [ -d /opt/alien/system/fonts ]; then
-	if [ -d /usr/share/harbour-themepack-$choice/font ]; then
-		if [ -s /usr/share/harbour-themepack-$choice/font/Regular.ttf ]; then
+# If Android support is installed
+if [ -d /opt/alien/system/fonts ]; then
+if [ -d /usr/share/harbour-themepack-$choice/font ]; then
+	if [ -s /usr/share/harbour-themepack-$choice/font/Regular.ttf ]; then
 		if [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
 			$main/font-run.sh -f $choice -a Regular -d Light
-			echo "done!"; sleep 1
 		else
 			$main/font-run.sh -f $choice -a Regular -d Regular
-			echo "done!"; sleep 1
 		fi
-		fi
+	elif [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
+		$main/font-run.sh -f $choice -a Light -d Light
+	else
+		echo "No fonts suitable for Android found"
+	fi
 fi
 fi
 
