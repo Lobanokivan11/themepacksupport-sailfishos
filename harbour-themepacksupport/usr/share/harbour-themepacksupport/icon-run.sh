@@ -65,12 +65,29 @@ if [ -d "$pack/jolla/z1.5/icons" ]; then
 		comm -1 -2 $main/tmp/pack_jolla15 $main/tmp/sys_jolla15 > $main/tmp/cp_jolla15
 		if [ -s "$main/tmp/cp_jolla15" ]; then
 			# Copy selected Jolla icon pack
-			for file in $(<$main/tmp/cp_jolla15); do cp "$pack/jolla/$file/z1.5/icons" $dir_jolla/z1.5/icons; done
+			for file in $(<$main/tmp/cp_jolla15); do cp "$pack/jolla/z1.5/icons/$file" $dir_jolla/z1.5/icons; done
 		fi
 	fi
 fi
 fi
 
+# Check if there are Jolla icons z1.5-large
+if [ -d "$dir_jolla/z1.5-large" ]; then
+if [ -d "$pack/jolla/z1.5/icons" ]; then
+	if [ "$(ls $pack/jolla/z1.5/icons)" ]; then
+		# List icon pack icons
+		ls $pack/jolla/z1.5/icons > $main/tmp/pack_jolla15l
+		# List Jolla icons
+		ls $dir_jolla/z1.5-large/icons > $main/tmp/sys_jolla15l
+		#Check if there are common icons
+		comm -1 -2 $main/tmp/pack_jolla15l $main/tmp/sys_jolla15l > $main/tmp/cp_jolla15l
+		if [ -s "$main/tmp/cp_jolla15l" ]; then
+			# Copy selected Jolla icon pack
+			for file in $(<$main/tmp/cp_jolla15l); do cp "$pack/jolla/z1.5/icons/$file" $dir_jolla/z1.5-large/icons; done
+		fi
+	fi
+fi
+fi
 # Check if there are Jolla icons z2.0
 if [ -d "$dir_jolla/z2.0" ]; then
 if [ -d "$pack/jolla/z2.0/icons" ]; then

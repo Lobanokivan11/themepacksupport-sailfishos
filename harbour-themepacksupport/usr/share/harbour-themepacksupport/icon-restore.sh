@@ -50,6 +50,18 @@ if [ -s "$main/tmp/cp_jolla15" ]; then
 fi
 fi
 
+if [ -d "$dir_jolla/z1.5-large" ]; then
+# List backuped Jolla icons z1.5-large
+ls $main/backup/jolla/z1.5-large/icons > $main/tmp/bk_jolla15l
+# List Jolla icons
+ls $dir_jolla/z1.5-large/icons > $main/tmp/sys_jolla15l
+#Check if there are common icons
+comm -1 -2 $main/tmp/bk_jolla15l $main/tmp/sys_jolla15l > $main/tmp/cp_jolla15l
+if [ -s "$main/tmp/cp_jolla15l" ]; then
+	# Restore Jolla icons
+	for file in $(<$main/tmp/cp_jolla15l); do cp "$main/backup/jolla/z1.5-large/icons/$file" $dir_jolla/z1.5-large/icons/; done
+fi
+fi
 if [ -d "$dir_jolla/z2.0" ]; then
 # List backuped Jolla icons z2.0
 ls $main/backup/jolla/z2.0/icons > $main/tmp/bk_jolla2

@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.1.0
-Release:       3
+Version:       0.1.1
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -8,6 +8,7 @@ Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
 Requires:      sailfish-version >= 2.0.1
+BuildArch: noarch
 Packager: fravaccaro <fravaccaro@jollacommunity.it>
 URL:           www.jollacommunity.it
 License:       GPL
@@ -45,6 +46,10 @@ fi
 fi
 
 %changelog
+* Wed Apr 27 2016 0.1.1
+- Added Jolla Tablet support.
+- Bug fix
+
 * Tue Jan 19 2016 0.1.0
 - Sailfish OS 2.0.7 support.
 
