@@ -26,6 +26,10 @@ dir_apk=/var/lib/apkd
 # List Jolla icons z1.0
 cp $dir_jolla/z1.0/icons/* $main/backup/jolla/z1.0/icons/
 
+if [ -d "$dir_jolla/z1.25" ]; then
+cp $dir_jolla/z1.25/icons/* $main/backup/jolla/z1.25/icons/
+fi
+
 if [ -d "$dir_jolla/z1.5" ]; then
 cp $dir_jolla/z1.5/icons/* $main/backup/jolla/z1.5/icons/
 fi

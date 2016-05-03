@@ -83,21 +83,37 @@ EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
     "A"|"a")  clear
+
+#        \`///oo\`   :
+#      /oyooyys\` -o/
+#    :ssssoy+ossys+-
+#   /oyosssosyo.\`
+#  .sy+oysos:
+#  +/sho+sh
+#      o+sh
+#      \`yoos:
+#       \`+-+syo////.
+#            \`-    :o-
+#                    +.
+#
 		cat<<EOF
  Theme pack support for Sailfish OS
  =================================
 
-        \`///oo\`   :
-      /oyooyys\` -o/
-    :ssssoy+ossys+-
-   /oyosssosyo.\`
-  .sy+oysos:
-  +/sho+sh
-      o+sh
-      \`yoos:
-       \`+-+syo////.
-            \`-    :o-
-                    +.
+                */
+            .(*,#
+          ,  **
+         (%*  ,((.       ,*(
+       *#.#,//   .*&%%/.
+       (* #(.  ,(/*
+       (,  ((/(,
+       ,(,   ,(,
+         *(   ,(
+          %#, ,(
+         .(/# #/
+        .(.%%/
+       ((*%*
+   ,#&%/,
 
 Enables theming icons, fonts and sounds in Sailfish OS. Released under GPLv3.
 
