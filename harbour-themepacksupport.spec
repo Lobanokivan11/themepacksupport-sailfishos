@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.1.2
+Version:       0.1.3
 Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -46,6 +46,9 @@ fi
 fi
 
 %changelog
+* Thu Aug 9 2016 0.1.3
+- Added Jolla C/Intex Aqua Fish support.
+
 * Wed Apr 27 2016 0.1.1
 - Added Jolla Tablet support.
 - Bug fix
