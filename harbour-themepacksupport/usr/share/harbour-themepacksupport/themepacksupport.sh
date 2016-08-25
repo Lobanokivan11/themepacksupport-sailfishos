@@ -46,11 +46,12 @@ do
  Please enter your choice:
  ---------------------------------
    (I)con theme
-   (F)ont theme BETA
+   (G)raphic theme
+   (F)ont theme
    (S)ound theme
-   (H)omescreen refresh
+   (L)ipstick refresh
    (U)ninstall theme packs
-   (G)uide
+   (H)elp
    (A)bout
    (Q)uit
  ---------------------------------
@@ -58,16 +59,17 @@ EOF
     read -n1 -s
     case "$REPLY" in
     "I"|"i")  $main/icon-menu.sh ;;
+    "G"|"g")  $main/graphic-menu.sh ;;
     "F"|"f")  $main/font-menu.sh ;;
     "S"|"s")  $main/sound-menu.sh ;;
-    "H"|"h")  echo "Refresh the homescreen? y/N? "
+    "L"|"l")  echo "Refresh the homescreen? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) 	echo "Your homescreen will be restarted..."
 		systemctl-user restart lipstick.service; echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "G"|"g")  clear
+    "H"|"h")  clear
 cat<<EOF
  Theme pack support for Sailfish OS
  =================================

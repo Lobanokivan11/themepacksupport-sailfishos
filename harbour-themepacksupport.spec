@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.1.3
+Version:       0.2.0
 Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -28,6 +28,7 @@ mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/sha
 
 %preun
 /usr/share/harbour-themepacksupport/icon-restore.sh
+/usr/share/harbour-themepacksupport/graphic-restore.sh
 /usr/share/harbour-themepacksupport/font-restore.sh
 /usr/share/harbour-themepacksupport/sound-restore.sh
 
@@ -46,6 +47,9 @@ fi
 fi
 
 %changelog
+* Wed Aug 25 2016 0.2.0
+- Added graphic theme support.
+
 * Thu Aug 9 2016 0.1.3
 - Added Jolla C/Intex Aqua Fish support.
 
