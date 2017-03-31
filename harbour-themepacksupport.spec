@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
 Version:       0.3.1
-Release:       2
+Release:       5
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -49,6 +49,7 @@ fi
 %changelog
 * Fri Mar 31 2017 0.3.1
 - Bug fix.
+- Fixed non latin fonts missing from Alien Dalvik.
 
 * Fri Mar 10 2017 0.3.0
 - Fixed font size option.

@@ -80,8 +80,9 @@ if [ -d "$dir_apk" ]; then
 		# Keep Android emojis
 		sed -i "/AndroidEmoji.ttf/d" $main/tmp/font-droid
 		sed -i "/Droid*/d" $main/tmp/font-droid
+		sed -i "/Noto*/d" $main/tmp/font-droid
 		# Delete the other fonts
-		for file in $(<$main/tmp/font-droid); do rm -rf "$dir_apk/$file"; done
+#		for file in $(<$main/tmp/font-droid); do rm -rf "$dir_apk/$file"; done
 		# Copy selected Jolla font pack
 		cp $pack/font/$ad.ttf $dir_apk/Roboto-Regular.ttf
 		cp $pack/font/$al.ttf $dir_apk/Roboto-Light.ttf
@@ -140,32 +141,32 @@ if [ -d "$pack/font-nonlatin" ]; then
 	fi
 
 	# If Android support is installed
-	if [ -d "$dir_apk" ]; then
-		if [ -s "$pack/font-nonlatin/Armenian.ttf" ]; then
-			cp $pack/font-nonlatin/Armenian.ttf $dir_apk/DroidSansArmenian.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Devanagari.ttf" ]; then
-			cp $pack/font-nonlatin/Devanagari.ttf $dir_apk/DroidSansDevanagari-Regular.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Georgian.ttf" ]; then
-			cp $pack/font-nonlatin/Georgian.ttf $dir_apk/DroidSansGeorgian.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Ethiopic.ttf" ]; then
-			cp $pack/font-nonlatin/Ethiopic.ttf $dir_apk/DroidSansEthiopic-Regular.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Hebrew.ttf" ]; then
-			cp $pack/font-nonlatin/Hebrew.ttf $dir_apk/DroidSansHebrew-Regular.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Naskh.ttf" ]; then
-			cp $pack/font-nonlatin/Naskh.ttf $dir_apk/DroidNaskh-Regular.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Tamil.ttf" ]; then
-			cp $pack/font-nonlatin/Tamil.ttf $dir_apk/DroidSansTamil-Regular.ttf
-		fi
-		if [ -s "$pack/font-nonlatin/Thai.ttf" ]; then
-			cp $pack/font-nonlatin/Thai.ttf $dir_apk/DroidSansThai.ttf
-		fi
-	fi	
+#	if [ -d "$dir_apk" ]; then
+#		if [ -s "$pack/font-nonlatin/Armenian.ttf" ]; then
+#			cp $pack/font-nonlatin/Armenian.ttf $dir_apk/DroidSansArmenian.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Devanagari.ttf" ]; then
+#			cp $pack/font-nonlatin/Devanagari.ttf $dir_apk/DroidSansDevanagari-Regular.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Georgian.ttf" ]; then
+#			cp $pack/font-nonlatin/Georgian.ttf $dir_apk/DroidSansGeorgian.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Ethiopic.ttf" ]; then
+#			cp $pack/font-nonlatin/Ethiopic.ttf $dir_apk/DroidSansEthiopic-Regular.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Hebrew.ttf" ]; then
+#			cp $pack/font-nonlatin/Hebrew.ttf $dir_apk/DroidSansHebrew-Regular.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Naskh.ttf" ]; then
+#			cp $pack/font-nonlatin/Naskh.ttf $dir_apk/DroidNaskh-Regular.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Tamil.ttf" ]; then
+#			cp $pack/font-nonlatin/Tamil.ttf $dir_apk/DroidSansTamil-Regular.ttf
+#		fi
+#		if [ -s "$pack/font-nonlatin/Thai.ttf" ]; then
+#			cp $pack/font-nonlatin/Thai.ttf $dir_apk/DroidSansThai.ttf
+#		fi
+#	fi	
 fi
 
 # Clean tmp directory
