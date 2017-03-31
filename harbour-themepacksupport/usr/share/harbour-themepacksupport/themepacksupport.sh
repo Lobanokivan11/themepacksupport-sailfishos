@@ -49,8 +49,9 @@ do
    (G)raphic theme
    (F)ont theme
    (S)ound theme
+   (U)I themer
+   (R)estore UI
    (L)ipstick refresh
-   (U)ninstall theme packs
    (H)elp
    (A)bout
    (Q)uit
@@ -62,6 +63,8 @@ EOF
     "G"|"g")  $main/graphic-menu.sh ;;
     "F"|"f")  $main/font-menu.sh ;;
     "S"|"s")  $main/sound-menu.sh ;;
+    "U"|"u")  $main/uit-menu.sh ;;
+    "R"|"r")  $main/fixui-menu.sh ;;
     "L"|"l")  echo "Refresh the homescreen? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
@@ -117,10 +120,10 @@ EOF
        ((*%*
    ,#&%/,
 
-Enables theming icons, fonts and sounds in Sailfish OS. Released under GPLv3.
+UI themer safe mode. It can be used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
 
 E-mail: fravaccaro90@gmail.com 
-Twitter: @fravaccaro
+Twitter: @itsamefra
 
 EOF
 
@@ -132,14 +135,14 @@ EOF
 #		systemctl-user restart lipstick.service; echo "done!"; sleep 1 ;;
 #		* ) echo "aborted"; sleep 1 ;;
 #		esac ;;
-    "U"|"u")  ls -d /usr/share/harbour-themepack-* | sort -u | cut -c30-
-		echo " "
-		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
-		case "$choice" in
-		q|Q ) echo "ok"; sleep 1 ;;
-		* ) # Get package name and remove it
-		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
-		esac ;;
+#    "U"|"u")  ls -d /usr/share/harbour-themepack-* | sort -u | cut -c30-
+#		echo " "
+#		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
+#		case "$choice" in
+#		q|Q ) echo "ok"; sleep 1 ;;
+#		* ) # Get package name and remove it
+#		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
+#		esac ;;
     "Q"|"q")  clear; exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
     esac

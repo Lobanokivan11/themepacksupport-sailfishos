@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.2.1
-Release:       1
+Version:       0.3.1
+Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -47,13 +47,21 @@ fi
 fi
 
 %changelog
+* Fri Mar 31 2017 0.3.1
+- Bug fix.
+
+* Fri Mar 10 2017 0.3.0
+- Fixed font size option.
+- Added Patchmanager restore options.
+- Added UI themer options.
+
 * Thu Jan 5 2017 0.2.1
 - Bug fix.
 
-* Wed Aug 25 2016 0.2.0
+* Thu Aug 25 2016 0.2.0
 - Added graphic theme support.
 
-* Thu Aug 9 2016 0.1.3
+* Tue Aug 9 2016 0.1.3
 - Added Jolla C/Intex Aqua Fish support.
 
 * Wed Apr 27 2016 0.1.1

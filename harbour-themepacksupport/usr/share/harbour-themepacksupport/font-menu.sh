@@ -70,9 +70,9 @@ do
  Please enter your choice:
  ---------------------------------
    (A)pply font theme
-   (S)ailfish OS font size
-    Alien (D)alvik font size
-   (R)estore
+   (F)ont size
+   Restore font (T)heme
+   Restore font (S)ize
    (B)ack
  ---------------------------------
  Current font pack: $(<$main/font-current)
@@ -95,29 +95,30 @@ EOF
 			font-changer
 		fi
 		esac ;;
-    "S"|"s")  read -p "Please enter font size multiplier or 'q' to exit and press enter. Default value is 1.0. Suggested size is 1.1 or 1.2: " f1
+    "F"|"f")  read -p "Please enter font size multiplier or 'q' to exit and press enter. Suggested size is 1.1 or 1.2: " f1
 		case "$f1" in 
 		[0-3]* ) su - nemo -c "dconf write /desktop/jolla/theme/font/sizeMultiplier $f1"
 		echo "done!"; sleep 1 ;;
 		q|Q ) echo "quit"; sleep 1 ;;
 		esac
-		read -p "Please enter font size threshold (max font size) or 'q' to exit and press enter. Default value is 0. Suggested size is 60: " f2
+		read -p "Please enter font size threshold (max font size) or 'q' to exit and press enter. Suggested size is 60: " f2
 		case "$f2" in 
 		[0-3]* ) su - nemo -c "dconf write /desktop/jolla/theme/font/sizeThreshold $f2"
 		echo "done!"; sleep 1 ;;
 		q|Q ) echo "quit"; sleep 1 ;;
 		esac ;;
-    "D"|"d")  read -p "Please enter lcd density for Alien Dalvik or 'q' to exit and press enter. Default value is 240. Suggested value is between 200 and 280: " aliensize
-		case "$aliensize" in 
-		[0-3]* ) # Look for the string in build.prop and apply new value
-		sed -i "s/.*ro.sf.lcd_density.*/ro.sf.lcd_density=$aliensize/" /opt/alien/system/build.prop
-		echo "done!"; sleep 1 ;;
-		q|Q ) echo "quit"; sleep 1 ;;
-		esac ;;
-    "R"|"r")  echo "This will restore your default font pack. Continue y/N? "
+    "T"|"t")  echo "This will restore your default font pack. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/font-restore.sh
+		echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+    "S"|"s")  echo "This will restore your default font size. Continue y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) su - nemo -c "dconf reset /desktop/jolla/theme/font/sizeMultiplier"
+		su - nemo -c "dconf reset /desktop/jolla/theme/font/sizeThreshold"
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
