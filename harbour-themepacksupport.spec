@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.3.2
+Version:       0.3.3
 Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -35,6 +35,7 @@ if [ $1 = 0 ]; then
 	// Uninstallation
 	/usr/share/harbour-themepacksupport/preun_dpr.sh
 	/usr/share/harbour-themepacksupport/restore_dpr.sh
+	/usr/share/harbour-themepacksupport/restore_adpi.sh
 	/usr/share/harbour-themepacksupport/icon-restore.sh
 	/usr/share/harbour-themepacksupport/graphic-restore.sh
 	/usr/share/harbour-themepacksupport/font-restore.sh
@@ -56,6 +57,9 @@ fi
 fi
 
 %changelog
+* Sat Apr 15 2017 0.3.3
+- Compatibility with UI themer.
+
 * Sat Apr 15 2017 0.3.2
 - Compatibility with UI themer.
 

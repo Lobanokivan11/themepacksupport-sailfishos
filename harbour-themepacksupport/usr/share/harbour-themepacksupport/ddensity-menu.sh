@@ -26,14 +26,6 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
-
-# Check if default Android DPI backup exists
-
-if [ ! -f $main/backup/droiddpi ]; then
-   # Look for DPI settings and save them in a backup file
-   grep "^ro.sf.lcd_density" /opt/alien/system/build.prop | tr ":" " " | egrep -o '.{1,3}$' > $main/backup/droiddpi
-fi
-
 while :
 do
     clear
@@ -68,15 +60,14 @@ EOF
 		esac ;;
     "C"|"c")  read -p "Please enter DPI value for Alien Dalvik or 'q' to exit and press enter: " aliensize
 		case "$aliensize" in 
-		[0-3]* ) # Look for the string in build.prop and apply new value
-		sed -i "s/.*ro.sf.lcd_density.*/ro.sf.lcd_density=$aliensize/" /opt/alien/system/build.prop
+		[0-3]* ) $main/apply_adpi.sh $aliensize
 		echo "done!"; sleep 1 ;;
 		q|Q ) echo "quit"; sleep 1 ;;
 		esac ;;
     "D"|"d")  echo "This will restore your default DPI in Alien Dalvik. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) sed -i "s/.*ro.sf.lcd_density.*/ro.sf.lcd_density=$(<$main/backup/droiddpi)/" /opt/alien/system/build.prop
+		y|Y ) $main/restore_adpi.sh
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
