@@ -35,14 +35,14 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (A)pply graphic theme
    (R)estore
    (B)ack
- ---------------------------------
+ ----------------------------------
  Current graphic pack: $(<$main/graphic-current)
 
 EOF

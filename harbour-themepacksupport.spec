@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.3.1
-Release:       5
+Version:       0.3.2
+Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -8,10 +8,10 @@ Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
 Requires:      sailfish-version >= 2.0.1
-BuildArch: noarch
-Packager: fravaccaro <fravaccaro@jollacommunity.it>
+BuildArch:     noarch
+Packager:      fravaccaro <fravaccaro@jollacommunity.it>
 URL:           www.jollacommunity.it
-License:       GPL
+License:       GPLv3
 
 %description
 Theme pack support for Sailfish OS.
@@ -22,23 +22,32 @@ Theme pack support for Sailfish OS.
 
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
-ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
-mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
-mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
+/usr/share/harbour-themepacksupport/postin_dpr.sh
+if [ $1 = 1 ]; then
+	// First installation
+	ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
+	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
+	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
+fi
 
 %preun
-/usr/share/harbour-themepacksupport/icon-restore.sh
-/usr/share/harbour-themepacksupport/graphic-restore.sh
-/usr/share/harbour-themepacksupport/font-restore.sh
-/usr/share/harbour-themepacksupport/sound-restore.sh
+if [ $1 = 0 ]; then
+	// Uninstallation
+	/usr/share/harbour-themepacksupport/preun_dpr.sh
+	/usr/share/harbour-themepacksupport/restore_dpr.sh
+	/usr/share/harbour-themepacksupport/icon-restore.sh
+	/usr/share/harbour-themepacksupport/graphic-restore.sh
+	/usr/share/harbour-themepacksupport/font-restore.sh
+	/usr/share/harbour-themepacksupport/sound-restore.sh
+fi
 
 %postun
 if [ $1 = 0 ]; then
-    // Do stuff specific to uninstalls
-unlink /usr/bin/themepacksupport
-rm /usr/share/icons/hicolor/86x86/apps/harbour-themepacksupport.png
-rm /usr/share/applications/harbour-themepacksupport.desktop
-rm -rf /usr/share/harbour-themepacksupport
+	// Uninstallation
+	unlink /usr/bin/themepacksupport
+	rm /usr/share/icons/hicolor/86x86/apps/harbour-themepacksupport.png
+	rm /usr/share/applications/harbour-themepacksupport.desktop
+	rm -rf /usr/share/harbour-themepacksupport
 else
 if [ $1 = 1 ]; then
     // Do stuff specific to upgrades
@@ -47,6 +56,9 @@ fi
 fi
 
 %changelog
+* Sat Apr 15 2017 0.3.2
+- Compatibility with UI themer.
+
 * Fri Mar 31 2017 0.3.1
 - Bug fix.
 - Fixed non latin fonts missing from Alien Dalvik.

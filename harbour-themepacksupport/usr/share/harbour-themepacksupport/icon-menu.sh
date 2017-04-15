@@ -40,14 +40,14 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (A)pply icon theme
    (R)estore
    (B)ack
- ---------------------------------
+ ----------------------------------
  Current icon pack: $(<$main/icon-current)
 
 EOF

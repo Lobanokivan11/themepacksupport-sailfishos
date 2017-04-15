@@ -39,16 +39,16 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (A)pply device pixel ratio
    (R)estore device pixel ratio
    (C)hange Alien Dalvik DPI
    Restore Alien Dalvik (D)PI
    (B)ack
- ---------------------------------
+ ----------------------------------
 
 EOF
     read -n1 -s

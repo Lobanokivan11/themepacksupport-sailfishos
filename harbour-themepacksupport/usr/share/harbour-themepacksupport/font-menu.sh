@@ -65,16 +65,16 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (A)pply font theme
    (F)ont size
    Restore font (T)heme
    Restore font (S)ize
    (B)ack
- ---------------------------------
+ ----------------------------------
  Current font pack: $(<$main/font-current)
 
 EOF

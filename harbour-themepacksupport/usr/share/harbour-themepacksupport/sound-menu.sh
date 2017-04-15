@@ -35,14 +35,14 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (A)pply sound theme
    (R)estore
    (B)ack
- ---------------------------------
+ ----------------------------------
  Current sound pack: $(<$main/sound-current)
 
 EOF

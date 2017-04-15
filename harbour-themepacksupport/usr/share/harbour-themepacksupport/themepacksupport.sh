@@ -41,21 +41,22 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    (I)con theme
    (G)raphic theme
    (F)ont theme
    (S)ound theme
-   (U)I themer
-   (R)estore UI
+   (D)isplay density
+   (T)ools
+   (U)I themer install
    (L)ipstick refresh
    (H)elp
    (A)bout
    (Q)uit
- ---------------------------------
+ ----------------------------------
 EOF
     read -n1 -s
     case "$REPLY" in
@@ -63,8 +64,8 @@ EOF
     "G"|"g")  $main/graphic-menu.sh ;;
     "F"|"f")  $main/font-menu.sh ;;
     "S"|"s")  $main/sound-menu.sh ;;
-    "U"|"u")  $main/uit-menu.sh ;;
-    "R"|"r")  $main/fixui-menu.sh ;;
+    "D"|"d")  $main/ddensity-menu.sh ;;
+    "T"|"t")  $main/tools-menu.sh ;;
     "L"|"l")  echo "Refresh the homescreen? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
@@ -75,7 +76,7 @@ EOF
     "H"|"h")  clear
 cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
 Usage:
 
@@ -103,7 +104,7 @@ EOF
 #
 		cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
                 */
             .(*,#
@@ -120,7 +121,8 @@ EOF
        ((*%*
    ,#&%/,
 
-UI themer safe mode. It can be used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
+It can be used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
+You can install an UI for it by going back to the main menu and choosing U.
 
 E-mail: fravaccaro90@gmail.com 
 Twitter: @itsamefra
@@ -128,6 +130,15 @@ Twitter: @itsamefra
 EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
+
+    "U"|"u")  echo "Install UI themer? y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) 	echo "UI themer will be installed..."
+		pkcon install sailfishos-uithemer; echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+
 #    "L"|"l")  echo "Enable logs? y/N? "
 #		read -n1 -s choice
 #		case "$choice" in 

@@ -31,16 +31,16 @@ do
     clear
     cat<<EOF
  Theme pack support for Sailfish OS
- =================================
+ ==================================
 
  Please enter your choice:
- ---------------------------------
+ ----------------------------------
    Unapply (A)ll Patchmanager patches
    Uninstall (P)atchmanager 
-   Restore (U)I
-   Restore (F)onts
+   Reinstall (U)I
+   Reinstall (F)onts
    (B)ack
- ---------------------------------
+ ----------------------------------
 
 EOF
     read -n1 -s
