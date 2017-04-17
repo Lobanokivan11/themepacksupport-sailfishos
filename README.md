@@ -4,6 +4,9 @@ The script works by replacing default elements with custom ones and enables safe
 
 A GUI is available [here](https://github.com/fravaccaro/sailfishos-uithemer).
 
+[prova1](icons)
+[prova2](docs/icons.md)
+
 ## Features
 
 - Icon theming.
