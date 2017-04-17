@@ -121,7 +121,8 @@ EOF
        ((*%*
    ,#&%/,
 
-It can be used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
+With Theme pack support you can customize icons, fonts, system sounds and pixel density in Sailfish OS. Remember to unapply themes before system updates.
+It can be also used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
 You can install an UI for it by going back to the main menu and choosing U.
 
 E-mail: fravaccaro90@gmail.com 
