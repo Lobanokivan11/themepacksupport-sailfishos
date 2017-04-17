@@ -9,9 +9,9 @@ was useful to me (it works on Linux computers too).
 
 Read the page relative to the theme part you're creating, then come back here.
 
-* [Icons](docs/icons)
-* [Fonts](docs/fonts.md)
-* [Sounds](docs/sounds)
+* [Icons](icons.md)
+* [Fonts](fonts.md)
+* [Sounds](sounds.md)
 
 ## .spec file
 
