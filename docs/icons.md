@@ -1,3 +1,5 @@
+# Icon pack guidelines
+
 Here you'll find info on how to create icons compatible with Theme pack support.
 
 ## Icon paths in Sailfish OS

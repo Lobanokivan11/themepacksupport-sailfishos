@@ -1,4 +1,4 @@
-# Theme pack support for Sailfish OS.
+# Theme pack support for Sailfish OS
 
 The script works by replacing default elements with custom ones and enables safe backup/restore. 
 

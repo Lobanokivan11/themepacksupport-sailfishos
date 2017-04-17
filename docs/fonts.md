@@ -1,3 +1,5 @@
+# Font pack guidelines
+
 Here you'll find info on how to create fonts compatible with Theme pack support.
 
 In Sailfish OS there are two sets of fonts, system and Alien Dalvik, so you need to theme both.

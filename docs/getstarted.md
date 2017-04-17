@@ -1,3 +1,5 @@
+# Get started
+
 Informations on how create theme packs compatible with my script.
 
 ## Requisites

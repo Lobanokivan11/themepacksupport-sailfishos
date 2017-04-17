@@ -1,3 +1,5 @@
+# Sound pack guidelines
+
 Here you'll find info on how to create sounds compatible with Theme pack support.
 
 Create wav audio files PCM 16bit 48000Hz.
