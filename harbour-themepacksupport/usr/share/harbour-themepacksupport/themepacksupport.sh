@@ -51,7 +51,8 @@ do
    (S)ound theme
    (D)isplay density
    (T)ools
-   (U)I themer install
+   UI theme(R) install
+   (U)ninstall themes
    (L)ipstick refresh
    (H)elp
    (A)bout
@@ -132,7 +133,7 @@ EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
 
-    "U"|"u")  echo "Install UI themer? y/N? "
+    "R"|"r")  echo "Install UI themer? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) 	echo "UI themer will be installed..."
@@ -147,14 +148,14 @@ EOF
 #		systemctl-user restart lipstick.service; echo "done!"; sleep 1 ;;
 #		* ) echo "aborted"; sleep 1 ;;
 #		esac ;;
-#    "U"|"u")  ls -d /usr/share/harbour-themepack-* | sort -u | cut -c30-
-#		echo " "
-#		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
-#		case "$choice" in
-#		q|Q ) echo "ok"; sleep 1 ;;
-#		* ) # Get package name and remove it
-#		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
-#		esac ;;
+    "U"|"u")  ls -d /usr/share/harbour-themepack-* | sort -u | cut -c30-
+		echo " "
+		read -p "Please enter the theme pack name you want to uninstall or 'q' to exit and press enter: " choice
+		case "$choice" in
+		q|Q ) echo "ok"; sleep 1 ;;
+		* ) # Get package name and remove it
+		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
+		esac ;;
     "Q"|"q")  clear; exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
     esac
