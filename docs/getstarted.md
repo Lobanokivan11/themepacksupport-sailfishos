@@ -4,8 +4,7 @@ Informations on how create theme packs compatible with my script.
 
 ## Requisites
 
-* A basic knowledge on how to compile rpm's. [This guide](http://talk.maemo.org/showthread.php?t=92963) 
-was useful to me (it works on Linux computers too).
+* A basic knowledge on how to use the Linux terminal and compile rpm's.
 
 ## Icons, fonts, sounds
 
@@ -31,10 +30,16 @@ Open the .spec file and edit these lines:
 ### Notes
 
 * The name of the package must start with *harbour-themepack-* e.g. *harbour-themepack-mypackage*.
-* The file *package* contains the intelligible name of your icon pack e.g. *My theme pack*. Keep it on 
-one line.
+* The file *package* contains the intelligible name of your icon pack e.g. *My theme pack*. Keep it on one line.
 
-## Building and releasing
+## Building
+
+[This guide](http://talk.maemo.org/showthread.php?t=92963) was useful to me to get started.
+As a *theme pack* is a bunch of icons and fonts, it makes sense to make it architecture agnostic. To do so, append modify the rpmbuild syntax as follows:
+
+`rpmbuild --bb --target noarch PATHOFTHESPECFILE/harbour-themepack-mypackage.spec`
+
+## Releasing
 
 You are ready to build the package and publish it! The preferred method is on 
 [openrepos.net](https://openrepos.net). Don't forget to add as a notice to enable [my 
