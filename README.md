@@ -11,7 +11,7 @@ A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).
 - Sound theming (needs further testing).
 - Change device pixel ratio.
 - Change DPI for Alien Dalvik.
-- Options to recover UI.
+- Recovery tools.
 
 ## Create custom theme packs
 

@@ -50,8 +50,8 @@ do
    (F)ont theme
    (S)ound theme
    (D)isplay density
-   (T)ools
-   UI theme(R) install
+   (R)ecovery tools
+   UI (T)themer install
    (U)ninstall themes
    (L)ipstick refresh
    (H)elp
@@ -66,7 +66,7 @@ EOF
     "F"|"f")  $main/font-menu.sh ;;
     "S"|"s")  $main/sound-menu.sh ;;
     "D"|"d")  $main/ddensity-menu.sh ;;
-    "T"|"t")  $main/tools-menu.sh ;;
+    "R"|"r")  $main/tools-menu.sh ;;
     "L"|"l")  echo "Refresh the homescreen? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
@@ -133,7 +133,7 @@ EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
 
-    "R"|"r")  echo "Install UI themer? y/N? "
+    "T"|"t")  echo "Install UI themer? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) 	echo "UI themer will be installed..."
