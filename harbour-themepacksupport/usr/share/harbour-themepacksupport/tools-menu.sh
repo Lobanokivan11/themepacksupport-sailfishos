@@ -74,8 +74,7 @@ EOF
     "I"|"i")  echo "This will restore the default Sailfish OS icons. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) $main/icon-restore.sh
-#		pkcon install sailfish-content-graphics-default-z1.0-base sailfish-content-graphics-default-z1.0 
+		y|Y ) $main/icon-reinstall.sh
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
