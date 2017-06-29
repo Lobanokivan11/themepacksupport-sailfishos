@@ -229,19 +229,19 @@ fi
 if [ -d "/usr/share/harbour-dyncal" ]; then
 	# Check if there are DynCal icons
 	if [ -d "$pack/dyncal" ]; then
-		if [ -d "$pack/dyncal/256x256" ]; then
-			if [ "$(ls $pack/dyncal/256x256)" ]; then
-				rm -rf /usr/share/harbour-dyncal/icons/*
-				cp $pack/dyncal/256x256/*.* /usr/share/harbour-dyncal/icons/
-			fi
-		else
+#		if [ -d "$pack/dyncal/256x256" ]; then
+#			if [ "$(ls $pack/dyncal/256x256)" ]; then
+#				rm -rf /usr/share/harbour-dyncal/icons/*
+#				cp $pack/dyncal/256x256/*.* /usr/share/harbour-dyncal/icons/
+#			fi
+#		else
 			if [ -d "$pack/dyncal/86x86" ]; then
 				if [ "$(ls $pack/dyncal/86x86)" ]; then
 					rm -rf /usr/share/harbour-dyncal/icons/*
 					cp $pack/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
 				fi
 			fi
-		fi
+#		fi
 	fi
 fi
 
@@ -250,26 +250,27 @@ if [ -d "/usr/share/harbour-dynclock" ]; then
 	# Check if there are DynClock icons
 	if [ -d "$pack/dynclock" ]; then
 		# Check if the DynClock version installed supports hd icons
-		if [ -s "/usr/share/harbour-dynclock/dynclock.cfg" ]; then
-			if [ -d "$pack/dynclock/256x256" ]; then
-				if [ "$(ls $pack/dynclock/256x256)" ]; then
-					cp $pack/dynclock/256x256/*.* /usr/share/harbour-dynclock/
-				else
-				if [ -d "$pack/dynclock/86x86" ]; then
-					if [ "$(ls $pack/dynclock/86x86)" ]; then
-						cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
-						echo res="43" > /usr/share/harbour-dynclock/dynclock.cfg
-					fi
-				fi
-			fi
-		fi
-		else
+#		if [ -s "/usr/share/harbour-dynclock/dynclock.cfg" ]; then
+#			if [ -d "$pack/dynclock/256x256" ]; then
+#				if [ "$(ls $pack/dynclock/256x256)" ]; then
+#					cp $pack/dynclock/256x256/*.* /usr/share/harbour-dynclock/
+#				else
+#				if [ -d "$pack/dynclock/86x86" ]; then
+#					if [ "$(ls $pack/dynclock/86x86)" ]; then
+#						cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
+#						echo res="43" > /usr/share/harbour-dynclock/dynclock.cfg
+#					fi
+#				fi
+#			fi
+#		fi
+#		else
 			if [ -d "$pack/dynclock/86x86" ]; then
 				if [ "$(ls $pack/dynclock/86x86)" ]; then
 					cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
+					echo res="43" > /usr/share/harbour-dynclock/dynclock.cfg
 				fi
 			fi
-		fi
+#		fi
 	fi
 fi
 

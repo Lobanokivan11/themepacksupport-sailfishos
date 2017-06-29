@@ -38,6 +38,7 @@ do
    Unapply (A)ll Patchmanager patches
    Uninstall (P)atchmanager 
    Reinstall (U)I
+   Reinstall (I)cons
    Reinstall (F)onts
    (B)ack
  ----------------------------------
@@ -55,7 +56,8 @@ EOF
     "P"|"p")  echo "This will uninstall Patchmanager and restore the Sailfish OS UI. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) pkcon remove ausmt
+		y|Y ) patchmanager --unapply-all
+		pkcon remove ausmt
 		pkcon install zypper
 		zypper install -f lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
 		echo "done!"; sleep 1 ;;
@@ -66,6 +68,14 @@ EOF
 		case "$choice" in 
 		y|Y ) pkcon install zypper
 		zypper install -f lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
+		echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+    "I"|"i")  echo "This will restore the default Sailfish OS icons. Continue y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) $main/icon-restore.sh
+#		pkcon install sailfish-content-graphics-default-z1.0-base sailfish-content-graphics-default-z1.0 
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

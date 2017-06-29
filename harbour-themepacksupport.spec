@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.3.3
-Release:       5
+Version:       0.4.0
+Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -57,6 +57,10 @@ fi
 fi
 
 %changelog
+* Thu Jun 29 2017 0.4.0
+- Added icon restore option.
+- Bug fix.
+
 * Sat Apr 15 2017 0.3.3
 - Compatibility with UI themer.
 
