@@ -12,6 +12,7 @@ A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).
 - Change device pixel ratio.
 - Change DPI for Alien Dalvik.
 - Recovery tools.
+- Auto-update icon theme.
 
 ## Create custom theme packs
 

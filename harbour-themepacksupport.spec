@@ -41,7 +41,8 @@ if [ $1 = 0 ]; then
 	/usr/share/harbour-themepacksupport/icon-restore.sh
 	/usr/share/harbour-themepacksupport/graphic-restore.sh
 	/usr/share/harbour-themepacksupport/font-restore.sh
-	/usr/share/harbour-themepacksupport/sound-restore.shsystemctl stop harbour-dyncal.timer
+	/usr/share/harbour-themepacksupport/sound-restore.sh
+	systemctl stop harbour-themepacksupport.timer
 	systemctl disable harbour-themepacksupport.timer
 	systemctl stop harbour-themepacksupport.service
 	systemctl disable harbour-themepacksupport.service
