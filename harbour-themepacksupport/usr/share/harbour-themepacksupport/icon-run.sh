@@ -283,6 +283,14 @@ fi
 rm $main/icon-current
 echo $iconpack > $main/icon-current
 
+# Re-enable service if enabled
+if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+	systemctl enable harbour-themepacksupport.timer
+	systemctl start harbour-themepacksupport.timer
+	systemctl enable harbour-themepacksupport.service
+	systemctl start harbour-themepacksupport.service
+fi
+
 # Warm about backup not performed
 else
 echo "Run backup first!"

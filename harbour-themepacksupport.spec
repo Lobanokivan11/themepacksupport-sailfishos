@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.4.0
-Release:       5
+Version:       0.5.0
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -28,6 +28,8 @@ if [ $1 = 1 ]; then
 	ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
+	mv /usr/share/harbour-dyncal/harbour-themepacksupport.service /etc/systemd/system/
+	mv /usr/share/harbour-dyncal/harbour-themepacksupport.timer /etc/systemd/system/
 fi
 
 %preun
@@ -39,7 +41,12 @@ if [ $1 = 0 ]; then
 	/usr/share/harbour-themepacksupport/icon-restore.sh
 	/usr/share/harbour-themepacksupport/graphic-restore.sh
 	/usr/share/harbour-themepacksupport/font-restore.sh
-	/usr/share/harbour-themepacksupport/sound-restore.sh
+	/usr/share/harbour-themepacksupport/sound-restore.shsystemctl stop harbour-dyncal.timer
+	systemctl disable harbour-themepacksupport.timer
+	systemctl stop harbour-themepacksupport.service
+	systemctl disable harbour-themepacksupport.service
+	rm /etc/systemd/system/harbour-themepacksupport.timer
+	rm /etc/systemd/system/harbour-themepacksupport.service
 fi
 
 %postun
@@ -57,6 +64,9 @@ fi
 fi
 
 %changelog
+* Sat Jul 1 2017 0.5.0
+- Added auto-update icons option.
+
 * Thu Jun 29 2017 0.4.0
 - Added icon restore option.
 - Bug fix.

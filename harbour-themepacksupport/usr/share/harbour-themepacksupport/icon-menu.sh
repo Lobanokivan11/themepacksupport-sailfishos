@@ -46,6 +46,7 @@ do
  ----------------------------------
    (A)pply icon theme
    (R)estore
+   Auto-(U)pdate icon theme
    (B)ack
  ----------------------------------
  Current icon pack: $(<$main/icon-current)
@@ -76,6 +77,7 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
+     "U"|"u")  $main/autoupdate-menu.sh ;;
      "B"|"b")  exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
     esac

@@ -23,6 +23,14 @@ dir_jolla=/usr/share/themes/sailfish-default/meegotouch
 dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
 
+# Disable service
+if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+	systemctl disable harbour-themepacksupport.timer
+	systemctl stop harbour-themepacksupport.timer
+	systemctl disable harbour-themepacksupport.service
+	systemctl stop harbour-themepacksupport.service
+fi
+
 # Check if a backup has been performed
 if [ "$(ls $main/backup/jolla)" -o "$(ls $main/backup/native)" -o "$(ls $main/backup/apk)" -o "$(ls $main/backup/dyncal)" -o "$(ls $main/backup/dynclock)" ]; then
 
