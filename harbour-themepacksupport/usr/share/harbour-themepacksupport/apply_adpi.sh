@@ -14,5 +14,6 @@ fi
 
 # Apply Android DPI
 sed -i "s/.*ro.sf.lcd_density.*/ro.sf.lcd_density=$aliensize/" /opt/alien/system/build.prop
+grep "^ro.sf.lcd_density" /opt/alien/system/build.prop | tr ":" " " | egrep -o '.{1,3}$' > $main/droiddpi-current
 
 exit 0
