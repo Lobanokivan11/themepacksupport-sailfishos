@@ -62,7 +62,7 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) if [[ ! -s $main/service/hours ]]; then
-			read -p "Please enter the desided hours in the format hh:mm separated by a comma, eg 06:00,18:20 and press enter: " hrs
+			read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 and press enter: " hrs
 			echo $hrs > $main/service/hours
 			timer-changer
 		fi
@@ -74,14 +74,12 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "S"|"s")  read -p "Please enter the desider hours in the format hh:mm separated by a comma, eg 06:00,18:20 or 'q' to exit and press enter: " choice
+    "S"|"s")  read -p "Please enter the hour of your choice in the format hh:mm separated by a comma, eg 06:00,18:20 or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
 		* ) echo $choice > $main/service/hours
 		timer-changer
-		if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
-			systemctl daemon-reload
-		fi		
+		systemctl daemon-reload
 		echo "done!"; sleep 1 ;;
 		esac ;;
     "D"|"d")  echo "Disable auto-update icons y/N? "
