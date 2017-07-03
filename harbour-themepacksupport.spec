@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
 Version:       0.5.0
-Release:       3
+Release:       6
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -23,13 +23,17 @@ Theme pack support for Sailfish OS.
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
 /usr/share/harbour-themepacksupport/postin_dpr.sh
+if [ ! -f /etc/systemd/system/harbour-themepacksupport.* ]; then
+	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.service /etc/systemd/system/
+	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.timer /etc/systemd/system/
+fi
 if [ $1 = 1 ]; then
 	// First installation
 	ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
-	mv /usr/share/harbour-dyncal/harbour-themepacksupport.service /etc/systemd/system/
-	mv /usr/share/harbour-dyncal/harbour-themepacksupport.timer /etc/systemd/system/
+	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.service /etc/systemd/system/
+	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.timer /etc/systemd/system/
 fi
 
 %preun
