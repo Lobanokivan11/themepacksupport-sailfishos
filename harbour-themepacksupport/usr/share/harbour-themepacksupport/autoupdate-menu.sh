@@ -74,7 +74,7 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "S"|"s")  read -p "Please enter the hour of your choice in the format hh:mm separated by a comma, eg 06:00,18:20 or 'q' to exit and press enter: " choice
+    "S"|"s")  read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
 		* ) echo $choice > $main/service/hours
