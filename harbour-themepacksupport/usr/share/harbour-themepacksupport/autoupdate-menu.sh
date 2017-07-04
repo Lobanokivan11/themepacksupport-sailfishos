@@ -29,7 +29,7 @@ main=/usr/share/harbour-themepacksupport
 function timer-changer {
 	timer=$(<$main/service/hours)
 	echo '[Unit]
-Description=Update icon theme via Theme pack support.
+Description=Timer for updating icon theme via Theme pack support.
 
 [Timer]
 OnBootSec=0
