@@ -239,6 +239,7 @@ if [ -d "/usr/share/harbour-dyncal" ]; then
 				if [ "$(ls $pack/dyncal/86x86)" ]; then
 					rm -rf /usr/share/harbour-dyncal/icons/*
 					cp $pack/dyncal/86x86/*.* /usr/share/harbour-dyncal/icons/
+					sh /usr/share/harbour-dyncal/harbour-dyncal.sh
 				fi
 			fi
 #		fi
@@ -268,6 +269,7 @@ if [ -d "/usr/share/harbour-dynclock" ]; then
 				if [ "$(ls $pack/dynclock/86x86)" ]; then
 					cp $pack/dynclock/86x86/*.* /usr/share/harbour-dynclock/
 					echo res="43" > /usr/share/harbour-dynclock/dynclock.cfg
+					sh /usr/share/harbour-dynclock/harbour-dynclock.sh
 				fi
 			fi
 #		fi

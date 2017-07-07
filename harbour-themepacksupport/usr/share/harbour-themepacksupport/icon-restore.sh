@@ -213,6 +213,7 @@ if [ -d "/usr/share/harbour-dyncal" ]; then
 	# Remove backuped DynCal icons
 	if [ "$(ls $main/backup/dyncal)" ]; then
 		rm -rf $main/backup/dyncal/*
+		sh /usr/share/harbour-dyncal/harbour-dyncal.sh
 	fi
 fi
 # If DynClock is installed
@@ -220,6 +221,7 @@ if [ -d "/usr/share/harbour-dynclock" ]; then
 	# Remove backuped DynClock icons
 	if [ "$(ls $main/backup/dynclock)" ]; then
 		rm -rf $main/backup/dynclock/*
+		sh /usr/share/harbour-dynclock/harbour-dynclock.sh
 	fi
 fi
 
