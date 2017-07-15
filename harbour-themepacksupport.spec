@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.5.1
+Version:       0.5.2
 Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -69,6 +69,9 @@ fi
 fi
 
 %changelog
+* Sat Jul 15 2017 0.5.2
+- More Icon updater options.
+
 * Fri Jul 7 2017 0.5.1
 - Minor fixes.
 

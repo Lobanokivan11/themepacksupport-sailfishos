@@ -26,18 +26,16 @@ fi
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
 
-function timer-changer {
-	timer=$(<$main/service/hours)
-	echo '[Unit]
-Description=Timer for updating icon theme via Theme pack support.
-
-[Timer]
-OnBootSec=0
-OnCalendar=*-*-* '$timer'
-Persistent=true
-
-[Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+function load-service {
+if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+    systemctl daemon-reload
+else
+    systemctl enable harbour-themepacksupport.timer
+    systemctl start harbour-themepacksupport.timer
+    systemctl enable harbour-themepacksupport.service
+    systemctl start harbour-themepacksupport.service
+    sed -i "s/.*tps_service.*/tps_service='1'/" $main/themepacksupport.cfg
+fi
 }
 
 while :
@@ -49,8 +47,7 @@ do
 
  Please enter your choice:
  ----------------------------------
-   (E)nable auto-update
-   (S)et hours
+   (S)et auto-update
    (D)isable auto-update
    (B)ack
  ----------------------------------
@@ -58,29 +55,103 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "E"|"e")  echo "Enable auto-update icons y/N? "
-		read -n1 -s choice
-		case "$choice" in 
-		y|Y ) if [[ ! -s $main/service/hours ]]; then
-			read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 and press enter: " hrs
-			echo $hrs > $main/service/hours
-			timer-changer
-		fi
-		systemctl enable harbour-themepacksupport.timer
-		systemctl start harbour-themepacksupport.timer
-		systemctl enable harbour-themepacksupport.service
-		systemctl start harbour-themepacksupport.service
-		sed -i "s/.*tps_service.*/tps_service='1'/" $main/themepacksupport.cfg
+    "S"|"s")      cat<<EOF
+1) 30 minutes
+2) 1 hour
+3) 2 hours
+4) 3 hours
+5) 6 hours
+6) 12 hours
+7) daily
+EOF
+			read -p "Please choose your favorite option or 'q' to exit and press enter: " hrs
+			case "$hrs" in
+    "1")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=*-*-* *:0/30
+Persistent=true
+OnActiveSec=30m
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer		load-service
+		echo "done!"; sleep 1 ;;
+    "2")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=hourly
+Persistent=true
+OnActiveSec=1h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer 
+		load-service
+		echo "done!"; sleep 1 ;;
+    "3")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=00:00
+Persistent=true
+OnActiveSec=2h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+		load-service
+		echo "done!"; sleep 1 ;;
+    "4")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=00:00
+Persistent=true
+OnActiveSec=3h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+		load-service
+		echo "done!"; sleep 1 ;;
+    "5")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=00:00
+Persistent=true
+OnActiveSec=6h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+		load-service
+		echo "done!"; sleep 1 ;;
+    "6")  echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=00:00
+Persistent=true
+OnActiveSec=12h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+		load-service
+		echo "done!"; sleep 1 ;;
+    "7")  read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 and press enter: " choice
+echo '[Unit]
+Description=Timer for updating icon theme via Theme pack support.
+[Timer]
+OnBootSec=0
+OnCalendar=*-*-* '$choice'
+Persistent=true
+OnActiveSec=24h
+
+[Install]
+WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+echo $hrs > $main/service/hours
+		load-service
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
-		esac ;;
-    "S"|"s")  read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 or 'q' to exit and press enter: " choice
-		case "$choice" in 
-		q|Q ) echo "ok"; sleep 1;;
-		* ) echo $choice > $main/service/hours
-		timer-changer
-		systemctl daemon-reload
-		echo "done!"; sleep 1 ;;
 		esac ;;
     "D"|"d")  echo "Disable auto-update icons y/N? "
 		read -n1 -s choice
