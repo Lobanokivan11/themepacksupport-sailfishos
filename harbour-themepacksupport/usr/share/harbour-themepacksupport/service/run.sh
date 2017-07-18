@@ -9,7 +9,7 @@ dir_apk=/var/lib/apkd
 sizen=$(du -sb $dir_native | cut -f1)
 sizea=$(du -sb $dir_apk | cut -f1)
 
-if [ "$pack" == "default" ]; then
+if [ "$iconpack" == "default" ]; then
 	exit 1
 fi
 
