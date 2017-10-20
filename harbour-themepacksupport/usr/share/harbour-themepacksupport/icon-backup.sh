@@ -46,6 +46,10 @@ if [ -d "$dir_jolla/z1.5-large" ]; then
 cp $dir_jolla/z1.5-large/icons/* $main/backup/jolla/z1.5-large/icons/
 fi
 
+if [ -d "$dir_jolla/z1.75" ]; then
+cp $dir_jolla/z1.75/icons/* $main/backup/jolla/z1.75/icons/
+fi
+
 if [ -d "$dir_jolla/z2.0" ]; then
 cp $dir_jolla/z2.0/icons/* $main/backup/jolla/z2.0/icons/
 fi
