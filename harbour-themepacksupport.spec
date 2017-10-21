@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.5.3
-Release:       5
+Version:       0.5.4
+Release:       3
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -39,19 +39,19 @@ fi
 %preun
 if [ $1 = 0 ]; then
 	// Uninstallation
-	/usr/share/harbour-themepacksupport/preun_dpr.sh
-	/usr/share/harbour-themepacksupport/restore_dpr.sh
-	/usr/share/harbour-themepacksupport/restore_adpi.sh
-	/usr/share/harbour-themepacksupport/icon-restore.sh
-	/usr/share/harbour-themepacksupport/graphic-restore.sh
-	/usr/share/harbour-themepacksupport/font-restore.sh
-	/usr/share/harbour-themepacksupport/sound-restore.sh
 	systemctl stop harbour-themepacksupport.timer
 	systemctl disable harbour-themepacksupport.timer
 	systemctl stop harbour-themepacksupport.service
 	systemctl disable harbour-themepacksupport.service
 	rm /etc/systemd/system/harbour-themepacksupport.timer
 	rm /etc/systemd/system/harbour-themepacksupport.service
+	/usr/share/harbour-themepacksupport/restore_dpr.sh
+	/usr/share/harbour-themepacksupport/restore_adpi.sh
+	/usr/share/harbour-themepacksupport/preun_dpr.sh
+	/usr/share/harbour-themepacksupport/icon-restore.sh
+	/usr/share/harbour-themepacksupport/graphic-restore.sh
+	/usr/share/harbour-themepacksupport/font-restore.sh
+	/usr/share/harbour-themepacksupport/sound-restore.sh
 fi
 
 %postun
@@ -69,6 +69,9 @@ fi
 fi
 
 %changelog
+* Sat Oct 21 2017 0.5.4
+- Android DPI fix on Sailfish X.
+
 * Fri Oct 20 2017 0.5.3
 - Bug fixes.
 
