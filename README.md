@@ -1,8 +1,8 @@
 # Theme pack support for Sailfish OS
 
-The script works by replacing default elements with custom ones and enables safe backup/restore. 
+The script works by replacing default elements with custom ones and enables safe backup/restore. A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).
 
-A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).
+[![GitHub license](https://img.shields.io/github/license/fravaccaro/themepacksupport-sailfishos.svg)](https://github.com/fravaccaro/themepacksupport-sailfishos/blob/master/LICENSE) [![GitHub issues](https://img.shields.io/github/issues/fravaccaro/themepacksupport-sailfishos.svg)](https://github.com/fravaccaro/themepacksupport-sailfishos/issues) [![GitHub releases](https://img.shields.io/github/release/fravaccaro/themepacksupport-sailfishos.svg)](https://github.com/fravaccaro/themepacksupport-sailfishos/releases/latest)
 
 ## Features
 
