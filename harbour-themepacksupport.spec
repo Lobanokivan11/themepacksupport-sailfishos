@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.5.4
-Release:       3
+Version:       0.5.5
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
@@ -69,6 +69,9 @@ fi
 fi
 
 %changelog
+* Mon Feb 19 2018 0.5.5
+- Preliminary device pixel ratio support for Sailfish X (needs further testing).
+
 * Sat Oct 21 2017 0.5.4
 - Android DPI fix on Sailfish X.
 

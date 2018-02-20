@@ -29,7 +29,8 @@ I chose this approach as no proper documentation on theming support in Sailfish 
 However, a rudimentary theme support may have been already built-in, since I found sailfish-default folders to have an index.theme package and dconf to have values for those themes. Further investigation is needed.
 
 ## Roadmap
-- Ensure compatibility with Intex Aqua Fish.
+
+Roadmap and features will be tracked on the [Trello dashboard](https://trello.com/b/yrXVjXbL).
 
 ## Credits
 

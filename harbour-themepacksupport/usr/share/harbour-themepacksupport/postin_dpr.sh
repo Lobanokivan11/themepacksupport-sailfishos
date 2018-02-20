@@ -13,7 +13,7 @@ if [ -f $system/ui-configs.txt ]; then
 	mv $system/ui-configs.txt $backup/ui-configs.txt.bk
 fi
 
-su - nemo -c "dconf update"
+dconf update
 
 if [ -d "$dir_droid" ]; then
 	grep "^ro.sf.lcd_density" $dir_droid/build.prop | tr ":" " " | egrep -o '.{1,3}$' > $main/droiddpi-current
