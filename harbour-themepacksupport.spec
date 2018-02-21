@@ -1,13 +1,13 @@
 Name:          harbour-themepacksupport
-Version:       0.5.5
-Release:       1
+Version:       0.5.6
+Release:       2
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:     harbour-iconpacksupport
 Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
-Requires:      sailfish-version >= 2.0.1, sailfish-content-graphics-default-z1.0-base
+Requires:      sailfish-version >= 2.0.1, sailfish-content-graphics-default-z1.0-base, sailfish-content-graphics-default-z1.25-base, sailfish-content-graphics-default-z1.5-base, sailfish-content-graphics-default-z1.75-base, sailfish-content-graphics-default-z2.0-base
 BuildArch:     noarch
 Packager:      fravaccaro <fravaccaro@jollacommunity.it>
 URL:           www.jollacommunity.it
@@ -26,6 +26,10 @@ chmod +x /usr/share/harbour-themepacksupport/*.sh
 if [ ! -f /etc/systemd/system/harbour-themepacksupport.* ]; then
 	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.service /etc/systemd/system/
 	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.timer /etc/systemd/system/
+fi
+// If UI Themer is installed, keep the icon hidden
+if [ -d /usr/share/sailfishos-uithemer ]; then
+	    echo "NoDisplay=true" >> /usr/share/applications/harbour-themepacksupport.desktop
 fi
 if [ $1 = 1 ]; then
 	// First installation
@@ -46,6 +50,7 @@ if [ $1 = 0 ]; then
 	rm /etc/systemd/system/harbour-themepacksupport.timer
 	rm /etc/systemd/system/harbour-themepacksupport.service
 	/usr/share/harbour-themepacksupport/restore_dpr.sh
+	/usr/share/harbour-themepacksupport/restore_iz.sh
 	/usr/share/harbour-themepacksupport/restore_adpi.sh
 	/usr/share/harbour-themepacksupport/preun_dpr.sh
 	/usr/share/harbour-themepacksupport/icon-restore.sh
@@ -69,6 +74,10 @@ fi
 fi
 
 %changelog
+* Wed Feb 21 2018 0.5.6
+- Preliminary icon size for Sailfish X (needs further testing).
+- One-click restore.
+
 * Mon Feb 19 2018 0.5.5
 - Preliminary device pixel ratio support for Sailfish X (needs further testing).
 

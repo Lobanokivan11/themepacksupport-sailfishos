@@ -51,6 +51,7 @@ do
    (S)ound theme
    (D)isplay density
    (R)ecovery tools
+   (O)ne-click restore
    UI (T)themer install
    (U)ninstall themes
    (L)ipstick refresh
@@ -132,6 +133,21 @@ Twitter: @itsamefra
 EOF
 
 		read -n1 -r -p "Press any key to continue..." ;;
+    "O"|"o")  echo "Customizations must be reverted before performing a system update. With One-click restore you can automate this process and restore icons, fonts and display density settings with just one click. Continue? y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) 	echo "Restoring..."
+		$main/restore_dpr.sh
+		$main/restore_iz.sh
+		$main/restore_adpi.sh
+		$main/preun_dpr.sh
+		$main/icon-restore.sh
+		$main/graphic-restore.sh
+		$main/font-restore.sh
+		$main/sound-restore.sh
+		echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
 
     "T"|"t")  echo "Install UI themer? y/N? "
 		read -n1 -s choice
