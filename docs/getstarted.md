@@ -14,6 +14,16 @@ Read the page relative to the theme part you're creating, then come back here.
 * [Fonts](fonts.md)
 * [Sounds](sounds.md)
 
+### Themepack helper
+
+To resize svg icons you can also use my [themepack-helper](https://github.com/fravaccaro/themepack-helper).
+
+### Companion app
+
+If you are familiar with the Sailfish SDK you can use my companion app model. It includes a script which automates the listing of missing icons, creating an e-mail draft with a predefined address of your choice, for minimal effort from the user.
+
+Take a look at it [here](https://github.com/fravaccaro/harbour-themepack-companion). Feel free to fork it and use it on your projects.
+
 ## .spec file
 
 Open the .spec file and edit these lines:

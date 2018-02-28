@@ -14,8 +14,6 @@ Icons are located in three folders:
 1. Create icons with the image editor of your choice. 
 2. Icons go in `jolla` if they are Jolla stock icons, `native` if they are 3rd party icons or `apk` if they are Android apps icons. Size and place them accordingly with the folder, so icons 86x86px will go in `86x86/apps`; for Jolla stock icons, 86x86px in `z1.0/icons`, 129x129px in `z1.5/icons` and 172x172px in `z2.0/icons`; Android ones go in `apk/86x86` and `apk/128x128`.
 
-To resize svg icons you can also use my [themepack-helper](https://github.com/fravaccaro/themepack-helper).
-
 ### Jolla Ambient
 
 Theme pack support also enables theming Jolla Ambient icons.
@@ -83,7 +81,7 @@ Jolla Ambient icons placed in `z1.0/icons` will be sized:
 #### References
 
 * Additional info are available in the [Sailfish Documentation](https://sailfishos.org/develop/docs/jolla-ambient/). 
-* Some nice alternative icon sets are avilable [here](http://www.flaticon.com/).
+* Some nice alternative icon sets are available [here](http://www.flaticon.com/).
 
 ### DynCal
 
