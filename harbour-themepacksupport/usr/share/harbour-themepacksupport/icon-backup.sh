@@ -31,44 +31,25 @@ if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
 	systemctl stop harbour-themepacksupport.service
 fi
 
-# List Jolla icons z1.0
-cp $dir_jolla/z1.0/icons/* $main/backup/jolla/z1.0/icons/
+# Jolla icons
+jollaCap=( "z2.0" "z1.75" "z1.5-large" "z1.5" "z1.25" "z1.0" )
 
-if [ -d "$dir_jolla/z1.25" ]; then
-cp $dir_jolla/z1.25/icons/* $main/backup/jolla/z1.25/icons/
-fi
+for ((i=0;i<${#jollaCap[@]};++i)); do
+	# Perform copy of existing icons
+	cp $dir_jolla/${jollaCap[i]}/icons/*.png $main/backup/jolla/${jollaCap[i]}/icons/
+done
 
-if [ -d "$dir_jolla/z1.5" ]; then
-cp $dir_jolla/z1.5/icons/* $main/backup/jolla/z1.5/icons/
-fi
+# Native icons
+nativeCap=( "256x256" "128x128" "108x108" "86x86" )
 
-if [ -d "$dir_jolla/z1.5-large" ]; then
-cp $dir_jolla/z1.5-large/icons/* $main/backup/jolla/z1.5-large/icons/
-fi
-
-if [ -d "$dir_jolla/z1.75" ]; then
-cp $dir_jolla/z1.75/icons/* $main/backup/jolla/z1.75/icons/
-fi
-
-if [ -d "$dir_jolla/z2.0" ]; then
-cp $dir_jolla/z2.0/icons/* $main/backup/jolla/z2.0/icons/
-fi
-
-# List native icons 86x86
-cp $dir_native/86x86/apps/* $main/backup/native/86x86/apps/
-
-# List native icons 108x108
-cp $dir_native/108x108/apps/* $main/backup/native/108x108/apps/
-
-# List native icons 128x128
-cp $dir_native/128x128/apps/* $main/backup/native/128x128/apps/
-
-# List native icons 256x256
-cp $dir_native/256x256/apps/* $main/backup/native/256x256/apps/
+for ((i=0;i<${#nativeCap[@]};++i)); do
+	# Perform copy of existing icons
+	cp $dir_native/${nativeCap[i]}/apps/*.png $main/backup/native/${nativeCap[i]}/apps/
+done
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
-	cp $dir_apk/* $main/backup/apk/
+	cp $dir_apk/*.png $main/backup/apk/
 fi
 
 # If DynCal is installed 

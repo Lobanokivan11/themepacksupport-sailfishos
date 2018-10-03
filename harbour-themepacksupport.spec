@@ -1,9 +1,9 @@
 Name:          harbour-themepacksupport
-Version:       0.5.6
-Release:       2
+Version:       0.6.0
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
-Conflicts:     harbour-iconpacksupport
+Conflicts:      harbour-iconpacksupport
 Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
@@ -74,6 +74,9 @@ fi
 fi
 
 %changelog
+* Wed Oct 3 2018 0.6.0
+- Script reworked.
+
 * Wed Feb 21 2018 0.5.6
 - Preliminary icon size for Sailfish X (needs further testing).
 - One-click restore.
