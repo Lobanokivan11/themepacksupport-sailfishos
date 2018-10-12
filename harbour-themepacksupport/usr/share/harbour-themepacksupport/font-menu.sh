@@ -27,8 +27,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-		cd /usr/share/; 
-find harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c19- > $main/font.menu
+find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c30- > $main/font.menu
 
 function font-changer {
 

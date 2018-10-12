@@ -27,8 +27,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-		cd /usr/share/; 
-find harbour-themepack-* -maxdepth 1 -type d -iname "graphic" -printf "%h\n" | sort -u | cut -c19- > $main/graphic.menu
+find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "graphic" -printf "%h\n" | sort -u | cut -c30- > $main/graphic.menu
 
 while :
 do
