@@ -63,6 +63,7 @@ EOF
 		$main/icon-backup.sh
 		$main/icon-run.sh $choice
 		else
+		$main/icon-restore.sh
 		$main/icon-backup.sh
 		$main/icon-run.sh $choice
 		fi
