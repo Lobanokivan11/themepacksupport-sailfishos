@@ -36,11 +36,8 @@ jollaCap=( "z2.0" "z1.75" "z1.5-large" "z1.5" "z1.25" "z1.0" )
 
 for ((i=0;i<${#jollaCap[@]};++i)); do
 	# Perform copy of existing icons
-	for file in $dir_jolla/${jollaCap[i]}/icons/*.png; do
-		if test -e "$main/backup/jolla/${jollaCap[i]}/icons/$(basename ${file})"
-			then cp "$main/backup/jolla/${jollaCap[i]}/icons/$(basename ${file})" "${file}"
-		fi
-	done
+	rsync -a --existing $main/backup/jolla/${jollaCap[i]}/icons/ $dir_jolla/${jollaCap[i]}/icons/
+	rm -r $main/backup/jolla/${jollaCap[i]}/icons/*
 done
 
 # Native icons
@@ -48,26 +45,21 @@ nativeCap=( "256x256" "128x128" "108x108" "86x86" )
 
 for ((i=0;i<${#nativeCap[@]};++i)); do
 	# Perform copy of existing icons
-	for file in $dir_native/${nativeCap[i]}/apps/*.png; do
-		if test -e "$main/backup/native/${nativeCap[i]}/apps/$(basename ${file})"
-			then cp "$main/backup/native/${nativeCap[i]}/apps/$(basename ${file})" "${file}"
-		fi
-	done
+	rsync -a --existing $main/backup/native/${nativeCap[i]}/apps/ $dir_native/${nativeCap[i]}/apps/
+	rm -r $main/backup/native/${nativeCap[i]}/apps/*
 done
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
-	for file in $dir_apk/*.png; do
-		if test -e "$main/backup/apk/$(basename ${file})"
-			then cp "$main/backup/apk/$(basename ${file})" "${file}"
-		fi
-	done
+	rsync -a --existing $main/backup/apk/ $dir_apk/
+	rm -r $main/backup/apk/*
 fi
 
 # If DynCal is installed
 if [ -d "/usr/share/harbour-dyncal" ]; then
 	if [ "$(ls $main/backup/dyncal)" ]; then
-		cp $main/backup/dyncal/*.* /usr/share/harbour-dyncal/icons/
+		cp $main/backup/dyncal/* /usr/share/harbour-dyncal/icons/
+		rm -r $main/backup/dyncal/*
 	fi
 fi
 
@@ -78,7 +70,8 @@ if [ -d "/usr/share/harbour-dynclock" ]; then
 		echo res="128" > /usr/share/harbour-dynclock/dynclock.cfg
 	fi
 	if [ "$(ls $main/backup/dynclock)" ]; then
-		cp $main/backup/dynclock/*.* /usr/share/harbour-dynclock/
+		cp $main/backup/dynclock/* /usr/share/harbour-dynclock/
+		rm -r $main/backup/dynclock/*
 	fi
 fi
 

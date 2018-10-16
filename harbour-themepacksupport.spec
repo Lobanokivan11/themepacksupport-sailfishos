@@ -1,13 +1,13 @@
 Name:          harbour-themepacksupport
-Version:       0.6.0
-Release:       2
+Version:       0.6.1
+Release:       5
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
 Group:         System/Tools
 Vendor:        fravaccaro
 Distribution:  SailfishOS
-Requires:      sailfish-version >= 2.0.1, sailfish-content-graphics-default-z1.0-base, sailfish-content-graphics-default-z1.25-base, sailfish-content-graphics-default-z1.5-base, sailfish-content-graphics-default-z1.75-base, sailfish-content-graphics-default-z2.0-base
+Requires:      sailfish-version >= 2.0.1, rsync, sailfish-content-graphics-default-z1.0-base, sailfish-content-graphics-default-z1.25-base, sailfish-content-graphics-default-z1.5-base, sailfish-content-graphics-default-z1.75-base, sailfish-content-graphics-default-z2.0-base
 BuildArch:     noarch
 Packager:      fravaccaro <fravaccaro@jollacommunity.it>
 URL:           www.jollacommunity.it
@@ -74,6 +74,9 @@ fi
 fi
 
 %changelog
+* Tue Oct 16 2018 0.6.1
+- Script now uses rsync.
+
 * Wed Oct 3 2018 0.6.0
 - Script reworked.
 

@@ -58,16 +58,14 @@ EOF
 		case "$choice" in 
 		y|Y ) patchmanager --unapply-all
 		pkcon remove ausmt
-		pkcon install zypper
-		zypper install -f lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
+		pkcon install --allow-reinstall lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
     "U"|"u")  echo "This will restore the Sailfish OS UI. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) pkcon install zypper
-		zypper install -f lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
+		y|Y ) pkcon  install --allow-reinstall lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
@@ -82,7 +80,8 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/font-restore.sh
-		pkcon install sailfish-fonts
+		pkcon refresh
+		pkcon install --allow-reinstall sailfish-fonts
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

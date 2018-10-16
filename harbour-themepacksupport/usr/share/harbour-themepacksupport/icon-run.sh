@@ -47,12 +47,8 @@ for ((j=i;j<${#jollaCap[@]};++j)); do
 	# if there are Jolla icons
 	if [ -d $pack/jolla/${jollaCap[j]}/icons ]; then
 		# Perform copy of existing icons
-		for file in $dir_jolla/${jollaCap[i]}/icons/*.png; do
-			if test -e "$pack/jolla/${jollaCap[j]}/icons/$(basename ${file})"
-				then cp "$pack/jolla/${jollaCap[j]}/icons/$(basename ${file})" "${file}"
-			fi
-		done
-	break
+		rsync -a --existing $pack/jolla/${jollaCap[j]}/icons/ $dir_jolla/${jollaCap[i]}/icons/
+		break
 	fi
 done
 done
@@ -65,12 +61,8 @@ for ((j=i;j<${#nativeCap[@]};++j)); do
 	# if there are native icons
 	if [ -d $pack/native/${nativeCap[j]}/apps ]; then
 		# Perform copy of existing icons
-		for file in $dir_native/${nativeCap[i]}/apps/*.png; do
-			if test -e "$pack/native/${nativeCap[j]}/apps/$(basename ${file})"
-				then cp "$pack/native/${nativeCap[j]}/apps/$(basename ${file})" "${file}"
-			fi
-		done
-	break
+		rsync -a --existing $pack/native/${nativeCap[j]}/apps/ $dir_native/${nativeCap[i]}/apps/
+		break
 	fi
 done
 done
@@ -85,12 +77,8 @@ for ((j=i;j<${#apkCap[@]};++j)); do
 	# if there are native icons
 	if [ -d $pack/apk/${apkCap[j]} ]; then
 		# Perform copy of existing icons
-		for file in $dir_apk/*.png; do
-			if test -e "$pack/apk/${apkCap[j]}/$(basename ${file})"
-				then cp "$pack/apk/${apkCap[j]}/$(basename ${file})" "${file}"
-			fi
-		done
-	break
+		rsync -a --existing $pack/apk/${apkCap[j]}/ $dir_apk/
+		break
 	fi
 done
 done

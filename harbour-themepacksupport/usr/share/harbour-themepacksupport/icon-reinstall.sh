@@ -21,9 +21,7 @@
 main=/usr/share/harbour-themepacksupport
 
 $main/icon-restore.sh
-ls -d /usr/share/themes/sailfish-default/meegotouch/[z]* | cut -c47- | tr "\n" " " > $main/tmp/default-icons
-for i in $(<$main/tmp/default-icons); do pkcon install sailfish-content-graphics-closed-$i; done
-pkcon install sailfish-content-graphics-default-z1.0-base
+pkcon install --allow-reinstall sailfish-content-graphics-default-z1.0-base, sailfish-content-graphics-default-z1.25-base, sailfish-content-graphics-default-z1.5-base, sailfish-content-graphics-default-z1.75-base, sailfish-content-graphics-default-z2.0-base
 
 # Clean tmp directory
 if [ "$(ls $main/tmp)" ]; then

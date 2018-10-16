@@ -36,7 +36,7 @@ jollaCap=( "z2.0" "z1.75" "z1.5-large" "z1.5" "z1.25" "z1.0" )
 
 for ((i=0;i<${#jollaCap[@]};++i)); do
 	# Perform copy of existing icons
-	cp $dir_jolla/${jollaCap[i]}/icons/*.png $main/backup/jolla/${jollaCap[i]}/icons/
+	rsync -a --ignore-existing $dir_jolla/${jollaCap[i]}/icons/*.png $main/backup/jolla/${jollaCap[i]}/icons/
 done
 
 # Native icons
@@ -44,12 +44,12 @@ nativeCap=( "256x256" "128x128" "108x108" "86x86" )
 
 for ((i=0;i<${#nativeCap[@]};++i)); do
 	# Perform copy of existing icons
-	cp $dir_native/${nativeCap[i]}/apps/*.png $main/backup/native/${nativeCap[i]}/apps/
+	rsync -a --ignore-existing $dir_native/${nativeCap[i]}/apps/*.png $main/backup/native/${nativeCap[i]}/apps/
 done
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
-	cp $dir_apk/*.png $main/backup/apk/
+	rsync -a --ignore-existing $dir_apk/ $main/backup/apk/
 fi
 
 # If DynCal is installed 
