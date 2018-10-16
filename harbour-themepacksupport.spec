@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
 Version:       0.6.1
-Release:       5
+Release:       8
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
