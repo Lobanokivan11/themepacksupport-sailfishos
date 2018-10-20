@@ -58,15 +58,8 @@ EOF
 		read -p "Please enter the icon pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* ) # Check if a backup has been performed
-		if [ "$(ls $main/backup/jolla)" -o "$(ls $main/backup/native)" -o "$(ls $main/backup/apk)" -o "$(ls $main/backup/dyncal)" -o "$(ls $main/backup/dynclock)" ]; then
-		$main/icon-backup.sh
+		* ) $main/icon-backup.sh
 		$main/icon-run.sh $choice
-		else
-		$main/icon-restore.sh
-		$main/icon-backup.sh
-		$main/icon-run.sh $choice
-		fi
 		echo "done!"; sleep 1 ;;
 		esac ;;
     "R"|"r")  echo "This will restore your default icon pack. Continue y/N? "

@@ -54,12 +54,12 @@ fi
 
 # If DynCal is installed 
 if [ -d "/usr/share/harbour-dyncal" ]; then
-	cp /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/
+	rsync -a --ignore-existing /usr/share/harbour-dyncal/icons/*.* $main/backup/dyncal/
 fi
 
 # If DynClock is installed 
 if [ -d "/usr/share/harbour-dynclock" ]; then
-	cp /usr/share/harbour-dynclock/*.png $main/backup/dynclock/
+	rsync -a --ignore-existing /usr/share/harbour-dynclock/*.png $main/backup/dynclock/
 fi
 
 exit 0

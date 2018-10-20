@@ -1,6 +1,6 @@
 Name:          harbour-themepacksupport
-Version:       0.6.1
-Release:       9
+Version:       0.6.2
+Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -74,6 +74,9 @@ fi
 fi
 
 %changelog
+* Sat Oct 20 2018 0.6.2
+- Speed improvements.
+
 * Tue Oct 16 2018 0.6.1
 - Script now uses rsync.
 
