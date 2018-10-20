@@ -58,7 +58,8 @@ EOF
 		read -p "Please enter the icon pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* ) $main/icon-backup.sh
+		* ) $main/icon-restore.sh
+		$main/icon-backup.sh
 		$main/icon-run.sh $choice
 		echo "done!"; sleep 1 ;;
 		esac ;;

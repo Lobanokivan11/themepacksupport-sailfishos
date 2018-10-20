@@ -1,5 +1,5 @@
 Name:          harbour-themepacksupport
-Version:       0.6.2
+Version:       0.7.0
 Release:       1
 Summary:       Theme pack support
 Obsoletes:     harbour-iconpacksupport <= 0.0.4-4
@@ -74,7 +74,7 @@ fi
 fi
 
 %changelog
-* Sat Oct 20 2018 0.6.2
+* Sat Oct 20 2018 0.7.0
 - Speed improvements.
 
 * Tue Oct 16 2018 0.6.1
