@@ -15,7 +15,7 @@ fi
 
 dconf update
 
-dconf read /desktop/sailfish/silica/theme_icon_subdir | egrep -o '[0-9].[0-9]+' > $main/icon-z
+dconf read /desktop/sailfish/silica/icon_size_launcher | egrep -o '[0-9].[0-9]+' > $main/icon-z
 
 if [ -d "$dir_droid" ]; then
 	grep "^ro.sf.lcd_density" $dir_droid/build.prop | tr ":" " " | egrep -o '.{1,3}$' > $main/droiddpi-current
