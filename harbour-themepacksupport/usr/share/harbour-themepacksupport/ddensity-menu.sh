@@ -60,7 +60,7 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "S"|"s")  	read -p "Please enter the preferred icon size (choose between 86, 108, 128, 256) or 'q' to exit and press enter: " choice
+    "S"|"s")  	read -p "Please enter the preferred icon size (choose between 86, 108, 129, 151, 172) or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
 		* )  su - nemo -c "dconf write /desktop/sailfish/silica/icon_size_launcher $choice"
