@@ -11,6 +11,6 @@ if [ -f $backup/ui-configs.txt.bk ]; then
 	mv $backup/ui-configs.txt.bk $system/ui-configs.txt
 fi
 
-dconf update
+su - nemo -c "dconf update"
 
 exit 0

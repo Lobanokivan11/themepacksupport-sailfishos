@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.7.1
-Release:        2
+Version:        0.7.2
+Release:        1
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:       harbour-iconpacksupport
@@ -10,7 +10,6 @@ Distribution:   SailfishOS
 Requires:       sailfish-version >= 2.0.1, rsync, sailfish-content-graphics-default-z1.0-base, sailfish-content-graphics-default-z1.25-base, sailfish-content-graphics-default-z1.5-base, sailfish-content-graphics-default-z1.75-base, sailfish-content-graphics-default-z2.0-base, sailfish-content-graphics-closed-z1.0, sailfish-content-graphics-closed-z1.25, sailfish-content-graphics-closed-z1.5, sailfish-content-graphics-closed-z1.75, sailfish-content-graphics-closed-z2.0
 BuildArch:      noarch
 Packager:       fravaccaro <fravaccaro@jollacommunity.it>
-URL:            www.jollacommunity.it
 License:        GPLv3
 URL:            https://github.com/fravaccaro/themepacksupport-sailfishos
 
@@ -75,6 +74,9 @@ fi
 fi
 
 %changelog
+* Mon Nov 5 2018 0.7.2
+- Minor changes.
+
 * Thu Oct 25 2018 0.7.1
 - Added icon size.
 

@@ -38,7 +38,6 @@ do
    (A)pply device pixel ratio
    (R)estore device pixel ratio
    (S)et icon size
-   Restore (I)con size
    (C)hange Alien Dalvik DPI
    Restore Alien Dalvik (D)PI
    (B)ack
