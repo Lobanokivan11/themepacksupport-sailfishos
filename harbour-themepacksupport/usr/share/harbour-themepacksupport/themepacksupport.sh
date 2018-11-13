@@ -45,6 +45,7 @@ do
 
  Please enter your choice:
  ----------------------------------
+   I(N)stall required dependencies
    (I)con theme
    (G)raphic theme
    (F)ont theme
@@ -62,6 +63,13 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
+    "N"|"n")  echo "Install required dependencies? y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) 	echo "It may take some time, do not quit."
+		$main/install_dependencies.sh; echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
     "I"|"i")  $main/icon-menu.sh ;;
     "G"|"g")  $main/graphic-menu.sh ;;
     "F"|"f")  $main/font-menu.sh ;;
