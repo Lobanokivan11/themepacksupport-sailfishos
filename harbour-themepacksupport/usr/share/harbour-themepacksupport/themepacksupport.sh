@@ -178,7 +178,7 @@ EOF
 		case "$choice" in
 		q|Q ) echo "ok"; sleep 1 ;;
 		* ) # Get package name and remove it
-		pkcon remove $(rpm -qf /usr/share/harbour-themepack-$choice/ --queryformat '%{NAME}\n') ;;
+		pkcon remove -y $choice ;;
 		esac ;;
     "Q"|"q")  clear; exit                      ;;
      * )  echo "invalid option"; sleep 1     ;;
