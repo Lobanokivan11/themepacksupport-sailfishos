@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Themes
+Name[it]=Temi
+Name[fi]=Teemat
+Name[fr]=Thèmes
+Name[es]=Temas
+Exec=fingerterm -e "devel-su -c /usr/share/harbour-themepacksupport/themepacksupport.sh"
+Icon=harbour-themepacksupport
+X-Nemo-Single-Instance=no

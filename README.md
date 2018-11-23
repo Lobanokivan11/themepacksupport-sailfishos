@@ -7,6 +7,7 @@ The script works by replacing default elements with custom ones and enables safe
 ## Features
 
 - Icon theming.
+- Icon overlay.
 - Font theming.
 - Sound theming (needs further testing).
 - Change device pixel ratio.

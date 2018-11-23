@@ -98,3 +98,7 @@ The theme pack support will check automatically if DynCal is installed.
 3. Put them in the `dynclock/256x256` folder.
 
 The theme pack support will check automatically if DynClock is installed.
+
+## Overlays
+
+If your theme sports regular icon shape, you can create an overlay, that can be applied automatically for icons missing from you theme. Create a png sized 512x512px and place it into the 'overlay' folder.

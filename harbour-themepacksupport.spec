@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.7.3
-Release:        2
+Version:        0.8.0
+Release:        6
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:       harbour-iconpacksupport
@@ -74,6 +74,10 @@ fi
 fi
 
 %changelog
+* Fri Nov 23 2018 0.8.0
+- Improved non latin font support.
+- Overlay support.
+
 * Tue Nov 13 2018 0.7.3
 - Option to install dependencies.
 

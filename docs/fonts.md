@@ -17,3 +17,13 @@ Note: result may vary depending if the fonts you chose have some characters miss
 1. Rename your fonts as `Arabic.ttf`, `Armenian.ttf`, `Chinese.ttc`, `Devangari.ttf`, `Ethiopic.ttf`, 
 `Georgian.ttf`, `Japanese.ttf`, `Hebrew.ttf`, `Naskh.ttf`, `Tamil.ttf` or `Thai.ttf`.
 2. Place your fonts in `font-nonlatin`.
+
+### Asian languages
+
+For Asian languages, Sailfish OS uses a .ttc font archive format. In order to make your font compatible with it, your 'Chinese.ttc' should contain 3 fonts named as following:
+
+* 'WenQuanYiZenHei-01.ttf'
+* 'WenQuanYiZenHeiMono-02.ttf'
+* 'WenQuanYiZenHeiSharp-03.ttf'
+
+To achieve so, you can use softwares such as FontForge.
