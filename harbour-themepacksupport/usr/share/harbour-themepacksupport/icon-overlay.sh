@@ -20,6 +20,8 @@ dir_apk=/var/lib/apkd
 rm -r $main/tmp/*
 
 # Native icons
+if [[ ! -f $pack/type || $(<$pack/type) != "android" ]]; then
+
 nativeCap=( "256x256" "128x128" "108x108" "86x86" )
 
 for ((i=0;i<${#nativeCap[@]};++i)); do
@@ -34,7 +36,8 @@ for ((i=0;i<${#nativeCap[@]};++i)); do
 
 	for file in $(<$main/tmp/${nativeCap[i]}); do 
 	# Convert icons with ImageMagick
-	convert \( $pack/overlay/overlay.png -scale ${nativeCap[i]} -gravity Center \) \( $dir_native/${nativeCap[i]}/apps/$file -scale 60%x60% -gravity Center \) -composite -gravity Center -geometry ${nativeCap[i]} $main/tmp/$file
+	find $pack/overlay/ -type f -name "*.png" | shuf -n 1 |\
+	   convert \( @- -scale ${nativeCap[i]} -gravity Center \) \( $dir_native/${nativeCap[i]}/apps/$file -scale 60%x60% -gravity Center \) -composite -gravity Center -geometry ${nativeCap[i]} $main/tmp/$file
 	# Move icons
 	mv "$main/tmp/$file" $dir_native/${nativeCap[i]}/apps
 
@@ -45,23 +48,22 @@ done
 # Clean tmp directory
 rm -r $main/tmp/*
 
-# if there are native icons
+fi
+
+# if there are Android icons
 if [ -d $pack/apk/86x86 ]; then
 	# List icons not in the theme
 	diff -r $dir_apk $pack/apk/86x86 | grep 'Only in /var/lib/apkd' | awk '{print $4}' > $main/tmp/86x86
 fi
 
+if [[ ! -f $main/tmp/86x86 && $(<$pack/type) == "android" ]]; then
+   ls $dir_apk > $main/tmp/86x86
+fi
+
 for file in $(<$main/tmp/86x86); do 
 # Convert icons with ImageMagick
-convert \( $pack/overlay/overlay.png -scale 86x86 -gravity Center \) \( $dir_apk/$file -scale 55x55 -gravity Center \) -composite -gravity Center -geometry 86x86 $main/tmp/$file
+find $pack/overlay/ -type f -name "*.png" | shuf -n 1 |\
+   convert \( @- -scale 86x86 -gravity Center \) \( $dir_apk/$file -scale 55x55 -gravity Center \) -composite -gravity Center -geometry 86x86 $main/tmp/$file
 # Move icons
 mv "$main/tmp/$file" $dir_apk
 done
-
-
-
-
-
-
-
-
