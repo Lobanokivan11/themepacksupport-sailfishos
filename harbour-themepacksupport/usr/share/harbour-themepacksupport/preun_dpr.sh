@@ -1,21 +1,17 @@
 #!/bin/bash
 
 # Set directory variables
-backup=/usr/share/harbour-themepacksupport/backup
-system=/etc/dconf/db/vendor.d
+backup=/usr/share/harbour-themepacksupport/backup/dlocks
+system=/etc/dconf/db/vendor.d/locks/
 
-if [ -f $backup/vendord/silica-configs.txt.bk ]; then
-	mv $backup/vendord/silica-configs.txt.bk $system/silica-configs.txt
+if [ -f $backup/silica-configs.txt.bk ]; then
+	mv $backup/silica-configs.txt.bk $system/silica-configs.txt
 fi
 
-if [ -f $backup/dlocks/silica-configs.txt.bk ]; then
-	mv $backup/dlocks/silica-configs.txt.bk $system/locks/silica-configs.txt
+if [ -f $backup/ui-configs.txt.bk ]; then
+	mv $backup/ui-configs.txt.bk $system/ui-configs.txt
 fi
 
-if [ -f $backup/dlocks/ui-configs.txt.bk ]; then
-	mv $backup/dlocks/ui-configs.txt.bk $system/locks/ui-configs.txt
-fi
-
-dconf update
+su - nemo -c "dconf update"
 
 exit 0
