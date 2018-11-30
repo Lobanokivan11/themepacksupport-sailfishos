@@ -2,19 +2,23 @@
 
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
-backup=/usr/share/harbour-themepacksupport/backup/dlocks
-system=/etc/dconf/db/vendor.d/locks/
+backup=/usr/share/harbour-themepacksupport/backup
+system=/etc/dconf/db/vendor.d
 dir_droid=/opt/alien/system
 
 if [ -f $system/silica-configs.txt ]; then
-	mv $system/silica-configs.txt $backup/silica-configs.txt.bk
+	mv $system/silica-configs.txt $backup/vendord/silica-configs.txt.bk
 fi
 
-if [ -f $system/ui-configs.txt ]; then
-	mv $system/ui-configs.txt $backup/ui-configs.txt.bk
+if [ -f $system/locks/silica-configs.txt ]; then
+	mv $system/locks/silica-configs.txt $backup/dlocks/silica-configs.txt.bk
 fi
 
-su - nemo -c "dconf update"
+if [ -f $system/locks/ui-configs.txt ]; then
+	mv $system/locks/ui-configs.txt $backup/dlocks/ui-configs.txt.bk
+fi
+
+dconf update
 
 dconf read /desktop/sailfish/silica/icon_size_launcher | egrep -o '[0-9].[0-9]+' > $main/icon-z
 
