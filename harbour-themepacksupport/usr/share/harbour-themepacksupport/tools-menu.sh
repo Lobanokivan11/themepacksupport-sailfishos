@@ -63,7 +63,7 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/font-restore.sh
-		pkcon refresh
+		pkcon repo-set-data jolla refresh-now true
 		pkcon install --allow-reinstall -y sailfish-fonts
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
