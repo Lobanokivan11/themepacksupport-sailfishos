@@ -12,7 +12,7 @@ main=/usr/share/harbour-themepacksupport
 # Generate menu
 find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/font-tmp1
 find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "font-nonlatin" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/font-tmp2
-cat $main/tmp/font-tmp* | sort | uniq > $main/font.menu
+cat $main/tmp/font-tmp* | sort | uniq > $main/tmp/font.menu
 
 function font-changer {
 
@@ -64,12 +64,13 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "A"|"a")  	cat $main/font.menu
+    "A"|"a")  	cat $main/tmp/font.menu
 		echo " "
 		read -p "Please enter the font pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* ) # Check if a backup has been performed
+		* ) echo "applying $choice"
+		# Check if a backup has been performed
 		if [ "$(ls $main/backup/font)" -o "$(ls $main/backup/font-droid)" ]; then
 			$main/font-restore.sh
 			$main/font-backup.sh
@@ -106,8 +107,8 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-     "B"|"b")  rm -r $main/tmp/*; exit                      ;;
-     * )  echo "invalid option"; sleep 1     ;;
+     "B"|"b")  rm -r $main/tmp/*; exit ;;
+     * )  echo "invalid option"; sleep 1 ;;
     esac
     sleep 1
 done

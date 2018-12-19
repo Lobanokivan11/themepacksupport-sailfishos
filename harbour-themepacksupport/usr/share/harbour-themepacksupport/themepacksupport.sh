@@ -46,17 +46,17 @@ do
  Please enter your choice:
  ----------------------------------
    (I)con theme
-   (G)raphic theme
    (F)ont theme
+   (G)raphic theme
    (S)ound theme
    (D)isplay density
-   (R)ecovery tools
+   (L)ipstick refresh
    (O)ne-click restore
+   (R)ecovery tools
+   Install GUI / UI (T)themer
    I(N)stall required dependencies
    Install Image(M)agick
-   UI (T)themer install
    (U)ninstall themes
-   (L)ipstick refresh
    (H)elp
    (A)bout
    (Q)uit
@@ -110,20 +110,20 @@ EOF
  Theme pack support for Sailfish OS
  ==================================
 
-                */
-            .(*,#
-          ,  **
-         (%*  ,((.       ,*(
-       *#.#,//   .*&%%/.
-       (* #(.  ,(/*
-       (,  ((/(,
-       ,(,   ,(,
-         *(   ,(
-          %#, ,(
-         .(/# #/
-        .(.%%/
-       ((*%*
-   ,#&%/,
+                  */
+              .(*,#
+            ,  **
+           (%*  ,((.       ,*(
+         *#.#,//   .*&%%/.
+         (* #(.  ,(/*
+         (,  ((/(,
+         ,(,   ,(,
+           *(   ,(
+            %#, ,(
+           .(/# #/
+          .(.%%/
+         ((*%*
+     ,#&%/,
 
 With Theme pack support you can customize icons, fonts, system sounds and pixel density in Sailfish OS. Remember to unapply themes before system updates.
 It can be also used via SSH to manage and restore Sailfish OS UI if anything goes wrong. Released under GPLv3.
@@ -164,7 +164,7 @@ EOF
 		$main/install_imagemagick.sh; echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "T"|"t")  echo "Install UI themer? y/N? "
+    "T"|"t")  echo "Install UI themer? You need to have my repo enabled. y/N "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) 	echo "UI themer will be installed..."

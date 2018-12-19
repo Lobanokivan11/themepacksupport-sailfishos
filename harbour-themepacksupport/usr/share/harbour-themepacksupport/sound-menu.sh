@@ -10,7 +10,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "sound" -printf "%h\n" | sort -u | cut -c30- > $main/sound.menu
+find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "sound" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/sound.menu
 
 while :
 do
@@ -30,12 +30,13 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "A"|"a")  cat $main/sound.menu
+    "A"|"a")  cat $main/tmp/sound.menu
 		echo " "
 		read -p "Please enter the sound pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* ) # Check if a backup has been performed
+		* ) echo "applying $choice"
+		# Check if a backup has been performed
 		if [ "$(ls $main/backup/sound)" ]; then
 		$main/sound-restore.sh
 		$main/sound-backup.sh
@@ -53,8 +54,8 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-     "B"|"b")  rm -r $main/tmp/*; exit                      ;;
-     * )  echo "invalid option"; sleep 1     ;;
+     "B"|"b")  rm -r $main/tmp/*; exit ;;
+     * )  echo "invalid option"; sleep 1 ;;
     esac
     sleep 1
 done

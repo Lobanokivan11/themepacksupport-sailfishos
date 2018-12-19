@@ -1,9 +1,9 @@
 Name:           harbour-themepacksupport
-Version:        0.8.2
-Release:        1
+Version:        0.8.3
+Release:        2
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
-Conflicts:       harbour-iconpacksupport
+Conflicts:      harbour-iconpacksupport
 Group:          System/Tools
 Vendor:         fravaccaro
 Distribution:   SailfishOS
@@ -74,6 +74,9 @@ fi
 fi
 
 %changelog
+* Wed Dec 19 2018 0.8.3
+- Redesigned icon menu.
+
 * Fri Nov 23 2018 0.8.0
 - Improved non latin font support.
 - Overlay support.

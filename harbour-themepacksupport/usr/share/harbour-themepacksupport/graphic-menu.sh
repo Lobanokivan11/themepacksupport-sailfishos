@@ -10,7 +10,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "graphic" -printf "%h\n" | sort -u | cut -c30- > $main/graphic.menu
+find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "graphic" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/graphic.menu
 
 while :
 do
@@ -30,12 +30,13 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
-    "A"|"a")  cat $main/graphic.menu
+    "A"|"a")  cat $main/tmp/graphic.menu
 		echo " "
 		read -p "Please enter the graphic pack name or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* ) # Check if a backup has been performed
+		* ) echo "applying $choice"
+		# Check if a backup has been performed
 		if [ "$(ls $main/backup/graphic)" ]; then
 		$main/graphic-restore.sh
 		$main/graphic-backup.sh
@@ -53,8 +54,8 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-     "B"|"b")  rm -r $main/tmp/*; exit                      ;;
-     * )  echo "invalid option"; sleep 1     ;;
+     "B"|"b")  rm -r $main/tmp/*; exit ;;
+     * )  echo "invalid option"; sleep 1 ;;
     esac
     sleep 1
 done
