@@ -14,7 +14,7 @@ if [ -f $system/ui-configs.txt ]; then
 	mv $system/ui-configs.txt $backup/ui-configs.txt.bk
 fi
 
-su - nemo -c "dconf update"
+dconf update
 
 dconf read /desktop/sailfish/silica/icon_size_launcher | egrep -o '[0-9].[0-9]+' > $main/icon-z
 

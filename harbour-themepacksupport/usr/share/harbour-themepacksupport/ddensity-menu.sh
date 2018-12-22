@@ -38,22 +38,15 @@ EOF
     "R"|"r")  echo "This will restore your default device pixel ratio. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) su - nemo -c "dconf reset /desktop/sailfish/silica/theme_pixel_ratio"
+		y|Y ) dconf reset /desktop/sailfish/silica/theme_pixel_ratio
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
     "S"|"s")  	read -p "Please enter the preferred icon size (choose between 86, 108, 129, 151, 172) or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* )  su - nemo -c "dconf write /desktop/sailfish/silica/icon_size_launcher $choice"
+		* ) dconf write /desktop/sailfish/silica/icon_size_launcher $choice
 		echo "done!"; sleep 1 ;;
-		esac ;;
-    "I"|"i")  echo "This will restore your default icon size. Continue y/N? "
-		read -n1 -s choice
-		case "$choice" in 
-		y|Y ) su - nemo -c "dconf reset /desktop/sailfish/silica/icon_size_launcher"
-		echo "done!"; sleep 1 ;;
-		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
     "C"|"c")  read -p "Please enter DPI value for Alien Dalvik or 'q' to exit and press enter: " aliensize
 		case "$aliensize" in 
