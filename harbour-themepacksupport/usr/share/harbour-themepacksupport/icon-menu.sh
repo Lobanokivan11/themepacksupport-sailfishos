@@ -29,6 +29,7 @@ do
  ----------------------------------
    (A)pply icon theme
    (R)estore
+   Auto-(U)pdate icon theme
    (B)ack
  ----------------------------------
  Current icon pack: $(<$main/icon-current)

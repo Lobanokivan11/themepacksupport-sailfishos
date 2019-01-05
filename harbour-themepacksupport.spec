@@ -1,13 +1,13 @@
 Name:           harbour-themepacksupport
-Version:        0.8.3
-Release:        3
+Version:        0.8.4
+Release:        4
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
 Group:          System/Tools
 Vendor:         fravaccaro
 Distribution:   SailfishOS
-Requires:       sailfish-version >= 2.0.1, rsync
+Requires:       sailfish-version >= 2.1.4, rsync
 BuildArch:      noarch
 Packager:       fravaccaro <fravaccaro@jollacommunity.it>
 License:        GPLv3
@@ -23,10 +23,9 @@ Theme pack support for Sailfish OS.
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
 /usr/share/harbour-themepacksupport/postin_dpr.sh
-if [ ! -f /etc/systemd/system/harbour-themepacksupport.* ]; then
-	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.service /etc/systemd/system/
-	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.timer /etc/systemd/system/
-fi
+mv /usr/share/harbour-themepacksupport/service/themepacksupport-systemupgrade.service /lib/systemd/system/
+mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.service /etc/systemd/system/
+mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.timer /etc/systemd/system/
 // If UI Themer is installed, keep the icon hidden
 if [ -d /usr/share/sailfishos-uithemer ]; then
 	    echo "NoDisplay=true" >> /usr/share/applications/harbour-themepacksupport.desktop
@@ -36,19 +35,18 @@ if [ $1 = 1 ]; then
 	ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
 	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
-	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.service /etc/systemd/system/
-	mv /usr/share/harbour-themepacksupport/service/harbour-themepacksupport.timer /etc/systemd/system/
 fi
 
 %preun
 if [ $1 = 0 ]; then
 	// Uninstallation
-	systemctl stop harbour-themepacksupport.timer
-	systemctl disable harbour-themepacksupport.timer
-	systemctl stop harbour-themepacksupport.service
-	systemctl disable harbour-themepacksupport.service
-	rm /etc/systemd/system/harbour-themepacksupport.timer
-	rm /etc/systemd/system/harbour-themepacksupport.service
+	systemctl stop themepacksupport-autoupdate.timer
+	systemctl disable themepacksupport-autoupdate.timer
+	systemctl stop themepacksupport-autoupdate.service
+	systemctl disable themepacksupport-autoupdate.service
+	rm /lib/systemd/system/themepacksupport-systemupgrade.service
+	rm /etc/systemd/system/themepacksupport-autoupdate.timer
+	rm /etc/systemd/system/themepacksupport-autoupdate.service
 	/usr/share/harbour-themepacksupport/restore_dpr.sh
 	/usr/share/harbour-themepacksupport/restore_iz.sh
 	/usr/share/harbour-themepacksupport/restore_adpi.sh
@@ -74,6 +72,9 @@ fi
 fi
 
 %changelog
+* Sat Jan 5 2019 0.8.4
+- Service for running one-click restore before system upgrades.
+
 * Wed Dec 19 2018 0.8.3
 - Redesigned icon menu.
 

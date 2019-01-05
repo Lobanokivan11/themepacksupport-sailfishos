@@ -94,10 +94,10 @@ echo $iconpack > $main/icon-current
 
 # Re-enable service if enabled
 if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
-	systemctl enable harbour-themepacksupport.timer
-	systemctl start harbour-themepacksupport.timer
-	systemctl enable harbour-themepacksupport.service
-	systemctl start harbour-themepacksupport.service
+	systemctl enable themepacksupport-autoupdate.timer
+	systemctl start themepacksupport-autoupdate.timer
+	systemctl enable themepacksupport-autoupdate.service
+	systemctl start themepacksupport-autoupdate.service
 fi
 
 exit 0

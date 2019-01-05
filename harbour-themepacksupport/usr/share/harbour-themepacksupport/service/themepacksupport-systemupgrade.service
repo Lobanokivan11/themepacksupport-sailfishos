@@ -1,0 +1,10 @@
+[Unit]
+Description=Restore default theme before system update
+Before=sailfish-upgrade-ui.service
+
+[Service]
+Type=oneshot
+ExecStart=bla bla bla
+
+[Install]
+WantedBy=system-update.target

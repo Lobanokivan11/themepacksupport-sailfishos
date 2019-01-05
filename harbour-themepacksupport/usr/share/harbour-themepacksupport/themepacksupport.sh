@@ -52,12 +52,10 @@ do
    (D)isplay density
    (L)ipstick refresh
    (O)ne-click restore
-   (R)ecovery tools
-   Install GUI / UI (T)themer
-   I(N)stall required dependencies
-   Install Image(M)agick
+   (T)ools
+   Install GUI / UI T(H)emer
    (U)ninstall themes
-   (H)elp
+   (M)anual
    (A)bout
    (Q)uit
  ----------------------------------
@@ -69,7 +67,7 @@ EOF
     "F"|"f")  $main/font-menu.sh ;;
     "S"|"s")  $main/sound-menu.sh ;;
     "D"|"d")  $main/ddensity-menu.sh ;;
-    "R"|"r")  $main/tools-menu.sh ;;
+    "T"|"t")  $main/tools-menu.sh ;;
     "L"|"l")  echo "Refresh the homescreen? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
@@ -77,7 +75,7 @@ EOF
 		systemctl-user restart lipstick.service; echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "H"|"h")  clear
+    "M"|"m")  clear
 cat<<EOF
  Theme pack support for Sailfish OS
  ==================================
@@ -138,33 +136,11 @@ EOF
     "O"|"o")  echo "Customizations must be reverted before performing a system update. With One-click restore you can automate this process and restore icons, fonts and display density settings with just one click. Continue? y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) 	echo "Restoring..."
-		$main/restore_dpr.sh
-		$main/restore_iz.sh
-		$main/restore_adpi.sh
-		$main/preun_dpr.sh
-		$main/icon-restore.sh
-		$main/graphic-restore.sh
-		$main/font-restore.sh
-		$main/sound-restore.sh
+		y|Y ) 	$main/ocr.sh
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "N"|"n")  echo "Install required dependencies? y/N? "
-		read -n1 -s choice
-		case "$choice" in 
-		y|Y ) 	echo "It may take some time, do not quit."
-		$main/install_dependencies.sh; echo "done!"; sleep 1 ;;
-		* ) echo "aborted"; sleep 1 ;;
-		esac ;;
-    "M"|"m")  echo "Install ImageMagick? y/N? "
-		read -n1 -s choice
-		case "$choice" in 
-		y|Y ) 	echo "It may take some time, do not quit."
-		$main/install_imagemagick.sh; echo "done!"; sleep 1 ;;
-		* ) echo "aborted"; sleep 1 ;;
-		esac ;;
-    "T"|"t")  echo "Install UI themer? You need to have my repo enabled. y/N "
+    "H"|"h")  echo "Install UI themer? You need to have my repo enabled. y/N "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) 	echo "UI themer will be installed..."

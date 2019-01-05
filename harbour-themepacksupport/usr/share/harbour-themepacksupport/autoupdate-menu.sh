@@ -13,10 +13,10 @@ function load-service {
 if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
     systemctl daemon-reload
 else
-    systemctl enable harbour-themepacksupport.timer
-    systemctl start harbour-themepacksupport.timer
-    systemctl enable harbour-themepacksupport.service
-    systemctl start harbour-themepacksupport.service
+    systemctl enable themepacksupport-autoupdate.timer
+    systemctl start themepacksupport-autoupdate.timer
+    systemctl enable themepacksupport-autoupdate.service
+    systemctl start themepacksupport-autoupdate.service
     sed -i "s/.*tps_service.*/tps_service='1'/" $main/themepacksupport.cfg
 fi
 }
@@ -58,7 +58,7 @@ Persistent=true
 OnActiveSec=30m
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer		load-service
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer		load-service
 		echo "done!"; sleep 1 ;;
     "2")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -69,7 +69,7 @@ Persistent=true
 OnActiveSec=1h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer 
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer 
 		load-service
 		echo "done!"; sleep 1 ;;
     "3")  echo '[Unit]
@@ -81,7 +81,7 @@ Persistent=true
 OnActiveSec=2h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
 		echo "done!"; sleep 1 ;;
     "4")  echo '[Unit]
@@ -93,7 +93,7 @@ Persistent=true
 OnActiveSec=3h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
 		echo "done!"; sleep 1 ;;
     "5")  echo '[Unit]
@@ -105,7 +105,7 @@ Persistent=true
 OnActiveSec=6h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
 		echo "done!"; sleep 1 ;;
     "6")  echo '[Unit]
@@ -117,7 +117,7 @@ Persistent=true
 OnActiveSec=12h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
 		echo "done!"; sleep 1 ;;
     "7")  read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 and press enter: " choice
@@ -130,7 +130,7 @@ Persistent=true
 OnActiveSec=24h
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/harbour-themepacksupport.timer
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 echo $hrs > $main/service/hours
 		load-service
 		echo "done!"; sleep 1 ;;
@@ -139,10 +139,10 @@ echo $hrs > $main/service/hours
     "D"|"d")  echo "Disable auto-update icons y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) systemctl disable harbour-themepacksupport.timer
-		systemctl stop harbour-themepacksupport.timer
-		systemctl disable harbour-themepacksupport.service
-		systemctl stop harbour-themepacksupport.service
+		y|Y ) systemctl disable themepacksupport-autoupdate.timer
+		systemctl stop themepacksupport-autoupdate.timer
+		systemctl disable themepacksupport-autoupdate.service
+		systemctl stop themepacksupport-autoupdate.service
 		sed -i "s/.*tps_service.*/tps_service='0'/" $main/themepacksupport.cfg
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
