@@ -4,7 +4,7 @@ Before=sailfish-upgrade-ui.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/share/harbour-themepacksupport/ocr.sh
+ExecStart=/usr/share/harbour-themepacksupport/ocr_su.sh
 
 [Install]
 WantedBy=system-update.target

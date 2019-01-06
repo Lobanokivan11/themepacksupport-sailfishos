@@ -13,11 +13,7 @@ function load-service {
 if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
     systemctl daemon-reload
 else
-    systemctl enable themepacksupport-autoupdate.timer
-    systemctl start themepacksupport-autoupdate.timer
-    systemctl enable themepacksupport-autoupdate.service
-    systemctl start themepacksupport-autoupdate.service
-    sed -i "s/.*tps_service.*/tps_service='1'/" $main/themepacksupport.cfg
+    $main/enable-autoupdate.sh
 fi
 }
 
@@ -139,11 +135,7 @@ echo $hrs > $main/service/hours
     "D"|"d")  echo "Disable auto-update icons y/N? "
 		read -n1 -s choice
 		case "$choice" in 
-		y|Y ) systemctl disable themepacksupport-autoupdate.timer
-		systemctl stop themepacksupport-autoupdate.timer
-		systemctl disable themepacksupport-autoupdate.service
-		systemctl stop themepacksupport-autoupdate.service
-		sed -i "s/.*tps_service.*/tps_service='0'/" $main/themepacksupport.cfg
+		y|Y ) $main/disable-autoupdate.sh
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
