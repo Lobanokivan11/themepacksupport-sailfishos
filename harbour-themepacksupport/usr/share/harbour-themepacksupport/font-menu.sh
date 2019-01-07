@@ -23,6 +23,7 @@ if [ -d /usr/share/harbour-themepack-$choice/font ]; then
 		read -p "Please enter the default font weight for Sailfish OS and press enter: " w1
 	done
 	$main/font-run.sh -f $choice -s $w1
+	dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
 	echo "done!"; sleep 1
 fi
 # If Android support is installed
@@ -31,11 +32,14 @@ if [ -d /usr/share/harbour-themepack-$choice/font ]; then
 	if [ -s /usr/share/harbour-themepack-$choice/font/Regular.ttf ]; then
 		if [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
 			$main/font-run.sh -f $choice -a Regular -d Light
+     			dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
 		else
 			$main/font-run.sh -f $choice -a Regular -d Regular
+			dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
 		fi
 	elif [ -s /usr/share/harbour-themepack-$choice/font/Light.ttf ]; then
 		$main/font-run.sh -f $choice -a Light -d Light
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
 	else
 		echo "No fonts suitable for Android found"
 	fi
@@ -96,6 +100,7 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/font-restore.sh
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'none'"
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

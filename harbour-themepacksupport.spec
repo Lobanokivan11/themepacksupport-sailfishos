@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.4
-Release:        6
+Release:        7
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -22,10 +22,12 @@ Theme pack support for Sailfish OS.
 
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
+chmod +x /usr/share/harbour-themepacksupport/service/*.sh
 /usr/share/harbour-themepacksupport/postin_dpr.sh
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-systemupgrade.service /lib/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.service /etc/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.timer /etc/systemd/system/
+systemctl daemon-reload
 // If UI Themer is installed, keep the icon hidden
 if [ -d /usr/share/sailfishos-uithemer ]; then
 	    echo "NoDisplay=true" >> /usr/share/applications/harbour-themepacksupport.desktop
@@ -44,17 +46,12 @@ if [ $1 = 0 ]; then
 	systemctl disable themepacksupport-autoupdate.timer
 	systemctl stop themepacksupport-autoupdate.service
 	systemctl disable themepacksupport-autoupdate.service
+	systemctl disable themepacksupport-systemupgrade.service
 	rm /lib/systemd/system/themepacksupport-systemupgrade.service
 	rm /etc/systemd/system/themepacksupport-autoupdate.timer
 	rm /etc/systemd/system/themepacksupport-autoupdate.service
-	/usr/share/harbour-themepacksupport/restore_dpr.sh
-	/usr/share/harbour-themepacksupport/restore_iz.sh
-	/usr/share/harbour-themepacksupport/restore_adpi.sh
+	/usr/share/harbour-themepacksupport/ocr.sh
 	/usr/share/harbour-themepacksupport/preun_dpr.sh
-	/usr/share/harbour-themepacksupport/icon-restore.sh
-	/usr/share/harbour-themepacksupport/graphic-restore.sh
-	/usr/share/harbour-themepacksupport/font-restore.sh
-	/usr/share/harbour-themepacksupport/sound-restore.sh
 fi
 
 %postun

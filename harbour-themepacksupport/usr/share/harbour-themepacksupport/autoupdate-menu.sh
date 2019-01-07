@@ -54,7 +54,9 @@ Persistent=true
 OnActiveSec=30m
 
 [Install]
-WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer		load-service
+WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
+		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 1
 		echo "done!"; sleep 1 ;;
     "2")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -67,6 +69,7 @@ OnActiveSec=1h
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer 
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 2
 		echo "done!"; sleep 1 ;;
     "3")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -79,6 +82,7 @@ OnActiveSec=2h
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 3
 		echo "done!"; sleep 1 ;;
     "4")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -91,6 +95,7 @@ OnActiveSec=3h
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 4
 		echo "done!"; sleep 1 ;;
     "5")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -103,6 +108,7 @@ OnActiveSec=6h
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 5
 		echo "done!"; sleep 1 ;;
     "6")  echo '[Unit]
 Description=Timer for updating icon theme via Theme pack support.
@@ -115,6 +121,7 @@ OnActiveSec=12h
 [Install]
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 6
 		echo "done!"; sleep 1 ;;
     "7")  read -p "Please enter the hour of your choice in the format hh:mm eg 18:20 and press enter: " choice
 echo '[Unit]
@@ -129,6 +136,7 @@ OnActiveSec=24h
 WantedBy=timers.target' > /etc/systemd/system/themepacksupport-autoupdate.timer
 echo $hrs > $main/service/hours
 		load-service
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 7
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
@@ -136,6 +144,7 @@ echo $hrs > $main/service/hours
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/disable-autoupdate.sh
+		dconf write /desktop/lipstick/sailfishos-uithemer/autoUpdate 0
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
