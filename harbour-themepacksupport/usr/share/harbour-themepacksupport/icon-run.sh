@@ -91,6 +91,7 @@ fi
 # Save current icon pack
 rm $main/icon-current
 echo $iconpack > $main/icon-current
+dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
 
 # Re-enable service if enabled
 if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then

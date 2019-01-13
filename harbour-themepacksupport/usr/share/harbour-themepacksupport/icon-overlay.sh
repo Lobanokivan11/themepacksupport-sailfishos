@@ -59,6 +59,11 @@ for file in $(<$main/tmp/86x86.overlay); do
 	mv "$main/tmp/$file" $dir_apk
 done
 
+# Save current icon pack
+rm $main/icon-current
+echo $iconpack > $main/icon-current
+dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
+
 # Clean tmp directory
 rm -r $main/tmp/*.png
 rm -r $main/tmp/*.overlay

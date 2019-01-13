@@ -32,7 +32,6 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) systemctl enable themepacksupport-systemupgrade.service
-		dconf write /desktop/lipstick/sailfishos-uithemer/servicesu true
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
@@ -40,7 +39,6 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) systemctl disable themepacksupport-systemupgrade.service
-		dconf write /desktop/lipstick/sailfishos-uithemer/servicesu false
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

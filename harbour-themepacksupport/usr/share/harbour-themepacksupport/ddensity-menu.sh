@@ -18,6 +18,10 @@ do
 
  Please enter your choice:
  ----------------------------------
+   (E)nable display density 
+   settings
+   (D)isable display density 
+   settings
    (A)pply device pixel ratio
    (R)estore device pixel ratio
    (S)et icon size
@@ -29,10 +33,14 @@ do
 EOF
     read -n1 -s
     case "$REPLY" in
+    "E"|"e")    $main/enable-dpi.sh ;;
+		dconf write /desktop/lipstick/sailfishos-uithemer/densityEnabled true
+    "D"|"d")    $main/disable-dpi.sh ;;
+		dconf write /desktop/lipstick/sailfishos-uithemer/densityEnabled false
     "A"|"a")  	read -p "Please enter the device pixel ratio or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;
-		* )  su - nemo -c "dconf write /desktop/sailfish/silica/theme_pixel_ratio $choice"
+		* )  dconf write /desktop/sailfish/silica/theme_pixel_ratio $choice
 		echo "done!"; sleep 1 ;;
 		esac ;;
     "R"|"r")  echo "This will restore your default device pixel ratio. Continue y/N? "

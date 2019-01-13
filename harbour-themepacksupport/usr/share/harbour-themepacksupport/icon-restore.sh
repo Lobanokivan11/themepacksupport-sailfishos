@@ -61,5 +61,6 @@ fi
 # Set no icon pack
 rm $main/icon-current
 echo default > $main/icon-current
+dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'default'"
 
 exit 0

@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.4
-Release:        7
+Release:        10
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -23,11 +23,11 @@ Theme pack support for Sailfish OS.
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
 chmod +x /usr/share/harbour-themepacksupport/service/*.sh
-/usr/share/harbour-themepacksupport/postin_dpr.sh
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-systemupgrade.service /lib/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.service /etc/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.timer /etc/systemd/system/
 systemctl daemon-reload
+systemctl enable themepacksupport-systemupgrade.service
 // If UI Themer is installed, keep the icon hidden
 if [ -d /usr/share/sailfishos-uithemer ]; then
 	    echo "NoDisplay=true" >> /usr/share/applications/harbour-themepacksupport.desktop
@@ -51,7 +51,6 @@ if [ $1 = 0 ]; then
 	rm /etc/systemd/system/themepacksupport-autoupdate.timer
 	rm /etc/systemd/system/themepacksupport-autoupdate.service
 	/usr/share/harbour-themepacksupport/ocr.sh
-	/usr/share/harbour-themepacksupport/preun_dpr.sh
 fi
 
 %postun
@@ -61,11 +60,6 @@ if [ $1 = 0 ]; then
 	rm /usr/share/icons/hicolor/86x86/apps/harbour-themepacksupport.png
 	rm /usr/share/applications/harbour-themepacksupport.desktop
 	rm -rf /usr/share/harbour-themepacksupport
-else
-if [ $1 = 1 ]; then
-    // Do stuff specific to upgrades
-echo "Upgrading"
-fi
 fi
 
 %changelog
