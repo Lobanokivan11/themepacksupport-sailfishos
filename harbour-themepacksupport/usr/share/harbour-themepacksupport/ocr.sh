@@ -11,8 +11,8 @@ $main/icon-restore.sh
 $main/graphic-restore.sh
 $main/font-restore.sh
 $main/sound-restore.sh
-dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'none'"
-dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'none'"
+dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'default'"
+dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'default'"
 
 $main/restore_dpr.sh
 $main/restore_adpi.sh
