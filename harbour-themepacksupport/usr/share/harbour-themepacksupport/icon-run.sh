@@ -37,7 +37,7 @@ done
 done
 
 # Native icons
-nativeCap=( "256x256" "128x128" "108x108" "86x86" )
+nativeCap=( "256x256" "172x172" "128x128" "108x108" "86x86" )
 
 for ((i=0;i<${#nativeCap[@]};++i)); do
 for ((j=i;j<${#nativeCap[@]};++j)); do
@@ -91,7 +91,6 @@ fi
 # Save current icon pack
 rm $main/icon-current
 echo $iconpack > $main/icon-current
-dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
 
 # Re-enable service if enabled
 if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then

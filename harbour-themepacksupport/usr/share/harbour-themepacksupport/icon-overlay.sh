@@ -19,7 +19,7 @@ dir_apk=/var/lib/apkd
 # Native icons
 if [[ ! -f $pack/type || $(<$pack/type) != "android" ]]; then
 
-	nativeCap=( "256x256" "128x128" "108x108" "86x86" )
+	nativeCap=( "256x256" "172x172" "128x128" "108x108" "86x86" )
 
 	for ((i=0;i<${#nativeCap[@]};++i)); do
 	# if there are native icons
@@ -62,7 +62,6 @@ done
 # Save current icon pack
 rm $main/icon-current
 echo $iconpack > $main/icon-current
-dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
 
 # Clean tmp directory
 rm -r $main/tmp/*.png

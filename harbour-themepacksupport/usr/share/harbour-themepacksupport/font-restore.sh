@@ -38,7 +38,6 @@ fi
 # Set no font pack
 rm $main/font-current
 echo default > $main/font-current
-dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'default'"
 
 fi
 

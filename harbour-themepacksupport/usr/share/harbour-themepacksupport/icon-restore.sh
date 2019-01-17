@@ -24,7 +24,7 @@ for ((i=0;i<${#jollaCap[@]};++i)); do
 done
 
 # Native icons
-nativeCap=( "256x256" "128x128" "108x108" "86x86" )
+nativeCap=( "256x256" "172x172" "128x128" "108x108" "86x86" )
 
 for ((i=0;i<${#nativeCap[@]};++i)); do
 	# Perform copy of existing icons
@@ -61,6 +61,5 @@ fi
 # Set no icon pack
 rm $main/icon-current
 echo default > $main/icon-current
-dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'default'"
 
 exit 0

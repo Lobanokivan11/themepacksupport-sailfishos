@@ -160,7 +160,6 @@ fi
 # Save current font pack
 rm $main/font-current
 echo $fontpack > $main/font-current
-dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$fontpack'"
 
 # Warm about backup not performed
 else
