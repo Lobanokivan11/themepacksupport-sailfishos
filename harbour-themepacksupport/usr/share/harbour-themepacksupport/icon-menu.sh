@@ -42,6 +42,7 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/icon-restore.sh
+		touch /usr/share/applications/*.desktop
 		dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'default'"
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
