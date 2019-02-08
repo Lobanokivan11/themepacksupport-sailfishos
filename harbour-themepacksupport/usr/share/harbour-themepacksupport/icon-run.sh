@@ -53,7 +53,7 @@ done
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
 
-apkCap=( "128x128" "86x86" )
+apkCap=( "192x192" "128x128" "86x86" )
 
 for ((i=0;i<${#apkCap[@]};++i)); do
 for ((j=i;j<${#apkCap[@]};++j)); do
@@ -61,7 +61,7 @@ for ((j=i;j<${#apkCap[@]};++j)); do
 	if [ -d $pack/apk/${apkCap[j]} ]; then
 		# Perform copy of existing icons
 		rsync -a --existing $pack/apk/${apkCap[j]}/ $dir_apk/
-		break
+		break 3
 	fi
 done
 done

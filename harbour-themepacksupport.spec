@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.8.4
-Release:        16
+Version:        0.8.5
+Release:        2
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -58,6 +58,10 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Thu Feb 7 2019 0.8.5
+- Support for 192x192 Android icons.
+- Overlay support improved for Sailfish X.
+ 
 * Sat Jan 5 2019 0.8.4
 - Service for running one-click restore before system upgrades.
 

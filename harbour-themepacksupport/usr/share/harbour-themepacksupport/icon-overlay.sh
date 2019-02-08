@@ -42,21 +42,36 @@ if [[ ! -f $pack/type || $(<$pack/type) != "android" ]]; then
 fi
 
 # if there are Android icons
-if [ -d $pack/apk/86x86 ]; then
+apkCap=( "192x192" "128x128" "86x86" )
+apkSize=( "142x142" "88x88" "56x56" )
+
+for ((i=0;i<${#apkCap[@]};++i)); do
+# if there are Android icons
+if [ -d $pack/apk/${apkCap[i]} ]; then
 	# List icons not in the theme
-	diff -r $dir_apk $pack/apk/86x86 | grep 'Only in /var/lib/apkd' | awk '{print $4}' > $main/tmp/86x86.overlay
+	diff -r $dir_apk $pack/apk/${apkCap[i]} | grep 'Only in /var/lib/apkd' | awk '{print $4}' > $main/tmp/${apkCap[i]}.overlaydroid
+fi
+done
+
+if [[ ! -f $main/tmp/*.overlaydroid && $(<$pack/type) == "android" ]]; then
+   ls $dir_apk > $main/tmp/192x192.overlaydroid
 fi
 
-if [[ ! -f $main/tmp/86x86.overlay && $(<$pack/type) == "android" ]]; then
-   ls $dir_apk > $main/tmp/86x86.overlay
-fi
+for ((i=0;i<${#apkCap[@]};++i)); do
 
-for file in $(<$main/tmp/86x86.overlay); do 
+if [ -f $main/tmp/${apkCap[i]}.overlaydroid ]; then
+
+	for file in $(<$main/tmp/${apkCap[i]}.overlaydroid); do 
 	# Convert icons with ImageMagick
 	find $pack/overlay/ -type f -name "*.png" | shuf -n 1 |\
-	convert \( @- -scale 86x86 -gravity Center \) \( $dir_apk/$file -scale 55x55 -gravity Center \) -composite -gravity Center -geometry 86x86 $main/tmp/$file
+	convert \( @- -scale ${apkCap[i]} -gravity Center \) \( $dir_apk/$file -scale ${apkSize[i]} -gravity Center \) -composite -gravity Center -geometry ${apkCap[i]} $main/tmp/$file
 	# Move icons
 	mv "$main/tmp/$file" $dir_apk
+	done
+	break 3
+
+fi
+
 done
 
 # Save current icon pack
@@ -66,3 +81,4 @@ echo $iconpack > $main/icon-current
 # Clean tmp directory
 rm -r $main/tmp/*.png
 rm -r $main/tmp/*.overlay
+rm -r $main/tmp/*.overlaydroid
