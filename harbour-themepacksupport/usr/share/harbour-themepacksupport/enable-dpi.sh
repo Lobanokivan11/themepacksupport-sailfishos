@@ -2,16 +2,17 @@
 
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
-backup=/usr/share/harbour-themepacksupport/backup/dlocks
 system=/etc/dconf/db/vendor.d/locks/
 dir_droid=/opt/alien/system
 
+mkdir -p $main/backup/dlocks
+
 if [ -f $system/silica-configs.txt ]; then
-	mv $system/silica-configs.txt $backup/silica-configs.txt.bk
+	mv $system/silica-configs.txt $main/backup/dlocks/silica-configs.txt.bk
 fi
 
 if [ -f $system/ui-configs.txt ]; then
-	mv $system/ui-configs.txt $backup/ui-configs.txt.bk
+	mv $system/ui-configs.txt $main/backup/dlocks/ui-configs.txt.bk
 fi
 
 dconf update

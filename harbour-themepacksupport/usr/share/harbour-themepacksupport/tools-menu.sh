@@ -20,12 +20,14 @@ do
  ----------------------------------
    Install required (D)ependencies
    Install Image(M)agick
+   Back(U)p icons
+   (R)estore icons backup
    (O)ne-click restore service
    Reinstall (I)cons
    Reinstall (F)onts
    Unapply (A)ll Patchmanager patches
    Uninstall (P)atchmanager
-   Reinstall (U)I
+   Reinstall (L)ipstick
    (B)ack
  ----------------------------------
 
@@ -45,6 +47,17 @@ EOF
 		y|Y ) 	echo "It may take some time, do not quit."
 		$main/install_imagemagick.sh; echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+    "U"|"u")  echo "Backup icons? y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) 	$main/tools-iconbackup.sh; echo "done!"; sleep 3 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+    "R"|"r")  read -p "Please enter the full path of the backup file or 'q' to exit and press enter: " choice
+		case "$choice" in 
+		q|Q ) echo "ok"; sleep 1;;
+		* ) $main/tools-iconrestore.sh $choice; echo "done!"; sleep 3 ;;
 		esac ;;
     "O"|"o")  $main/systemupgrade-service.sh ;;
     "I"|"i")  echo "This will restore the default Sailfish OS icons. Continue y/N? "
@@ -79,7 +92,7 @@ EOF
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;
-    "U"|"u")  echo "This will restore the Sailfish OS UI. Continue y/N? "
+    "L"|"l")  echo "This will restore the Sailfish OS UI. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) pkcon  install --allow-reinstall -y lipstick-qt5 lipstick-jolla-home-qt5 jolla-settings jolla-settings-system

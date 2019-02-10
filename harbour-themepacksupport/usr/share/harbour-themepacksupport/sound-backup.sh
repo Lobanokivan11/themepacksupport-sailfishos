@@ -4,6 +4,8 @@
 main=/usr/share/harbour-themepacksupport
 dir_jolla=/usr/share/sounds/jolla-ambient/stereo
 
+mkdir -p $main/backup/sound
+
 # Copy Jolla sounds
 cp $dir_jolla/* $main/backup/sound/
 

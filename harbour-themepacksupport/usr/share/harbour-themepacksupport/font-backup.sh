@@ -5,6 +5,10 @@ main=/usr/share/harbour-themepacksupport
 dir_jolla=/usr/share/fonts
 dir_apk=/opt/alien/system/fonts
 
+mkdir -p $main/backup/font
+mkdir -p $main/backup/font-droid
+mkdir -p $main/backup/font-nonlatin
+
 # Copy Jolla fonts
 cp -R $dir_jolla/* $main/backup/font/
 

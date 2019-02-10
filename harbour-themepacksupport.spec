@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.8.5
-Release:        2
+Version:        0.8.6
+Release:        1
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -23,6 +23,8 @@ Theme pack support for Sailfish OS.
 %post
 chmod +x /usr/share/harbour-themepacksupport/*.sh
 chmod +x /usr/share/harbour-themepacksupport/service/*.sh
+mkdir -p /usr/share/harbour-themepacksupport/backup
+mkdir -p /usr/share/harbour-themepacksupport/tmp
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-systemupgrade.service /lib/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.service /etc/systemd/system/
 mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.timer /etc/systemd/system/
@@ -58,6 +60,9 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Sun Feb 10 2019 0.8.6
+- Backup/restore icons.
+
 * Thu Feb 7 2019 0.8.5
 - Support for 192x192 Android icons.
 - Overlay support improved for Sailfish X.

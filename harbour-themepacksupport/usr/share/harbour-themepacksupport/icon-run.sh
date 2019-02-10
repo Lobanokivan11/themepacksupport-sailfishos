@@ -17,7 +17,7 @@ dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
 
 # Check if a backup has been performed
-#if [ ! "$(ls $main/backup/jolla)" -o ! "$(ls $main/backup/native)" -o ! "$(ls $main/backup/apk)" -o ! "$(ls $main/backup/dyncal)" -o ! "$(ls $main/backup/dynclock)" ]; then
+#if [ ! "$(ls $main/backup/icons)" ]; then
 #	echo "Run backup first!"
 #	exit 1
 #fi
