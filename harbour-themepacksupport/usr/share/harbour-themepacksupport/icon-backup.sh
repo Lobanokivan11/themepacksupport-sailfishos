@@ -14,6 +14,8 @@ if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
 	systemctl stop themepacksupport-autoupdate.service
 fi
 
+mkdir -p $main/tmp
+mkdir -p $main/backup
 mkdir -p $main/backup/icons
 mkdir -p $main/backup/icons/jolla
 mkdir -p $main/backup/icons/native

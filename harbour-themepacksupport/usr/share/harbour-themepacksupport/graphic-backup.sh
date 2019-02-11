@@ -4,6 +4,8 @@
 main=/usr/share/harbour-themepacksupport
 dir_jolla=/usr/share/themes/sailfish-default/meegotouch/icons
 
+mkdir -p $main/tmp
+mkdir -p $main/backup
 mkdir -p $main/backup/graphic
 
 # List graphic icons

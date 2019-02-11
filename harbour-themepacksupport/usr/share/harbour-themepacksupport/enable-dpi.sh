@@ -5,6 +5,8 @@ main=/usr/share/harbour-themepacksupport
 system=/etc/dconf/db/vendor.d/locks/
 dir_droid=/opt/alien/system
 
+mkdir -p $main/tmp
+mkdir -p $main/backup
 mkdir -p $main/backup/dlocks
 
 if [ -f $system/silica-configs.txt ]; then
