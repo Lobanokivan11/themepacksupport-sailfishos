@@ -17,8 +17,8 @@ Informations on how create theme packs compatible with my script. Use my [dummy 
 
 Read the page relative to the theme part you're creating, then come back here.
 
-* [Icons](icons.md)
-* [Fonts](fonts.md)
+* [Icons](icons)
+* [Fonts](docs/fonts)
 * [Sounds](sounds.md)
 
 ## .spec file
