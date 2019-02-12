@@ -2,6 +2,7 @@
 layout: default
 title: Get started
 nav_order: 2
+permalink: docs/getstarted
 ---
 
 # Get started
