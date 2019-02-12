@@ -1,1 +1,5 @@
 remote_theme: pmarsceill/just-the-docs
+search_enabled: true
+aux_links:
+    "Theme pack support on GitHub":
+      - "//github.com/fravaccaro/themepacksupport-sailfishos"
