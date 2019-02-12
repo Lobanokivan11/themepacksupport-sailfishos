@@ -1,6 +1,7 @@
 remote_theme: pmarsceill/just-the-docs
 title: Theme pack support
 description: Theme pack support for Sailfish OS
+baseurl: "themepacksupport-sailfishos"
 permalink: pretty
 exclude: ["harbour-themepacksupport/", "LICENSE", "*.png", "*.spec"]
 
