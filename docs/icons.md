@@ -1,3 +1,11 @@
+---
+layout: default
+title: Icon pack guidelines
+parent: Get started
+nav_order: 1
+permalink: /docs/icons
+---
+
 # Icon pack guidelines
 
 Here you'll find info on how to create icons compatible with Theme pack support.
@@ -105,4 +113,4 @@ If your theme sports regular icon shape, you can create an overlay, that can be 
 
 ### Android apps
 
-If you want to apply an overlay to Android apps only, place in the root folder of your theme a file named 'type', containing a single line with the text 'android' (without apices).
+If you want to apply an overlay to Android apps only, place in the root folder of your theme a file named 'type', containing a single line with the text 'android' (without apices). Note: this works with themes containing ONLY overlays.

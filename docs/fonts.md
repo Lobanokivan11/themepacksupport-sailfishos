@@ -1,3 +1,11 @@
+---
+layout: default
+title: Font pack guidelines
+parent: Get started
+nav_order: 2
+permalink: /docs/fonts
+---
+
 # Font pack guidelines
 
 Here you'll find info on how to create fonts compatible with Theme pack support.

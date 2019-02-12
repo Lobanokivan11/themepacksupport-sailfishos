@@ -1,3 +1,11 @@
+---
+layout: default
+title: Home
+nav_order: 1
+description: "Theme pack support for Sailfish OS"
+permalink: /
+---
+
 # Theme pack support for Sailfish OS
 
 The script works by replacing default elements with custom ones and enables safe backup/restore. A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).

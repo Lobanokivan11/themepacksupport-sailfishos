@@ -1,3 +1,11 @@
+---
+layout: default
+title: Sound pack guidelines
+parent: Get started
+nav_order: 3
+permalink: /docs/sounds
+---
+
 # Sound pack guidelines
 
 Here you'll find info on how to create sounds compatible with Theme pack support.

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Get started
+nav_order: 2
+pernalink: /docs/getstarted
+---
+
 # Get started
 
 Informations on how create theme packs compatible with my script. Use my [dummy package](https://github.com/fravaccaro/harbour-themepack-dummy) as reference, it includes the basic directory tree and an example spec file.
