@@ -1,9 +1,3 @@
-layout: default
-title: Home
-nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
-permalink: /
-
 # Theme pack support for Sailfish OS
 
 The script works by replacing default elements with custom ones and enables safe backup/restore. A GUI is available [here](https://fravaccaro.github.io/sailfishos-uithemer/).
