@@ -3,7 +3,6 @@ layout: default
 title: Font pack guidelines
 parent: Get started
 nav_order: 2
-permalink: /docs/fonts
 ---
 
 # Font pack guidelines
