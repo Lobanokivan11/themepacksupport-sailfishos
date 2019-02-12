@@ -3,7 +3,6 @@ layout: default
 title: Icon pack guidelines
 parent: Get started
 nav_order: 1
-permalink: /docs/icons
 ---
 
 # Icon pack guidelines

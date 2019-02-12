@@ -3,7 +3,6 @@ layout: default
 title: Sound pack guidelines
 parent: Get started
 nav_order: 3
-permalink: /docs/sounds
 ---
 
 # Sound pack guidelines
