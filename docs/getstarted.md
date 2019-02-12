@@ -3,6 +3,8 @@ layout: default
 title: Get started
 nav_order: 2
 permalink: docs/getstarted
+has_children: true
+has_toc: true
 ---
 
 # Get started
@@ -18,8 +20,8 @@ Informations on how create theme packs compatible with my script. Use my [dummy 
 Read the page relative to the theme part you're creating, then come back here.
 
 * [Icons](icons)
-* [Fonts](docs/fonts)
-* [Sounds](sounds.md)
+* [Fonts](fonts)
+* [Sounds](sounds)
 
 ## .spec file
 
