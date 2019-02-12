@@ -3,7 +3,6 @@ layout: default
 title: Home
 nav_order: 1
 description: "Theme pack support for Sailfish OS"
-permalink: /
 ---
 
 # Theme pack support for Sailfish OS
