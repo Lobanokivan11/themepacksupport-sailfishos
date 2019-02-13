@@ -73,6 +73,9 @@ EOF
 		y|Y ) $main/font-restore.sh
 		pkcon repo-set-data jolla refresh-now true
 		pkcon install --allow-reinstall -y sailfish-fonts
+		if [ -d /usr/share/sailfishos-uithemer ]; then
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'default'"
+		fi
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

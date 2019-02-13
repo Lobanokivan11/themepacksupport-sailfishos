@@ -34,9 +34,13 @@ EOF
     read -n1 -s
     case "$REPLY" in
     "E"|"e")    $main/enable-dpi.sh ;;
+		if [ -d /usr/share/sailfishos-uithemer ]; then
 		dconf write /desktop/lipstick/sailfishos-uithemer/densityEnabled true
+		fi
     "D"|"d")    $main/disable-dpi.sh ;;
+		if [ -d /usr/share/sailfishos-uithemer ]; then
 		dconf write /desktop/lipstick/sailfishos-uithemer/densityEnabled false
+		fi
     "A"|"a")  	read -p "Please enter the device pixel ratio or 'q' to exit and press enter: " choice
 		case "$choice" in 
 		q|Q ) echo "ok"; sleep 1;;

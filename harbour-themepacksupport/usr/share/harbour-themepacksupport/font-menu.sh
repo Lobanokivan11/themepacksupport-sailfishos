@@ -75,11 +75,15 @@ EOF
 			$main/font-restore.sh
 			$main/font-backup.sh
 			font-changer
+			if [ -d /usr/share/sailfishos-uithemer ]; then
 			dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
+			fi
 		else
 			$main/font-backup.sh
 			font-changer
+			if [ -d /usr/share/sailfishos-uithemer ]; then
 			dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'$choice'"
+			fi
 		fi
 		esac ;;
     "F"|"f")  read -p "Please enter font size multiplier or 'q' to exit and press enter. Suggested size is 1.1 or 1.2: " f1
@@ -98,7 +102,9 @@ EOF
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/font-restore.sh
+		if [ -d /usr/share/sailfishos-uithemer ]; then
 		dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'default'"
+		fi
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

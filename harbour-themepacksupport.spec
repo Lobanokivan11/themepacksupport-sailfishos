@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.6
-Release:        3
+Release:        4
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -21,30 +21,38 @@ Theme pack support for Sailfish OS.
 /usr/share/*
 
 %post
-chmod +x /usr/share/harbour-themepacksupport/*.sh
-chmod +x /usr/share/harbour-themepacksupport/service/*.sh
-mkdir -p /usr/share/harbour-themepacksupport/backup
-mkdir -p /usr/share/harbour-themepacksupport/tmp
-mv /usr/share/harbour-themepacksupport/service/themepacksupport-systemupgrade.service /lib/systemd/system/
-mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.service /etc/systemd/system/
-mv /usr/share/harbour-themepacksupport/service/themepacksupport-autoupdate.timer /etc/systemd/system/
+chmod +x /usr/share/%{name}/*.sh
+chmod +x /usr/share/%{name}/service/*.sh
+mkdir -p /usr/share/%{name}/backup
+mkdir -p /usr/share/%{name}/tmp
+mv /usr/share/%{name}/service/themepacksupport-systemupgrade.service /lib/systemd/system/
+mv /usr/share/%{name}/service/themepacksupport-autoupdate.service /etc/systemd/system/
+mv /usr/share/%{name}/service/themepacksupport-autoupdate.timer /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable themepacksupport-systemupgrade.service
 // If UI Themer is installed, keep the icon hidden
 if [ -d /usr/share/sailfishos-uithemer ]; then
-	    echo "NoDisplay=true" >> /usr/share/applications/harbour-themepacksupport.desktop
+	echo "NoDisplay=true" >> /usr/share/applications/%{name}.desktop
 fi
 if [ $1 = 1 ]; then
 	// First installation
-	ln -s /usr/share/harbour-themepacksupport/themepacksupport.sh /usr/bin/themepacksupport
-	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.png /usr/share/icons/hicolor/86x86/apps/
-	mv /usr/share/harbour-themepacksupport/harbour-themepacksupport.desktop /usr/share/applications/
+	ln -s /usr/share/%{name}/themepacksupport.sh /usr/bin/themepacksupport
+	mv /usr/share/%{name}/%{name}.png /usr/share/icons/hicolor/86x86/apps/
+	mv /usr/share/%{name}/%{name}.desktop /usr/share/applications/
 fi
 
 %preun
 if [ $1 = 0 ]; then
 	// Uninstallation
-	/usr/share/harbour-themepacksupport/ocr.sh
+	/usr/share/%{name}/disable-autoupdate.sh
+	/usr/share/%{name}/icon-restore.sh
+	/usr/share/%{name}/graphic-restore.sh
+	/usr/share/%{name}/font-restore.sh
+	/usr/share/%{name}/sound-restore.sh
+	/usr/share/%{name}/restore_dpr.sh
+	/usr/share/%{name}/restore_adpi.sh
+	/usr/share/%{name}/restore_iz.sh
+	/usr/share/%{name}/disable-dpi.sh
 fi
 
 %postun
@@ -54,9 +62,9 @@ if [ $1 = 0 ]; then
 	rm /lib/systemd/system/themepacksupport-systemupgrade.service
 	rm /etc/systemd/system/themepacksupport-autoupdate.timer
 	rm /etc/systemd/system/themepacksupport-autoupdate.service
-	rm /usr/share/icons/hicolor/86x86/apps/harbour-themepacksupport.png
-	rm /usr/share/applications/harbour-themepacksupport.desktop
-	rm -rf /usr/share/harbour-themepacksupport
+	rm /usr/share/icons/hicolor/86x86/apps/%{name}.png
+	rm /usr/share/applications/%{name}.desktop
+	rm -rf /usr/share/%{name}
 fi
 
 %changelog

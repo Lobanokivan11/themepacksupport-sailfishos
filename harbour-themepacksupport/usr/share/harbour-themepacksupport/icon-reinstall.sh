@@ -12,6 +12,10 @@ pkcon install --allow-reinstall -y sailfish-content-graphics-default-z1.0-base s
 ls -d /usr/share/themes/sailfish-default/meegotouch/[z]* | cut -c47- | tr "\n" " " > $main/tmp/default-icons
 for i in $(<$main/tmp/default-icons); do pkcon install --allow-reinstall -y sailfish-content-graphics-closed-$i; done
 
+if [ -d /usr/share/sailfishos-uithemer ]; then
+	dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'default'"
+fi
+
 # Clean tmp directory
 if [ "$(ls $main/tmp)" ]; then
 	rm $main/tmp/*

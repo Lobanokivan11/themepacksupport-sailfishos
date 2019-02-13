@@ -19,7 +19,9 @@ case "$iconpack" in
 	$main/icon-backup.sh
 	$main/icon-run.sh $iconpack
 	touch /usr/share/applications/*.desktop
+	if [ -d /usr/share/sailfishos-uithemer ]; then
 	dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
+	fi
 	echo "done!" ; sleep 1 ;;
 esac 
 
@@ -31,7 +33,9 @@ if [ -d "/usr/share/harbour-themepack-$iconpack/overlay" ]; then
 			y|Y ) echo "applying $iconpack overlay"
 			$main/icon-overlay.sh $iconpack
 			touch /usr/share/applications/*.desktop
+			if [ -d /usr/share/sailfishos-uithemer ]; then
 			dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
+			fi
 			echo "done!"; sleep 1 ;;
 			* ) echo "ok"; sleep 1 ;;
 		esac 
