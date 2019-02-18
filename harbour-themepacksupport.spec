@@ -1,5 +1,5 @@
 Name:           harbour-themepacksupport
-Version:        0.8.6
+Version:        0.8.7
 Release:        4
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
@@ -68,6 +68,9 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Mon Feb 18 2019 0.8.7
+- Initial support for Android DPI settings on XA2.
+
 * Sun Feb 10 2019 0.8.6
 - Backup/restore icons.
 
