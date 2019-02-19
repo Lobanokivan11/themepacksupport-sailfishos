@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.7
-Release:        4
+Release:        9
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -30,6 +30,10 @@ mv /usr/share/%{name}/service/themepacksupport-autoupdate.service /etc/systemd/s
 mv /usr/share/%{name}/service/themepacksupport-autoupdate.timer /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable themepacksupport-systemupgrade.service
+
+// Save the model in a file
+ssu mo | sed 's/.*: //' > /usr/share/%{name}/device-model
+
 // If UI Themer is installed, keep the icon hidden
 if [ -d /usr/share/sailfishos-uithemer ]; then
 	echo "NoDisplay=true" >> /usr/share/applications/%{name}.desktop
@@ -68,7 +72,7 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
-* Mon Feb 18 2019 0.8.7
+* Tue Feb 19 2019 0.8.7
 - Initial support for Android DPI settings on XA2.
 
 * Sun Feb 10 2019 0.8.6

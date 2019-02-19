@@ -43,7 +43,7 @@ fi
 
 # if there are Android icons
 apkCap=( "192x192" "128x128" "86x86" )
-apkSize=( "142x142" "88x88" "56x56" )
+apkSize=( "122x122" "78x78" "56x56" )
 
 for ((i=0;i<${#apkCap[@]};++i)); do
 # if there are Android icons
