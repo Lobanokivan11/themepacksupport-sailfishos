@@ -7,7 +7,6 @@ dir_jolla=/usr/share/sounds/jolla-ambient/stereo
 # Check if a backup has been performed
 if [ "$(ls $main/backup/sound)" ]; then
 
-
 # Restore Jolla sounds
 cp $main/backup/sound/* $dir_jolla
 

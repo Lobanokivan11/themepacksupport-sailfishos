@@ -17,7 +17,7 @@ The script works by replacing default elements with custom ones and enables safe
 - Icon theming.
 - Icon overlay.
 - Font theming.
-- Sound theming (needs further testing).
+- Sound theming.
 - Change device pixel ratio.
 - Change DPI for Alien Dalvik.
 - Change icon size.

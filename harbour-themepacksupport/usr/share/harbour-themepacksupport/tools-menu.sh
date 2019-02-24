@@ -25,6 +25,7 @@ do
    (O)ne-click restore service
    Reinstall (I)cons
    Reinstall (F)onts
+   Reinstall (S)ounds
    Unapply (A)ll Patchmanager patches
    Uninstall (P)atchmanager
    Reinstall (L)ipstick
@@ -75,6 +76,18 @@ EOF
 		pkcon install --allow-reinstall -y sailfish-fonts
 		if [ -d /usr/share/sailfishos-uithemer ]; then
 		dconf write /desktop/lipstick/sailfishos-uithemer/activeFontPack "'default'"
+		fi
+		echo "done!"; sleep 1 ;;
+		* ) echo "aborted"; sleep 1 ;;
+		esac ;;
+    "S"|"s")  echo "This will restore the default Sailfish OS sounds. Continue y/N? "
+		read -n1 -s choice
+		case "$choice" in 
+		y|Y ) $main/sound-restore.sh
+		pkcon repo-set-data jolla refresh-now true
+		pkcon install --allow-reinstall -y jolla-ambient-sound-theme
+		if [ -d /usr/share/sailfishos-uithemer ]; then
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeSoundPack "'default'"
 		fi
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;

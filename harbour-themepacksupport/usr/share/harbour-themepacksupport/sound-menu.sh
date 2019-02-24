@@ -45,12 +45,18 @@ EOF
 		$main/sound-backup.sh
 		$main/sound-run.sh $choice
 		fi
+		if [ -d /usr/share/sailfishos-uithemer ]; then
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeSoundPack "'$choice'"
+		fi
 		echo "done!"; sleep 1 ;;
 		esac ;;
     "R"|"r")  echo "This will restore your default sound pack. Continue y/N? "
 		read -n1 -s choice
 		case "$choice" in 
 		y|Y ) $main/sound-restore.sh
+		if [ -d /usr/share/sailfishos-uithemer ]; then
+		dconf write /desktop/lipstick/sailfishos-uithemer/activeSoundPack "'default'"
+		fi
 		echo "done!"; sleep 1 ;;
 		* ) echo "aborted"; sleep 1 ;;
 		esac ;;

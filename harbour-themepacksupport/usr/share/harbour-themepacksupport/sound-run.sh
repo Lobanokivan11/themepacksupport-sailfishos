@@ -29,7 +29,7 @@ fi
 
 # Save current sound pack
 rm $main/sound-current
-echo $iconpack > $main/sound-current
+echo $soundpack > $main/sound-current
 
 # Warm about backup not performed
 else
