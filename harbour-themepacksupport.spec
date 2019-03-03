@@ -11,7 +11,7 @@ Requires:       sailfish-version >= 2.1.4, rsync
 BuildArch:      noarch
 Packager:       fravaccaro <fravaccaro@jollacommunity.it>
 License:        GPLv3
-URL:            https://github.com/fravaccaro/themepacksupport-sailfishos
+URL:            https://github.com/uithemer/themepacksupport-sailfishos
 
 %description
 Theme pack support for Sailfish OS.
