@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.8.7
-Release:        12
+Version:        0.8.8
+Release:        1
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -25,6 +25,7 @@ chmod +x /usr/share/%{name}/*.sh
 chmod +x /usr/share/%{name}/service/*.sh
 mkdir -p /usr/share/%{name}/backup
 mkdir -p /usr/share/%{name}/tmp
+mkdir -p /home/nemo/.themepack
 mv /usr/share/%{name}/service/themepacksupport-systemupgrade.service /lib/systemd/system/
 mv /usr/share/%{name}/service/themepacksupport-autoupdate.service /etc/systemd/system/
 mv /usr/share/%{name}/service/themepacksupport-autoupdate.timer /etc/systemd/system/
@@ -69,9 +70,13 @@ if [ $1 = 0 ]; then
 	rm /usr/share/icons/hicolor/86x86/apps/%{name}.png
 	rm /usr/share/applications/%{name}.desktop
 	rm -rf /usr/share/%{name}
+	rm -rf /home/nemo/.themepack
 fi
 
 %changelog
+* Sat Mar 23 2019 0.8.8
+- Support for themes in home storage
+
 * Tue Feb 19 2019 0.8.7
 - Initial support for Android DPI settings on XA2.
 
