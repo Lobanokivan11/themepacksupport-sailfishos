@@ -48,5 +48,6 @@ App icon inspired by [Freepik](http://www.freepik.com) from [www.flaticon.com](h
 
 ## Contributors
 
+* Engine design and bash scripting by fravaccaro.
 * One-click restore service by Eugenio_g7.
 * Fix for Android icons on the XA2 by Eugenio_g7.

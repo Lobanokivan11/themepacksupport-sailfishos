@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.9
-Release:        11
+Release:        12
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -51,7 +51,6 @@ fi
 %preun
 if [ $1 = 0 ]; then
 	// Uninstallation
-	systemctl disable themepacksupport-apkicons.service
 	systemctl disable themepacksupport-systemupgrade.service
 	/usr/share/%{name}/disable-autoupdate.sh
 	/usr/share/%{name}/icon-restore.sh
@@ -68,7 +67,6 @@ fi
 if [ $1 = 0 ]; then
 	// Uninstallation
 	unlink /usr/bin/themepacksupport
-	rm /lib/systemd/system/themepacksupport-apkicons.service
 	rm /lib/systemd/system/themepacksupport-systemupgrade.service
 	rm /etc/systemd/system/themepacksupport-autoupdate.timer
 	rm /etc/systemd/system/themepacksupport-autoupdate.service

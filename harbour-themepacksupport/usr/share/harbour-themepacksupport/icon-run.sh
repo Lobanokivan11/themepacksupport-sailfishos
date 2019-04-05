@@ -66,10 +66,6 @@ for ((j=i;j<${#apkCap[@]};++j)); do
 done
 done
 
-if [ -d "$pack/apk" ]; then
-	systemctl enable themepacksupport-apkicons.service
-fi
-
 fi
 
 # If DynCal is installed
