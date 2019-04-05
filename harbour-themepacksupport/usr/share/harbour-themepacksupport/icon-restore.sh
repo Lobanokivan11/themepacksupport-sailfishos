@@ -13,6 +13,7 @@ if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
 	systemctl disable themepacksupport-autoupdate.service
 	systemctl stop themepacksupport-autoupdate.service
 fi
+systemctl disable themepacksupport-apkicons.service
 
 # Jolla icons
 jollaCap=( "z2.0" "z1.75" "z1.5-large" "z1.5" "z1.25" "z1.0" )

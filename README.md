@@ -45,3 +45,8 @@ Roadmap and features will be tracked on the [Trello dashboard](https://trello.co
 ## Credits
 
 App icon inspired by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).
+
+## Contributors
+
+* One-click restore service by Eugenio_g7.
+* Fix for Android icons on the XA2 by Eugenio_g7.
