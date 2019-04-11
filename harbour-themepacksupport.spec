@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.8.9
-Release:        12
+Version:        0.8.10
+Release:        2
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -77,6 +77,9 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Tue Apr 9 2019 0.8.10
+- Bugfix.
+
 * Sat Apr 6 2019 0.8.9
 - Fix for Android icons on the XA2 (thanks to Eugenio_g7).
 
