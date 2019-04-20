@@ -10,8 +10,8 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "font" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/font-tmp1
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "font-nonlatin" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/font-tmp2
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "font" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/font-tmp1
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "font-nonlatin" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/font-tmp2
 cat $main/tmp/font-tmp* | sort | uniq > $main/tmp/font.menu
 
 function font-changer {

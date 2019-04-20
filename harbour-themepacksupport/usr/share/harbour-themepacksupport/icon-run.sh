@@ -15,6 +15,7 @@ pack=/usr/share/harbour-themepack-$iconpack
 dir_jolla=/usr/share/themes/sailfish-default/meegotouch
 dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
+source $main/config.shlib
 
 # Check if a backup has been performed
 #if [ ! "$(ls $main/backup/icons)" ]; then
@@ -93,7 +94,7 @@ rm $main/icon-current
 echo $iconpack > $main/icon-current
 
 # Re-enable service if enabled
-if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+if [[ "$(config_get autoupd)" == "1" ]]; then
 	systemctl enable themepacksupport-autoupdate.timer
 	systemctl start themepacksupport-autoupdate.timer
 	systemctl enable themepacksupport-autoupdate.service

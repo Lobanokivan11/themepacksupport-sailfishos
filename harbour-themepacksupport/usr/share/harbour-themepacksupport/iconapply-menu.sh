@@ -8,6 +8,7 @@ fi
 
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
+source $main/config.shlib
 
 cat $main/tmp/icon.menu
 echo " "
@@ -18,6 +19,7 @@ case "$iconpack" in
 	$main/icon-restore.sh
 	$main/icon-backup.sh
 	$main/icon-run.sh $iconpack
+	config_write iconoverlay 0
 	touch /usr/share/applications/*.desktop
 	if [ -d /usr/share/sailfishos-uithemer ]; then
 	dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"
@@ -32,6 +34,7 @@ if [ -d "/usr/share/harbour-themepack-$iconpack/overlay" ]; then
 		case "$choice" in 
 			y|Y ) echo "applying $iconpack overlay"
 			$main/icon-overlay.sh $iconpack
+			config_write iconoverlay 1
 			touch /usr/share/applications/*.desktop
 			if [ -d /usr/share/sailfishos-uithemer ]; then
 			dconf write /desktop/lipstick/sailfishos-uithemer/activeIconPack "'$iconpack'"

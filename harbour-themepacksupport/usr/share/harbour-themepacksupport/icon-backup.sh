@@ -5,9 +5,10 @@ main=/usr/share/harbour-themepacksupport
 dir_jolla=/usr/share/themes/sailfish-default/meegotouch
 dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
+source $main/config.shlib
 
 # Disable service
-if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+if [[ "$(config_get autoupd)" == "1" ]]; then
 	systemctl disable themepacksupport-autoupdate.timer
 	systemctl stop themepacksupport-autoupdate.timer
 	systemctl disable themepacksupport-autoupdate.service

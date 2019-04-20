@@ -10,7 +10,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "sound" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/sound.menu
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "sound" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/sound.menu
 
 while :
 do

@@ -1,5 +1,5 @@
 Name:           harbour-themepacksupport
-Version:        0.8.10
+Version:        0.8.11
 Release:        2
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
@@ -77,6 +77,10 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Sat Apr 20 2019 0.8.11
+- Services now take in consideration overlay settings.
+- Bugfix.
+
 * Tue Apr 9 2019 0.8.10
 - Bugfix.
 

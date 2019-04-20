@@ -10,12 +10,12 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "jolla" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp1
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "native" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp2
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "apk" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp3
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "dyncal" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp4
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "dynclock" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp5
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "overlay" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/icon-tmp6
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "jolla" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp1
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "native" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp2
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "apk" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp3
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "overlay" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp4
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "dyncal" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp5
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "dynclock" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/icon-tmp6
 cat $main/tmp/icon-tmp* | sort | uniq > $main/tmp/icon.menu
 
 while :

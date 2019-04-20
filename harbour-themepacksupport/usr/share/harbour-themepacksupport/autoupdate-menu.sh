@@ -8,9 +8,10 @@ fi
 
 # Set directory variables
 main=/usr/share/harbour-themepacksupport
+source $main/config.shlib
 
 function load-service {
-if [[ "$(sed -n 2p $main/themepacksupport.cfg)" =~ "1" ]]; then
+if [[ "$(config_get autoupd)" == "1" ]]; then
     systemctl daemon-reload
 else
     $main/enable-autoupdate.sh

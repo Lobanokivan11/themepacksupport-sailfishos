@@ -10,7 +10,7 @@ fi
 main=/usr/share/harbour-themepacksupport
 
 # Generate menu
-find /usr/share/harbour-themepack-* -maxdepth 1 -type d -iname "graphic" -printf "%h\n" | sort -u | cut -c30- > $main/tmp/graphic.menu
+find -L /usr/share/harbour-themepack-* -type d -maxdepth 1 -iname "graphic" -print0 | xargs -0 -n1 dirname | sort -u | cut -c30- > $main/tmp/graphic.menu
 
 while :
 do

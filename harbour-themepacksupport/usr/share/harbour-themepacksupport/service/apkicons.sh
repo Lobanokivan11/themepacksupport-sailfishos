@@ -7,6 +7,7 @@ pack=/usr/share/harbour-themepack-$iconpack
 dir_jolla=/usr/share/themes/sailfish-default/meegotouch
 dir_native=/usr/share/icons/hicolor
 dir_apk=/var/lib/apkd
+source $main/config.shlib
 
 # If Android support is installed
 if [ -d "$dir_apk" ]; then
@@ -31,6 +32,7 @@ if [ -d "$dir_apk" ]; then
 	done
 	done
 
+	if [[ "$(config_get iconoverlay)" == "1" ]]; then
 	 # Apply overlay
 	if [[ -d $pack/overlay && "$(ls $pack/overlay)" ]]; then
 
@@ -58,7 +60,7 @@ if [ -d "$dir_apk" ]; then
 			break 3
 		fi
 		done
-
+	fi
 	fi
 
 	touch /usr/share/applications/*.desktop
