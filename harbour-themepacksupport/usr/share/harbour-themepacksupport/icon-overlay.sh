@@ -22,11 +22,14 @@ if [[ ! -f $pack/type || $(<$pack/type) != "android" ]]; then
 	nativeCap=( "256x256" "172x172" "128x128" "108x108" "86x86" )
 
 	for ((i=0;i<${#nativeCap[@]};++i)); do
+	for ((j=i;j<${#nativeCap[@]};++j)); do
 	# if there are native icons
-	if [ -d $pack/native/${nativeCap[i]}/apps ]; then
+	if [ -d $pack/native/${nativeCap[j]}/apps ]; then
 		# List icons not in the theme
-		diff -r $dir_native/${nativeCap[i]}/apps $pack/native/${nativeCap[i]}/apps | grep 'Only in /usr/share/icons' | awk '{print $4}' > $main/tmp/${nativeCap[i]}.overlay
+		diff -r $dir_native/${nativeCap[i]}/apps $pack/native/${nativeCap[j]}/apps | grep 'Only in /usr/share/icons' | awk '{print $4}' > $main/tmp/${nativeCap[i]}.overlay
+		break
 	fi
+	done
 	done
 
 	for ((i=0;i<${#nativeCap[@]};++i)); do
