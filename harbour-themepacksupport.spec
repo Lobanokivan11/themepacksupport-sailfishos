@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
 Version:        0.8.12
-Release:        1
+Release:        2
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -67,9 +67,11 @@ fi
 if [ $1 = 0 ]; then
 	// Uninstallation
 	unlink /usr/bin/themepacksupport
+	rm /etc/systemd/system/aliendalvik.service.d/10-themepacksupport.conf
 	rm /lib/systemd/system/themepacksupport-systemupgrade.service
 	rm /etc/systemd/system/themepacksupport-autoupdate.timer
 	rm /etc/systemd/system/themepacksupport-autoupdate.service
+	systemctl daemon-reload
 	rm /usr/share/icons/hicolor/86x86/apps/%{name}.png
 	rm /usr/share/applications/%{name}.desktop
 	rm -rf /usr/share/%{name}
