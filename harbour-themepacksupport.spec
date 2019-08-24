@@ -1,6 +1,6 @@
 Name:           harbour-themepacksupport
-Version:        0.8.12
-Release:        2
+Version:        0.8.13
+Release:        4
 Summary:        Theme pack support
 Obsoletes:      harbour-iconpacksupport <= 0.0.4-4
 Conflicts:      harbour-iconpacksupport
@@ -33,6 +33,12 @@ mv /usr/share/%{name}/service/themepacksupport-autoupdate.service /etc/systemd/s
 mv /usr/share/%{name}/service/themepacksupport-autoupdate.timer /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable themepacksupport-systemupgrade.service
+
+touch -a /usr/share/%{name}/icon-current
+touch -a /usr/share/%{name}/font-current
+touch -a /usr/share/%{name}/sound-current
+touch -a /usr/share/%{name}/graphic-current
+touch -a /usr/share/%{name}/droiddpi-current
 
 // Save the model in a file
 ssu mo | sed 's/.*: //' > /usr/share/%{name}/device-model
@@ -79,6 +85,9 @@ if [ $1 = 0 ]; then
 fi
 
 %changelog
+* Sat Aug 24 2019 0.8.13
+- Improved autoupd script.
+
 * Sat Jun 8 2019 0.8.12
 - Improved overlay engine.
 

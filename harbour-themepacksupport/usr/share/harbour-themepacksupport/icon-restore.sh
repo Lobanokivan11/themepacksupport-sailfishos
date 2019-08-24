@@ -78,7 +78,6 @@ rm -rf $main/backup/dyncal
 rm -rf $main/backup/icons
 
 # Set no icon pack
-rm $main/icon-current
 echo default > $main/icon-current
 
 exit 0

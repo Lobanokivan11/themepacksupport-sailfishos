@@ -14,13 +14,13 @@ if [ -d "$dir_apk" ]; then
 	apkCap=( "192x192" "128x128" "86x86" )
 	apkSize=( "122x122" "78x78" "56x56" )
 
-	# Restore icons
+	# RESTORE
 	rsync -a --existing --ignore-times $main/backup/icons/apk/ $dir_apk/
 
-	# Backup
+	# BACKUP
 	rsync -a --ignore-existing $dir_apk/ $main/backup/icons/apk/
 
-	# Apply icons
+	# APPLY
 	for ((i=0;i<${#apkCap[@]};++i)); do
 	for ((j=i;j<${#apkCap[@]};++j)); do
 		# if there are Android icons

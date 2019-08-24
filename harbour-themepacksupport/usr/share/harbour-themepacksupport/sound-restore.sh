@@ -14,7 +14,6 @@ cp $main/backup/sound/* $dir_jolla
 rm $main/backup/sound/*
 
 # Set no sound pack
-rm $main/sound-current
 echo default > $main/sound-current
 
 fi

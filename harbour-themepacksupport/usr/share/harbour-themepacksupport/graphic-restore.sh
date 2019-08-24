@@ -25,7 +25,6 @@ if [ -s "$main/backup/cp_graphic*" ]; then
 fi
 
 # Set no icon pack
-rm $main/graphic-current
 echo default > $main/graphic-current
 
 fi
