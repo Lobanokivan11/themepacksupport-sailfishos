@@ -30,7 +30,7 @@ mkdir -p %{buildroot}/etc/systemd/system
 
 # 2. Copy the main scripts/files to the data directory
 # This assumes your source folder has these files/folders
-cp -r * %{buildroot}%{_datadir}/%{name}/
+cp -r harbour-themepacksupport/usr/share/harbour-themepacksupport/* %{buildroot}%{_datadir}/%{name}/
 
 # 3. Move specific files to their system locations in the build root
 mv %{buildroot}%{_datadir}/%{name}/themepacksupport.sh %{buildroot}%{_bindir}/themepacksupport
