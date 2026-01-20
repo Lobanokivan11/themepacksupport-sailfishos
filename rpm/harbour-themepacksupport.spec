@@ -14,7 +14,32 @@ License:        GPLv3
 URL:            https://github.com/uithemer/themepacksupport-sailfishos
 
 %description
-Theme pack support for Sailfish OS.
+Theme pack support for Sailfish OS
+
+%install
+rm -rf %{buildroot}
+
+# 1. Create all necessary directory structures
+mkdir -p %{buildroot}%{_datadir}/%{name}
+mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_datadir}/applications
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/86x86/apps
+mkdir -p %{buildroot}/etc/systemd/system/aliendalvik.service.d
+mkdir -p %{buildroot}/lib/systemd/system
+mkdir -p %{buildroot}/etc/systemd/system
+
+# 2. Copy the main scripts/files to the data directory
+# This assumes your source folder has these files/folders
+cp -r * %{buildroot}%{_datadir}/%{name}/
+
+# 3. Move specific files to their system locations in the build root
+mv %{buildroot}%{_datadir}/%{name}/themepacksupport.sh %{buildroot}%{_bindir}/themepacksupport
+mv %{buildroot}%{_datadir}/%{name}/%{name}.desktop %{buildroot}%{_datadir}/applications/
+mv %{buildroot}%{_datadir}/%{name}/%{name}.png %{buildroot}%{_datadir}/icons/hicolor/86x86/apps/
+mv %{buildroot}%{_datadir}/%{name}/service/10-themepacksupport.conf %{buildroot}/etc/systemd/system/aliendalvik.service.d/
+mv %{buildroot}%{_datadir}/%{name}/service/themepacksupport-systemupgrade.service %{buildroot}/lib/systemd/system/
+mv %{buildroot}%{_datadir}/%{name}/service/themepacksupport-autoupdate.service %{buildroot}/etc/systemd/system/
+mv %{buildroot}%{_datadir}/%{name}/service/themepacksupport-autoupdate.timer %{buildroot}/etc/systemd/system/
 
 %files
 %defattr(-,root,root,-)
