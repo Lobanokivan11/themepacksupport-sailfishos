@@ -60,7 +60,7 @@ chmod +x %{_datadir}/%{name}/service/*.sh
 # Create necessary directories
 mkdir -p %{_datadir}/%{name}/backup
 mkdir -p %{_datadir}/%{name}/tmp
-mkdir -p /home/nemo/.themepack
+mkdir -p /home/defaultuser/.themepack
 
 systemctl daemon-reload
 systemctl enable themepacksupport-systemupgrade.service
@@ -98,7 +98,7 @@ fi
 %postun
 if [ $1 = 0 ]; then
     # Clean up created directories
-    rm -rf /home/nemo/.themepack
+    rm -rf /home/defaultuser/.themepack
     systemctl daemon-reload
 fi
 
